@@ -87,9 +87,9 @@ Page({
     },
     singlebuy: function(t) {    //选择规格
         var o = this;
-        let isTeamGroup = t.currentTarget.dataset.is;
+        let isTeamGroup = t.currentTarget.dataset.is;  //是否拼团  1是  0单独购买
         let teamid = t.currentTarget.dataset.teamid;
-        let type = t.currentTarget.dataset.type;    //single:单独购买     groups：拼团购买
+        let type = t.currentTarget.dataset.type;    //single:单独购买     groups：参团   group:开团
         console.log(isTeamGroup,teamid);
         this.setData({
             teamid:teamid,

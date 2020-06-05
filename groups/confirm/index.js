@@ -20,7 +20,7 @@ Page({
         var i = this;
         this.setData({
             options: e,
-            isTeamGroup:e.isTeamGroup,
+            isTeamGroup:e.isTeamGroup, //是否拼团  1是  0单独购买
             teamid:e.teamid,
         }), a.getCache("isIpx") ? i.setData({
             isIpx: !0,
@@ -29,17 +29,19 @@ Page({
             isIpx: !1,
             iphonexnavbar: ""
         });
-        this.get_create_order();
     },
     get_create_order(){
 
         var i = this;
+        let type = (this.data.isTeamGroup == 1) ? "groups" : "single"
+        let heads =  (this.data.isTeamGroup == 1) ? 1 : ''
+        // i.data.options.type
         t.get("groups/order/create_order", {
             id: i.data.options.id,
             group_option_id: i.data.options.option_id,
             ladder_id: i.data.options.ladder_id,
-            type: i.data.options.type,
-            heads: i.data.options.heads,
+            type: type,
+            heads: heads,
             teamid: i.data.options.teamid
         }, function(a) {
             if(a.error == -1){
@@ -131,14 +133,18 @@ Page({
     submit: function() {
         var a = this.data.diyform;
         let taht = this;
+        
+        let type = (this.data.isTeamGroup == 1) ? "groups" : "single"
+        let heads =  (this.data.isTeamGroup == 1) ? 1 : ''
+
         if (null == this.data.diyform) var e = ""; else e = this.data.diyform.f_data;
         if (null != a && !i.verify(this, a)) return void t.alert("请查看是否有未填写的内容");
         t.post("groups/order/create_order", {
             id: this.data.options.id,
             group_option_id: this.data.options.option_id,
             ladder_id: this.data.options.ladder_id,
-            type: this.data.options.type,
-            heads: this.data.options.heads,
+            type: type,
+            heads: heads,
             teamid: this.data.options.teamid,
             aid: this.data.aid,
             message: this.data.message,

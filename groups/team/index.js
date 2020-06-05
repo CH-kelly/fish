@@ -36,6 +36,7 @@ Page({
   },
   fight_groups(){
     let id = this.data.goods_id
+    let that = this;
     a.post("groups.goods.fight_groups", {
         id: id,
         ladder_id: ''

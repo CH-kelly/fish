@@ -54,7 +54,7 @@
                         <view class="item-left-sub">差{{item.num}}人拼团</view>
                         <view class="item-left-sub" style="color:#000000;margin-top: 2rpx;">剩余{{item.hour}}:{{item.minite}}:{{item.second}}</view>
                     </view>
-                    <view class="add-collage"  bindtap="singlebuy" data-is="1" data-type="groups" data-id="{{data.id}}"  data-teamid="{{item.teamid}}">快速参团</view>
+                    <view class="add-collage"  bindtap="singlebuy" data-is="1"  data-type="groups"  data-id="{{data.id}}"  data-teamid="{{item.teamid}}">快速参团</view>
                 </view>
             </view>
             </block>
@@ -149,11 +149,11 @@
                 </view>
                 <view class="flex new-button" style="padding-right: 30rpx;">
                     <block wx:if="{{data.single==1}}">
-                        <view bindtap="singlebuy" data-is="0"  data-type="single" class="button-detailbtn" style="margin-right: 30rpx;">单独购买</view>
+                        <view bindtap="singlebuy" data-is="0"  data-type="single"  class="button-detailbtn" style="margin-right: 30rpx;">单独购买</view>
                     </block>
                     <block wx:if="{{data.is_ladder==0}}">
                         <!-- <view  bindtap="buttonOpenGroup" data-id="{{data.id}}" class="button-detailbtn button-open-group">立即开团</view> -->
-                        <view   bindtap="singlebuy" data-is="1" data-type="groups" data-id="{{data.id}}" class="button-detailbtn button-open-group">立即开团</view>
+                        <view   bindtap="singlebuy" data-is="1"  data-type="group"  data-id="{{data.id}}" class="button-detailbtn button-open-group">立即开团</view>
                     </block>
                     <block wx:if="{{data.is_ladder==1}}">
                         <!-- <view bindtap="buttonOpenGroup" data-id="{{data.id}}" class="button-detailbtn button-open-group">参加阶梯团</view> -->
