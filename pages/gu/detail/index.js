@@ -29,7 +29,7 @@ Page({
 
     this.setData({
       merchid: t.id,
-      type:t.type || 1
+      type:t.type || 1    //1导游  0商户
   }), this.getMerch(), this.getList()
   },
   copyPhone(){

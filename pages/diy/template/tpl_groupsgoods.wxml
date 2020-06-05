@@ -17,9 +17,10 @@
       </view>
     </navigator>
   </view>
-    <view class="flex">
+    <view class="flex" style="flex-wrap: wrap;">
     
-    <view class="fui-goods-item" wx:for="{{diyitem.data}}" wx:for-index="childid" wx:for-item="childitem" wx:key="childid" style="padding: 0;width:48%;margin-bottom: 30rpx;">
+    <view class="fui-goods-item" wx:for="{{diyitem.data}}" wx:for-index="childid" wx:for-item="childitem" wx:key="childid" 
+    style="padding: 0;width:48%;margin-bottom: 30rpx;flex-shrink: 0;">
         <navigator class="image" data-text="拼团" 
         style="border-radius: 30rpx 30rpx 0 0;background-image:url({{childitem.thumb}});" url="{{'/groups/goods/index?id='+childitem.gid}}">
             <view class="fui-goods-ping">拼团</view>

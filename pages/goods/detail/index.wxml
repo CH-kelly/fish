@@ -378,13 +378,14 @@
                 </view>
             </view>
             <view class="fui-cell-group fui-shop-group new-shop-info">
-                <navigator class="fui-list" openType="switchTab" url="/pages/index/index" style="padding: 16rpx 0 36rpx 0;">
+                <!-- <navigator class="fui-list" openType="switchTab" url="/pages/index/index" style="padding: 16rpx 0 36rpx 0;"> -->
+                <navigator class="fui-list"  openType="navigate" url="/pages/gu/detail/index?type=0&id={{goods.shopdetail.merchid}}"  style="padding: 16rpx 0 36rpx 0;">
                     <view class="fui-list-media">
                         <image src="{{goods.shopdetail.logo}}"></image>
                     </view>
                     <view class="fui-list-inner">
                         <view class="title">{{goods.shopdetail.shopname}}
-              <text class="title-wel">{{goods.shopdetail.btntext2}}</text>
+                            <text class="title-wel">{{goods.shopdetail.btntext2}}</text>
                         </view>
                         <view class="subtitle" style="font-size: 24rpx;color: rgba(153,153,153,1);"
                          wx:if="{{goods.shopdetail.description}}">{{goods.shopdetail.description}}</view>

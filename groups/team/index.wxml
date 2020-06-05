@@ -14,7 +14,7 @@
                         <view class="item-left-sub">差{{item.num}}人拼团</view>
                         <view class="item-left-sub" style="color:#000000;margin-top: 2rpx;">剩余12:00:00</view>
                     </view>
-                    <view class="add-collage">快速参团</view>
+                    <view class="add-collage"  bindtap="singlebuy" data-is="2"  data-type="groups"  data-id="{{data.id}}"  data-teamid="{{item.teamid}}">快速参团</view>
                 </view>
             </view>
         </block>
@@ -22,3 +22,45 @@
     <!-- <view class="line"></view> -->
     <!-- 拼团列表结束 -->
 </view>
+
+<!-- 选择规格 -->
+<block>
+    <block wx:if="{{layershow}}">
+        <view bindtap="close" class="layer"></view>
+    </block>
+</block>
+<block>
+    <block wx:if="{{options}}">
+        <view class="fui-modal goods-picker in goodslist">
+            <view class="option-picker">
+                <view class="option-picker-inner">
+                    <view class="fui-list" style="padding:0px">
+                        <view class="fui-list-media">
+                            <image class="thumb" src="{{optiondata.thumb||data.thumb}}"></image>
+                        </view>
+                        <view class="fui-list-inner">
+                            <view class="subtitle">{{optiondata.title||data.title}}</view>
+                            <view class="price">￥{{optiondata.single_price||data.groupsprice}}</view>
+                        </view>
+                    </view>
+                    <view class="option-picker-options">
+                        <view class="option-picker-cell option spec">
+                            <block wx:for="{{spec}}" wx:for-index="specindex" wx:for-item="items" wx:key="specindex">
+                                <view class="title">{{items.title}}</view>
+                                <view class="select">
+                                    <block wx:for="{{items.item}}" wx:for-item="options" wx:key="idnex">
+                                        <view bindtap="specsTap" class="btn btn-default btn-sm nav spec-item {{options.status=='active'?'btn-danger':''}}" data-id="{{options.id}}" data-idx="{{index}}" data-specindex="{{specindex}}" data-spedid="{{options.specid}}">{{options.title}}</view>
+                                    </block>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+                <view class="fui-navbar">
+                    <view bindtap="buy" class="btn btn-danger block"> {{optiondata.stock<=0?'库存不足':'确定'}}</view>
+                </view>
+            </view>
+            <!-- <view bindtap="close" class="icox icox-guanbi-copy" style="color:#fff;text-align:center;font-size:60rpx;margin-top:30rpx;"></view> -->
+        </view>
+    </block>
+</block>

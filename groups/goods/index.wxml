@@ -54,11 +54,24 @@
                         <view class="item-left-sub">差{{item.num}}人拼团</view>
                         <view class="item-left-sub" style="color:#000000;margin-top: 2rpx;">剩余{{item.hour}}:{{item.minite}}:{{item.second}}</view>
                     </view>
-                    <view class="add-collage"  bindtap="singlebuy" data-is="1"  data-type="groups"  data-id="{{data.id}}"  data-teamid="{{item.teamid}}">快速参团</view>
+                    <view class="add-collage"  bindtap="singlebuy" data-is="2"  data-type="groups"  data-id="{{data.id}}"  data-teamid="{{item.teamid}}">快速参团</view>
                 </view>
             </view>
             </block>
         </block>
+    </view>
+    
+    <view class="fui-cell-group fui-shop-group new-shop-info">
+        <navigator class="fui-list" openType="navigate" url="/pages/gu/detail/index?type=0&id={{data.merchid}}" style="padding: 16rpx 0 36rpx 0;">
+            <view class="fui-list-media">
+                <image src="{{data.merchlogo}}"></image>
+            </view>
+            <view class="flex fui-list-inner">
+                <view class="title">{{data.merchname}}</view>
+                <text class="title-wel">进入店铺</text>
+                <!-- <view class="subtitle" style="font-size: 24rpx;color: rgba(153,153,153,1);" >进入店铺</view> -->
+            </view>
+        </navigator>
     </view>
     <!-- <view class="line"></view> -->
     <!-- 拼团列表结束 -->

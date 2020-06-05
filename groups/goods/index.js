@@ -62,9 +62,10 @@ Page({
     fight_groups(){
         let id = this.data.goods_id
         var d = this,  e = this.data.goods_id;
-        a.post("groups.goods.fight_groups", {
+        a.post("groups/goods/fight_groups", {
             id: id,
-            ladder_id: ''
+            ladder_id: '',
+            limit:2
         }, function(t) {
             1 != t.error ? (d.setData({
                 other: t.other
@@ -90,17 +91,18 @@ Page({
         let isTeamGroup = t.currentTarget.dataset.is;  //是否拼团  1是  0单独购买
         let teamid = t.currentTarget.dataset.teamid;
         let type = t.currentTarget.dataset.type;    //single:单独购买     groups：参团   group:开团
-        console.log(isTeamGroup,teamid);
+        console.log(isTeamGroup,teamid,type);
         this.setData({
             teamid:teamid,
-            type:type
+            type:type,
+            isTeamGroup:isTeamGroup
         })
         a.post("groups/goods/goodsCheck", {
             id: o.data.goods_id,
             type: type
         }, function(t) {
             if (1 != t.error) if (0 == o.data.data.more_spec) wx.navigateTo({
-                url: "../confirm/index?id=" + o.data.goods_id + "&type="+type+"&isTeamGroup="+isTeamGroup
+                url: "../confirm/index?id=" + o.data.goods_id + "&type="+type+"&isTeamGroup="+isTeamGroup+"&teamid="+teamid
             }); else {
                 o.setData({
                     layershow: !0,

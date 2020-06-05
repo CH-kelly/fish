@@ -717,3 +717,9 @@ color:rgba(153,153,153,1);
 .fui-comment-group .fui-cell .comment .remark .img img {
     height: 100rpx;
 }
+
+.new-shop-info{
+    border-top: 1px solid rgba(199,199,199,1);
+    border-bottom: 1px solid rgba(199,199,199,1);
+
+}

@@ -18,6 +18,7 @@ Page({
     },
     onLoad: function(e) {
         var i = this;
+        console.log(e);
         this.setData({
             options: e,
             isTeamGroup:e.isTeamGroup, //是否拼团  1是  0单独购买
@@ -33,8 +34,18 @@ Page({
     get_create_order(){
 
         var i = this;
-        let type = (this.data.isTeamGroup == 1) ? "groups" : "single"
-        let heads =  (this.data.isTeamGroup == 1) ? 1 : ''
+        
+        let type = ''
+        let heads =  ''
+        if(this.data.isTeamGroup == 1){
+            heads = 1;
+            type = "groups"
+        }else if(this.data.isTeamGroup == 2){
+            heads = 0;
+            type = "groups"
+        }else{
+            type = "single"
+        }
         // i.data.options.type
         t.get("groups/order/create_order", {
             id: i.data.options.id,
@@ -134,8 +145,17 @@ Page({
         var a = this.data.diyform;
         let taht = this;
         
-        let type = (this.data.isTeamGroup == 1) ? "groups" : "single"
-        let heads =  (this.data.isTeamGroup == 1) ? 1 : ''
+        let type = ''
+        let heads =  ''
+        if(this.data.isTeamGroup == 1){
+            heads = 1;
+            type = "groups"
+        }else if(this.data.isTeamGroup == 2){
+            heads = 0;
+            type = "groups"
+        }else{
+            type = "single"
+        }
 
         if (null == this.data.diyform) var e = ""; else e = this.data.diyform.f_data;
         if (null != a && !i.verify(this, a)) return void t.alert("请查看是否有未填写的内容");
