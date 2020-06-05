@@ -152,10 +152,10 @@ Page({
             });
         });
     },
-    buy: function(t) {
+    buy: function(t) { //选择规格
         var o = this, e = (a.pdata(t).op, o.data.goods_id), i = o.data.optiondata;
         o.data.optiondata ? i.stock > 0 ? wx.navigateTo({
-            url: "../confirm/index?id=" + e + "&option_id=" + i.id + " &type="+type+ "&isTeamGroup=" + o.data.isTeamGroup+ "&teamid=" + o.data.teamid,
+            url: "../confirm/index?id=" + e + "&option_id=" + i.id + " &type="+o.data.type+ "&isTeamGroup=" + o.data.isTeamGroup+ "&teamid=" + o.data.teamid,
             success: function() {
                 o.setData({
                     layershow: !1,

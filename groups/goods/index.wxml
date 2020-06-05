@@ -61,7 +61,7 @@
         </block>
     </view>
     
-    <view class="fui-cell-group fui-shop-group new-shop-info">
+    <view class="fui-cell-group fui-shop-group new-shop-info" wx:if="{{data.merchid >0}}">
         <navigator class="fui-list" openType="navigate" url="/pages/gu/detail/index?type=0&id={{data.merchid}}" style="padding: 16rpx 0 36rpx 0;">
             <view class="fui-list-media">
                 <image src="{{data.merchlogo}}"></image>
@@ -216,7 +216,9 @@
                     </view>
                 </view>
                 <view class="fui-navbar">
-                    <view bindtap="buy" class="btn btn-danger block"> {{optiondata.stock<=0?'库存不足':'确定'}}</view>
+                    <view bindtap="buy" 
+                    data-is="1"  data-type="group"  data-id="{{data.id}}"
+                    class="btn btn-danger block"> {{optiondata.stock<=0?'库存不足':'确定'}}</view>
                 </view>
             </view>
             <!-- <view bindtap="close" class="icox icox-guanbi-copy" style="color:#fff;text-align:center;font-size:60rpx;margin-top:30rpx;"></view> -->
