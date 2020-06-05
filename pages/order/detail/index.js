@@ -54,7 +54,9 @@ Page({
                     invoice: e.order.invoicename,
                     membercard_info: e.membercard_info,
                     order:e.order,
-                    goods:e.goods
+                    goods:e.goods,
+                    address:e.address,
+
                 });
             }
         });

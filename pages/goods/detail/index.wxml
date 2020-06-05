@@ -110,10 +110,12 @@
                         <view style="font-size: 20rpx;color: #666;margin-top:-6rpx;">分享</view>
                     </view>
                     
-                    <view bindtap="showshade" class="fui-cell-remark showshade" style="margin-left: 20rpx;">
+                    <!-- <view bindtap="collect" class="flex fui-cell-remark showshade" style="margin-left: 20rpx;width: 100rpx;"> -->
+                    <view bindtap="collect" class="fui-cell-remark showshade" style="margin-left: 20rpx;">
                         <!-- <i class="icox icox-send" style="font-size:42rpx;color: #fd5555;"></i> -->
-                        <image class="new-collections" src="/static/images/icon/collections.png"></image>
-                        <view  class="new-collections-text">收藏</view>
+                        <image wx:if="{{goods.collect == 0}}" class="new-collections" src="/static/images/icon/collections_no.png"></image>
+                        <image wx:if="{{goods.collect == 1}}" class="new-collections" src="/static/images/icon/collections.png"></image>
+                        <view  class="new-collections-text" style="{{goods.collect==1?'color:#01D6C0':''}}">收藏</view>
                     </view>
                 </view>
                 <view class="fui-cell goods-subtitle" wx:if="{{goods.subtitle}}">

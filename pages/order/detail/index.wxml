@@ -4,7 +4,11 @@
     <view class="background">
         <v-input>
             <text>订单状态：</text>
-            <text class="flex input-item order-status " style="color:{{textColor}}">111</text>
+            <text class="flex input-item order-status "  hidden="{{order.status!=1}}" style="color:#01D6C0">待发货</text>
+            <text class="flex input-item order-status "  hidden="{{order.status!=2}}" style="color:#F46A26">待收货</text>
+            <text class="flex input-item order-status "  hidden="{{order.status!=0}}" style="color:#01D6C0">待付款</text>
+            <text class="flex input-item order-status "  hidden="{{order.status!=3}}" style="color:#E72948">已完成</text>
+            <text class="flex input-item order-status "  hidden="{{order.status!=-1}}" style="color:#999999">已关闭</text>
         </v-input>
         <v-input>
             <text>订单编号：</text>
@@ -14,12 +18,12 @@
         </v-input>
         <v-input>
             <text>出发地址：</text>
-            <text class="input-item">111</text>
+            <text class="input-item">{{address.province}}{{address.city}}{{address.area}}{{address.address}}</text>
         </v-input>
 
         <v-input>
             <text>联系电话：</text>
-            <text class="input-item">111</text>
+            <text class="input-item">{{address.mobile}}</text>
         </v-input>
 
         <v-input>

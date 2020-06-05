@@ -170,10 +170,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 16,
 					"name": "商品详情",
 					"pathName": "pages/goods/detail/index",
-					"query": "id=1",
+					"query": "id=3",
 					"scene": null
 				},
 				{

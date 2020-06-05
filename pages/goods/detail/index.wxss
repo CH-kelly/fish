@@ -1907,8 +1907,8 @@ border-radius: 20rpx;
     top: 6rpx;
 }
 .new-collections-text{
-    font-size: 20rpx;
-    color: #01D6C0;
+    font-size: 26rpx;
+    color: rgba(199, 199, 199, 1);
     margin-top:12rpx;
     position: relative;
     top: 0rpx;

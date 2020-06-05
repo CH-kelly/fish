@@ -4,6 +4,7 @@ Page({
     data: {
         icons: e.requirejs("icons"),
         list: {},
+        goods_lists:[],
         goodslist: {},
         data: {
             dispatchtype: 0,
@@ -18,6 +19,7 @@ Page({
                 address: ""
             }
         },
+        address:{},
         merchid: 0,
         showPicker: !1,
         pvalOld: [ 0, 0, 0 ],
@@ -74,11 +76,17 @@ Page({
             if (0 == t.error) {
                 s = i.getGoodsList(t.goods);
                 var r = (i.data.originalprice - t.goodsprice).toFixed(2);
+                let goods_lists = t.goods || []
+                if(goods_lists){
+                    goods_lists = goods_lists[0].goods
+                }
                 i.setData({
                     list: t,
-                    goods: t,
+                    goods: t.goods,
                     show: !0,
-                    address: !0,
+                    address: t.address,
+                    goods_lists:goods_lists,
+
                     card_info: t.card_info || {},
                     cardid: t.card_info.cardid || "",
                     cardname: t.card_info.cardname || "",
@@ -286,9 +294,22 @@ Page({
             }), console.log(c), a.post("order/create/submit", c, function(t) {
                 e.setData({
                     submit: !1
-                }), 0 == t.error ? wx.navigateTo({
-                    url: "/pages/order/pay/index?id=" + t.orderid
-                }) : a.alert(t.message);
+                });
+                if(1 != a.error){   //订单创建成功，开启微信支付
+                    //TODO::微信支付成功回调
+                    
+                    //如果开团那么就跳转到拼团支付成功页面  isTeamGroup:0,  //是否拼团  1是  0单独购买
+                   
+                    wx.navigateTo({
+                        url: "/pages/gu/success/index?type=4"
+                    })
+                    
+                }else{
+                    t.alert(a.message);
+                }
+                //  0 == t.error ? wx.navigateTo({
+                //     url: "/pages/order/pay/index?id=" + t.orderid
+                // }) : a.alert(t.message);
             }, !0);
         }
     },

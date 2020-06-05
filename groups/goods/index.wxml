@@ -183,6 +183,8 @@
     </block>
     <view class="{{isIpx?'fui-iphonex-button':''}}"></view>
 </view>
+
+
 <block>
     <block wx:if="{{layershow}}">
         <view bindtap="close" class="layer"></view>

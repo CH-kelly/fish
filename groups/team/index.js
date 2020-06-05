@@ -10,6 +10,9 @@ Page({
   data: {
     goods_id:0,
     other:[],
+    teamid:0,
+    type:'',
+    isTeamGroup:''
   },
 
   /**
@@ -100,6 +103,53 @@ singlebuy: function(t) {    //选择规格
                 options: !0
             });
         } else a.alert(t.message);
+    });
+},
+close: function() {
+    this.setData({
+        layershow: !1,
+        options: !1
+    });
+},
+specsTap: function(t) {
+    e++;
+    var o = this, i = o.data.spec, s = a.pdata(t).spedid, n = a.pdata(t).id, d = a.pdata(t).specindex;
+    a.pdata(t).idx;
+    i[d].item.forEach(function(t, a) {
+        t.id == n ? i[d].item[a].status = "active" : i[d].item[a].status = "";
+    }), o.setData({
+        spec: i
+    });
+    var r = o.data.optionarr, p = o.data.selectSpecsarr;
+    1 == e ? (r.push(n), p.push(s)) : p.indexOf(s) > -1 ? r.splice(d, 1, n) : (r.push(n), 
+    p.push(s)), o.data.optionarr = r, o.data.selectSpecsarr = p, a.post("groups.goods.get_option", {
+        spec_id: o.data.optionarr,
+        groups_goods_id: o.data.goods_id
+    }, function(t) {
+        o.setData({
+            optiondata: t.data
+        });
+    });
+},
+buy: function(t) {  //规格选择-确定按钮
+    var o = this, e = (a.pdata(t).op, o.data.goods_id), i = o.data.optiondata;
+    o.data.optiondata ? i.stock > 0 ? wx.navigateTo({
+        url: "../confirm/index?id=" + e + "&option_id=" + i.id + " &type="+o.data.type+ "&isTeamGroup=" + o.data.isTeamGroup+ "&teamid=" + o.data.teamid,
+        success: function() {
+            o.setData({
+                layershow: !1,
+                chosenum: !1,
+                options: !1
+            });
+        }
+    }) : wx.showToast({
+        title: "库存不足",
+        icon: "none",
+        duration: 2e3
+    }) : wx.showToast({
+        title: "请选择规格",
+        icon: "none",
+        duration: 2e3
     });
 },
   /**

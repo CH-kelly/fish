@@ -1,4 +1,5 @@
-var t, e, a = require("../../../@efwww/runtime/helpers/interopRequireDefault")(require("../../../@efwww/runtime/helpers/defineProperty")), o = getApp(), i = o.requirejs("core"), s = (o.requirejs("icons"), 
+var t, e, a = require("../../../@efwww/runtime/helpers/interopRequireDefault")(require("../../../@efwww/runtime/helpers/defineProperty")), 
+o = getApp(), i = o.requirejs("core"), s = (o.requirejs("icons"), 
 o.requirejs("foxui")), n = o.requirejs("biz/diypage"), r = o.requirejs("biz/diyform"), d = o.requirejs("biz/goodspicker"), c = o.requirejs("jquery"), l = o.requirejs("wxParse/wxParse"), u = 0, g = o.requirejs("biz/selectdate");
 
 Page((e = {
@@ -636,6 +637,20 @@ Page((e = {
         o.checkAuth(), this.setData({
             closeBtn: !0
         });
+    },
+    collect: function() {
+        let that = this;
+        o.checkAuth();
+        i.get("goods/collect", {
+            id:this.data.goods.id
+        }, function(res) {
+            console.log(res)
+            if(res.error == 0){
+                that.setData({
+                    [`goods.collect`]:res.status
+                })
+            }
+        })
     },
     nav: function() {
         this.setData({
