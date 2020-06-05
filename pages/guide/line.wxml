@@ -1,0 +1,101 @@
+<view>
+  <view class="flex nav">
+<!-- 
+<view class="section">
+  <view class="section__title">省市区选择器</view>
+  <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <view class="picker">
+      当前选择：{{region[0]}}，{{region[1]}}，{{region[2]}}
+    </view>
+  </picker>
+</view> -->
+
+
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+      <view class="flex nav-left" >
+          <image class="left-address" src="/static/images/icon/address_1.png"></image>
+          <text>{{region[2]}}</text>
+          <image  class="left-down" src="/static/images/icon/down_1.png"></image>
+      </view>
+    </picker>
+    <view class="nav-right">
+      <text style="margin-right: 40rpx;">常规导游</text>
+      <text>车兼导游</text>
+    </view>
+  </view>
+
+
+  <view class="flex category">
+    <scroll-view scroll-x  >
+      <view class="flex" style="justify-content: flex-start;">
+        <view class="category-item">
+          <image src="/static/images/guide/cate.png"></image>
+          <text>三亚</text>
+        </view>
+        <view class="category-item">
+          <image src="/static/images/guide/cate.png"></image>
+          <text>三亚</text>
+        </view>
+        <view class="category-item">
+          <image src="/static/images/guide/cate.png"></image>
+          <text>三亚</text>
+        </view>
+        <view class="category-item">
+          <image src="/static/images/guide/cate.png"></image>
+          <text>三亚</text>
+        </view>
+        <view class="category-item">
+          <image src="/static/images/guide/cate.png"></image>
+          <text>三亚</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+<view class="center-lists">
+  
+  <scroll-view scroll-y  class="scroll-view"  >
+  
+    <view class="goods">
+      <view class="flex goods-item">
+        <view class="image">
+          <image src="/static/images/guide/iamge.png"></image>
+        </view>
+        <view class="goods-title">
+          <view class="flex">
+            <text class="title-h2">都江堰三日游</text>
+            <view class="price">¥388.00</view>
+          </view>
+          <view  class="flex second-line" bindtap="gotoLine">
+            <text class="hidden_2 title-desc">都江堰景区三日游，不包门票、住宿、车票，您也不用负担我的...</text>
+            <view class="buy">购买</view>
+          </view> 
+        </view>
+      </view>
+      <view class="line"></view>
+      <view class="flex top">
+        <view class="flex info">
+          <image src="/static/images/guide/avatar1.png"></image>
+          <view class="nickname">
+            <text>槛外人</text>
+            <view class="label">常规导游</view>
+          </view>
+        </view>
+        <view class="service">
+          <text>服务城市：成都</text>
+          <view class="start">
+            <image src="/static/images/start_active.png"></image>
+            <image src="/static/images/start_active.png"></image>
+            <image src="/static/images/start_active.png"></image>
+            <image src="/static/images/start.png"></image>
+            <image src="/static/images/start.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  
+</view>
+
+</view>

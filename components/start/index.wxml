@@ -1,0 +1,24 @@
+ <view class="start">
+  <block wx:if="{{star == 0}}">
+    <image wx:for="{{5}}" wx:key="i" src="/static/images/start.png"></image>
+  </block>
+  <block wx:if="{{star == 1}}">
+    <image src="/static/images/start_active.png"></image>
+    <image wx:for="{{4}}" wx:key="i" src="/static/images/start.png"></image>
+  </block>
+  <block wx:if="{{star == 2}}">
+    <image wx:for="{{2}}" wx:key="i" src="/static/images/start_active.png"></image>
+    <image wx:for="{{3}}" wx:key="i" src="/static/images/start.png"></image>
+  </block>
+  <block wx:if="{{star == 3}}">
+    <image wx:for="{{3}}" wx:key="i" src="/static/images/start_active.png"></image>
+    <image wx:for="{{2}}" wx:key="i" src="/static/images/start.png"></image>
+  </block>
+  <block wx:if="{{star == 4}}">
+    <image wx:for="{{4}}" wx:key="i" src="/static/images/start_active.png"></image>
+    <image src="/static/images/start.png"></image>
+  </block>
+  <block wx:if="{{star == 5}}">
+    <image wx:for="{{5}}" wx:key="i" src="/static/images/start_active.png"></image>
+  </block>
+</view>

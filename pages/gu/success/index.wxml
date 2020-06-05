@@ -1,0 +1,13 @@
+
+<view class="background ">
+  <view class="flex content">
+    <image src="/static/images/success-icon.png"></image>
+    <text>{{title}}</text>
+
+
+    <view bindtap="clickButTitle" wx:if="{{isShowButton == 0}}" class="but-title but-text">{{butTitle}}</view>
+   
+
+    <view class="but-go-index but-text" bindtap="gotoIndex">回到首页</view>
+  </view> 
+</view>

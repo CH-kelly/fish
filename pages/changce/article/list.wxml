@@ -1,0 +1,44 @@
+<view class="fui-page fui-page-current article-list-page">
+  <view class="fui-content">
+    <block >
+      <view class="fui-article-list template-2">
+        <scroll-view class="fui-tab-scroll fixed" scrollX="true" style="overflow-x:scroll">
+          <view bindtap="selCate" class="item {{cateid==0?'active':''}}" data-id="0">全部分类</view>
+          <block wx:for="{{cates}}" wx:for-item="item" wx:key="index">
+            <view bindtap="selCate" class="item {{cateid==item.id?'active':''}}" data-id="{{item.id}}">{{item.category_name}}</view></block>
+        </scroll-view>
+        <view class="fui-list-group">
+          <block wx:for="{{list}}" wx:for-item="item"  wx:key="index" >
+            <navigator class="noclick" style='background: #fff;border-radius: 20rpx;' url="/pages/changce/article/detail?id={{item.id}}">
+            <!-- <navigator class="fui-list noclick" style='line-height:30px;height:30px;background: #fff;' url="/pages/gu/introduction/index?id={{item.id}}"> -->
+            <!-- pages/gu/introduction/index -->
+              
+              <view class="flex way-item" style="padding-top: 30rpx;">
+                <view class="way-item-left" style="width:30%">
+                  <image src="{{item.article_thumb}}"></image>
+                </view>
+                <view style="width:65%">
+                  <view class="way-item-title hidden_1"  style="color:{{diyitem.style.titlecolor}}" >{{item.article_title}}</view>
+                  <view class="way-item-desc hidden_2"  style="color:{{diyitem.style.contentcolor}}" >{{item.article_content}}</view>
+                  <view class="flex way-item-label">
+                    <view class="flex label-left">
+                      <block wx:for="{{item.article_category}}" wx:key="i" wx:for-item="n">
+                        <view class="label-item" style="background:{{n.bgcolor}};color:{{n.color}}">
+                          <text>{{n.title}}</text>
+                        </view>
+                      </block>
+                      <!-- <view class="label-item">{{n}}</view> -->
+                      <!-- <view class="label-item">{{n}}</view> -->
+                    </view>
+                    <view class="label-time" style="color:{{diyitem.style.datecolor}}">{{item.date}}</view>
+                  </view>
+                </view>
+              
+              </view>
+            </navigator>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

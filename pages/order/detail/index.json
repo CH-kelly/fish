@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "订单状态",
+    "usingComponents": {
+      "v-input":"/components/input/index"
+    },
+    "component": true
+}

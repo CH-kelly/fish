@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "v-input":"/components/input/index"
+  },
+  "component": true,
+  "navigationBarTextStyle":"black",
+  "navigationBarTitleText":"线路",
+  "navigationBarBackgroundColor":"#ffffff"
+}

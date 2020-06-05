@@ -1,0 +1,36 @@
+<view class="background">
+
+  <block>
+    <v-input>
+      <view class="collection">
+          <view class="flex top">
+            <image src="/static/images/guide/avatar2.png"></image>
+            <view class="info">
+              <view class="info-nickname">李商隐</view>
+              <view class="info-date">2020-05-22</view>
+            </view>
+          </view>
+          <view class="flex middel">纸巾很好用，家人和我都很喜欢。老婆还叫我再买一火车皮，给老丈人用。</view>
+          <view class="images">
+            <image src="/static/images/guide/image2.png"></image>
+            <image src="/static/images/guide/image2.png"></image>
+            <image src="/static/images/guide/image2.png"></image>
+            <image src="/static/images/guide/image2.png"></image>
+            <image src="/static/images/guide/image2.png"></image>
+            <image src="/static/images/guide/image2.png"></image>
+          </view>
+          <view class="line"></view>
+          <view class="flex goods">
+            <view class="flex">
+              <image src="/static/images/guide/image2.png"></image>
+              <text class="goods-title">“竹态”生态卫生纸</text>
+            </view>
+            <text class="price">¥38.00</text>
+          </view>
+      </view>
+    </v-input>
+  </block>
+
+
+
+</view>

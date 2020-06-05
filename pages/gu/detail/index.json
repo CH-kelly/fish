@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "v-swiper":"/components/swiper/index",
+    "v-start":"/components/start/index"
+  },  
+  "component": true,
+  "navigationBarTextStyle":"black",
+  "navigationBarTitleText":"导游详情",
+  "navigationBarBackgroundColor":"#ffffff"
+}

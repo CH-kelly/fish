@@ -1,0 +1,29 @@
+<view>
+<!-- 联系我们 -->
+  <block wx:if="{{type == 1}}">
+    <view class="about">
+      <view class="about-item">
+          <image class="about-phone"  src="/static/images/icon/phone.png"></image>
+          <text bindtap="copyPhone">客服热线：0862-8565444</text>
+      </view>
+      <view class="line"></view>
+      <view class="about-item">
+          <image class="about-wx" src="/static/images/icon/wx.png"></image>
+          <text  bindtap="copyWx">客服微信：wo1856548</text>
+      </view>
+    </view>
+    
+    <navigator hoverClass="none" openType="navigate" url="/member/complaint/index" >
+      <view class="flex about-complaint">
+          <text>订单投诉</text>
+          <image class="complaint-image" src="/static/images/icon/right.png"></image>
+      </view>
+    </navigator>
+  </block>
+  
+  <!-- 关于我们 -->
+  <block wx:if="{{type == 2}}">
+    <rich-text nodes="关于我们富文本"></rich-text>
+  </block>
+
+</view>

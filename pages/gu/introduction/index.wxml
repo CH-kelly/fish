@@ -1,0 +1,52 @@
+<view class="background">
+  <view class="index-center">
+    <view class="flex header">
+      <image src="/static/images/icon/guide1.png"></image>
+      <view style="width: 90%;">
+        <view class="header-title">张家界旅游最新攻略</view>
+        <view class="flex header-label" style="margin-top:20rpx">
+          <view class="flex">
+            <view class="label">美食</view>
+            <view class="label" style="color:#12BFD3;background:rgba(61,207,209,0.3);" >住宿</view>
+            <view class="label" style="color:#12BFD3;background:rgba(61,207,209,0.3);" >交通</view>
+          </view>
+          <view class="label-date">05-22   发布</view>
+        </view>
+      
+      </view>
+    </view> 
+    <view class="line"></view>
+    <view class="content">
+      内容
+    </view>
+
+  
+    
+    <view class="new-bottm">
+      <view class="line"></view>
+      <view class="flex new-button">
+        <view class="flex button-left">
+            <image src="/static/images/icon/see.png"></image>
+            <text>78</text>
+        </view>
+        <view class="flex button-right">
+
+          <view class="flex right-collections" style="margin-right:120rpx">
+            <image src="/static/images/icon/collections.png"></image>
+            <image src="/static/images/icon/collections_no.png"></image>
+            <text>78</text>
+          </view>
+        
+          <view class="flex right-collections">
+            <image src="/static/images/icon/like.png"></image>
+            <image src="/static/images/icon/like_no.png"></image>
+            <text>78</text>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+</view>

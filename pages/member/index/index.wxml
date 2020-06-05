@@ -1,0 +1,207 @@
+<loading wx:if="{{!show}}">加载中...</loading>
+<view class="model" wx:if="{{modelShow}}">
+    <view class="inner">
+        <view class="title">用户未授权</view>
+        <view class="image">
+            <image src="{{imgUrl+'plugin/app/static/images/wxapp/shouquan.png'}}"></image>
+        </view>
+        <view class="subtitle">您需要先开启【用户信息】，才能使用此功能哦~</view>
+        <view class="model-btns">
+            <view bindtap="cancelclick" class="cancel">取消</view>
+            <view bindtap="confirmclick" class="confirm">去设置</view>
+        </view>
+    </view>
+</view>
+<view class="member page" style="background:{{diypages.page.background}};" wx:if="{{diypages.page.type==3}}">
+    <include src="/pages/diy/index.wxml"></include>
+</view>
+<view class="page member" wx:if="{{show&&diypages.page.type!=3}}">
+    <view style="overflow: hidden;height:{{member.usemembercard?'360rpx':'290rpx'}};position: relative;background: #fff">
+        <view class="flex member-head new-member" style="z-index:100;border: none;">
+            <view class="new-member-left">
+                <view class="nickname">{{member.nickname||'未更新用户信息'}}</view>
+                <view class="flex" style="justify-content: flex-start;">
+                    <view class="member-left">
+                        <view class="new-member-left-number">12</view>
+                        <view class="new-member-left-count">累计出行</view>
+                    </view>
+                    <view class="member-left">
+                        <view class="new-member-left-number">12</view>
+                        <view class="new-member-left-count">收藏</view>
+                    </view>
+                </view>
+            </view>
+            <view class="new-member-right">
+                <image src="{{member.avatar||'/static/images/noface.png'}}"></image>
+            </view>
+        </view>
+        <view class="member_header"></view>
+        <block wx:if="{{member.usemembercard}}">
+            <navigator class="member_card" hoverClass="none" openType="navigate" url="/pages/member/membercard/index?hasmembercard={{member.hasmembercard}}">
+                <image class="icon" src="/static/images/icon-huangguan.png"></image>
+                <view class="title">我的会员卡</view>
+                <view class="card-num">已拥有{{member.hasbuycardnum}}张</view>
+            </navigator>
+            <image class="cover-img" src="/static/images/cover.png"></image>
+        </block>
+    </view>
+    <view>
+        <view class="fui-cell-group fui-cell-click" wx:if="{{member.needbind==1}}">
+            <navigator class="fui-cell" hoverClass="none" openType="navigate" url="/pages/member/bind/index">
+                <view class="fui-cell-icon">
+                    <text class="icox icox-mobilephone"></text>
+                </view>
+                <view class="fui-cell-text">
+                    <p class="text text-danger">绑定手机号</p>
+                </view>
+                <view class="fui-cell-remark"></view>
+            </navigator>
+            <view class="fui-cell-tip">{{member.bindtext}}</view>
+        </view>
+        <view class="fui-cell-group fui-cell-click new-fui-cell">
+            <view  class="address-item">
+                <navigator class="fui-cell" hoverClass="none" openType="navigate" url="/pages/order/index">
+                    <view class="fui-cell-text">导游订单</view>
+                </navigator>
+                <view class="flex fui-icon-group col-{{iscycelbuy?5:4}} nomargin">
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=0">
+                        <view class="badge" wx:if="{{member.statics.order_0>0}}">{{member.statics.order_0}}</view>
+                        <image  class="guide-icon" src="/static/images/icon/guide1.png"></image>
+                        <view class="text">待出行</view>
+                    </navigator>
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=1">
+                        <view class="badge" wx:if="{{member.statics.order_1>0}}">{{member.statics.order_1}}</view>
+                        <image class="guide-icon" src="/static/images/icon/guide2.png"></image>
+                        <view class="text">进行中</view>
+                    </navigator>
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=2">
+                        <view class="badge" wx:if="{{member.statics.order_2>0}}">{{member.statics.order_2}}</view>
+                        <image  class="guide-icon" src="/static/images/icon/guide3.png"></image>
+                        <view class="text">已完成</view>
+                    </navigator>
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=3">
+                        <view class="badge" wx:if="{{member.statics.order_3>0}}">{{member.statics.order_3}}</view>
+                        <image  class="guide-icon" src="/static/images/icon/guide4.png"></image>
+                        <view class="text">待点评</view>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+        <view class="fui-cell-group fui-cell-click new-fui-cell">
+            <view  class="address-item">
+                <navigator class="fui-cell" hoverClass="none" openType="navigate" url="/pages/order/index">
+                    <view class="fui-cell-text">商品订单</view>
+                </navigator>
+                <view class="flex fui-icon-group col-{{iscycelbuy?5:4}} nomargin">
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/order/index?status=0">
+                        <view class="badge" wx:if="{{member.statics.order_0>0}}">{{member.statics.order_0}}</view>
+                        <!-- <text class="icox icox-payment"></text> -->
+                        <image  class="order-icon" src="/static/images/icon/order1.png"></image>
+                        <view class="text">待付款</view>
+                    </navigator>
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/order/index?status=1">
+                        <view class="badge" wx:if="{{member.statics.order_1>0}}">{{member.statics.order_1}}</view>
+                        <!-- <text class="icox icox-shipment"></text> -->
+                        <image class="order-icon" src="/static/images/icon/order2.png"></image>
+                        <view class="text">待发货</view>
+                    </navigator>
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/order/index?status=2">
+                        <view class="badge" wx:if="{{member.statics.order_2>0}}">{{member.statics.order_2}}</view>
+                        <!-- <text class="icox icox-daishouhuo1-copy-copy"></text> -->
+                        <image  class="order-icon" src="/static/images/icon/order3.png"></image>
+                        <view class="text">待收货</view>
+                    </navigator>
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/order/index?status=3">
+                        <view class="badge" wx:if="{{member.statics.order_3>0}}">{{member.statics.order_3}}</view>
+                        <!-- <text class="icox icox-daishouhuo1-copy-copy"></text> -->
+                        <image  class="order-icon" src="/static/images/icon/order4.png"></image>
+                        <view class="text">待评价</view>
+                    </navigator>
+                    <!-- <navigator class="fui-icon-col" hoverClass="none" openType="navigate" url="/pages/order/index?status=4">
+                        <view class="badge" wx:if="{{member.statics.order_4>0}}">{{member.statics.order_4}}</view>
+                        <text class="icox icox-return"></text>
+                        <view class="text">退换货</view>
+                    </navigator> -->
+                    <!-- <navigator class="fui-icon-col cycle" hoverClass="none" openType="navigate" url="/pages/order/cycle/order?iscycelbuy=1" wx:if="{{iscycelbuy}}">
+                        <text class="icox icox-xiangmuzhouqi" style="color: #ff6a54;"></text>
+                        <view class="text">周期购</view>
+                    </navigator> -->
+                </view>
+            </view>
+        </view>
+        
+        <view class="fui-cell-group fui-cell-click new-fui-cell">
+            <view  class="address-item">
+                <view class="fui-cell" hoverClass="none" openType="navigate" url="/pages/order/index">
+                    <view class="fui-cell-text">更多服务</view>
+                </view>
+                <view class="flex fui-icon-group col-{{iscycelbuy?5:4}} nomargin new-service">
+                    <navigator  class="flex fui-icon-col " hoverClass="none" openType="navigate" url="/member/collection/index">
+                        <image  class="guide-icon" src="/static/images/icon/service_1.png"></image>
+                        <view class="text">我的收藏</view>
+                    </navigator>
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/member/comment/index">
+                        <image class="guide-icon" src="/static/images/icon/service_2.png"></image>
+                        <view class="text">我的评论</view>
+                    </navigator>
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/member/collage/index">
+                        <image  class="guide-icon" src="/static/images/icon/service_3.png"></image>
+                        <view class="text">我的拼团</view>
+                    </navigator>
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/order/index?status=3">
+                        <image  class="guide-icon" src="/static/images/icon/service_4.png"></image>
+                        <view class="text">成为分销商</view>
+                    </navigator>
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/member/about/index?type=1">
+                        <image  class="guide-icon" src="/static/images/icon/service_5.png"></image>
+                        <view class="text">联系我们</view>
+                    </navigator>
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/member/about/index?type=2">
+                        <image  class="guide-icon" src="/static/images/icon/service_6.png"></image>
+                        <view class="text">关于我们</view>
+                    </navigator>
+                    
+                    <navigator hidden="{{(type==0 &&  regstatus==1)}}" class="flex fui-icon-col" hoverClass="none" openType="navigate" url="{{(type == null || type==1)?'/pages/gu/merch/apply':''}}">
+                        <block wx:if="{{type == null || type==1 }}">
+                            <image  class="guide-icon" src="/static/images/icon/service_7.png"></image>
+                            <view class="text">导游入驻</view>
+                        </block>
+                    </navigator>
+
+                    <navigator hidden="{{(type==1 &&  regstatus==1)}}" class="flex fui-icon-col" hoverClass="none" openType="navigate" url="{{(type == null || type==0)?'/pages/changce/merch/apply':''}}">
+                        <block wx:if="{{type == null || type==0 }}">
+                            <image  class="guide-icon" src="/static/images/icon/service_8.png"></image>
+                            <view class="text">商家入驻</view>
+                        </block>
+                    </navigator>
+
+                    <!-- <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/admin/index"> -->
+                    <view bindtap="{{(type==1 &&  regstatus==1)?'gotoAdmin':''}}" class="flex fui-icon-col" >
+                        <block wx:if="{{type==1 &&  regstatus==1}}">
+                            <image  class="guide-icon" src="/static/images/icon/service_8.png"></image>
+                            <view class="text">导游端</view>
+                        </block>
+                    </view>
+                    <!-- </navigator> -->
+
+                    <!-- <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/merch/index"> -->
+                    <view  bindtap="{{(type==0 &&  regstatus==1)?'gotoMerch':''}}"  class="flex fui-icon-col" >
+                        <block wx:if="{{type==0 &&  regstatus==1}}">
+                            <image  class="guide-icon" src="/static/images/icon/service_8.png"></image>
+                            <view class="text">商家端</view>
+                        </block>
+                    </view>
+                    <!-- </navigator> -->
+                    
+                </view>
+            </view>
+        </view>
+        <include src="/pages/common/menu.wxml"></include>
+    </view>
+</view>
+<button class="suspended-service" openType="contact" sessionFrom="weapp" showMessageCard="true" style="background-color:{{customercolor}}" wx:if="{{customer==1}}">
+    <text class="icox icox-customerservice"></text>
+</button>
+<view bindtap="phone" class="phone" style="background-color:{{phonecolor}}" wx:if="{{phone==1}}">
+    <text class="icox icox-dianhua"></text>
+</view>

@@ -1,0 +1,75 @@
+<loading wx:if="{{!show}}">加载中...</loading>
+<import src="/pages/common/diyform_view.wxml"></import>
+<view class="page navbar {{seckill_color}} {{paddingb}}" wx:if="{{show}}">
+    <view class="background">
+        <v-input>
+            <text>订单状态：</text>
+            <text class="flex input-item order-status " style="color:{{textColor}}">111</text>
+        </v-input>
+        <v-input>
+            <text>订单编号：</text>
+            <text class="flex input-item order-status " 
+            bindtap="copyOrderSn"
+            style="color:{{textColor}}">{{order.ordersn}}</text>
+        </v-input>
+        <v-input>
+            <text>出发地址：</text>
+            <text class="input-item">111</text>
+        </v-input>
+
+        <v-input>
+            <text>联系电话：</text>
+            <text class="input-item">111</text>
+        </v-input>
+
+        <v-input>
+            <text>订单创建时间：</text>
+            <text class="input-item">{{order.createtime}}</text>
+        </v-input>
+
+        <v-input>
+            <block wx:for="{{goods}}" wx:key="index">
+                <view class="flex" style="width: 100%;justify-content: flex-start;">
+                    <image class="input-image" src="{{item.thumb}}"></image>
+                    <view class="flex title">
+                        <text class="title-h1">{{item.title}}</text>
+                        <text class="price">¥{{item.price}}</text>
+                    </view>
+                </view>
+            </block>
+        </v-input>
+
+        <v-input>
+            <view style="width: 100%;">
+            <view class="settlement">结算</view>
+            <view class="flex settlement-item">
+                <text class="total">订单总额：</text>
+                <text class="total-price">¥{{order.goodsprice}}</text>
+            </view>
+            <view class="flex settlement-item" style="margin-top:20rpx">
+                <text class="total">需支付：</text>
+                <text class="total-price">¥{{order.goodsprice}}</text>
+            </view>
+            </view>
+        </v-input>
+
+        <v-input>
+            <view class="flex" style="width:100%">
+                <text>支付方式：</text>
+                <view class="flex pay">
+                <image src="/static/images/wx_pay.png"></image>
+                <text>微信支付</text>
+                </view>
+            </view>
+        </v-input>
+    </view>
+        
+    <view class="flex button">
+        <view class="buy" bindtap="buy">确认收货</view>
+    </view>
+
+
+
+
+    <include src="/pages/order/public/verify.wxml"></include>
+</view>

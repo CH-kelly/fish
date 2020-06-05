@@ -1,0 +1,51 @@
+<view class="background">
+
+  <v-input>
+    <view class="flex">
+      <image class="input-image" src="/static/images/guide/iamge.png"></image>
+      <view class="flex title">
+        <text class="title-h1">都江堰三日游</text>
+        <text class="price">¥388.00</text>
+      </view>
+    </view>
+  </v-input>
+
+  <v-input>
+    <view style="width: 100%;">
+      <view class="flex group-title" >
+        <view class="flex">
+          <text>仅剩</text>
+          <text style="color:#E72948;margin:0 10rpx">2</text>
+          <text>个名额</text>
+        </view>
+        <view class="flex group-title-time">
+          <text class="group-desc">距拼团结束还有</text>
+          <view class="Time">22</view>
+          <view class="colon"> ：</view>
+          <view class="Time">22</view>
+          <view class="colon"> ：</view>
+          <view class="Time">22</view>
+        </view>
+      </view>
+      <view class="group-item">
+        <view class="flex" style="margin-top: 30rpx;position: relative;">
+          <view>
+            <image src="/static/images/guide/avatar2.png"></image>
+            <view class="group-item-title">团长</view>
+          </view>
+        </view>
+        <view class="flex" style="margin-top: 30rpx;position: relative;">
+          <image src="/static/images/guide/avatar2.png"></image>
+        </view>
+      </view>
+    </view>
+  </v-input>
+
+  <view class="flex" style="flex-direction: column;margin-top: 100rpx;">
+    <view class="but-title but-text">邀请好友</view>
+    <view class="but-go-index but-text" bindtap="gotoIndex">回到首页</view>
+  </view>
+
+
+
+</view>

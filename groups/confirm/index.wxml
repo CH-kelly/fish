@@ -1,0 +1,221 @@
+<view class="page" style="{{isIpx?'padding-bottom:168rpx':''}}">
+    <!-- 提交订单 流程图 -->
+    <block wx:if="{{isTeamGroup == 1}}">
+        <view class="fui-cell-group" >
+            <view class="flex address-item">
+                <view class="flex new-flow-item" >
+                    <view class="new-flow-chart">1</view>
+                    <view class="new-flow-text">选择课程</view>
+                    <view class="new-flow-text1">开团/参团</view>
+                </view>
+                <view class="new-flow-line"></view>
+                <view class="flex new-flow-item" >
+                    <view class="new-flow-chart">2</view>
+                    <view class="new-flow-text">邀请好友</view>
+                    <view class="new-flow-text1">好友参团</view>
+                </view>
+                <view class="new-flow-line"></view>
+                <view class="flex new-flow-item" >
+                    <view class="new-flow-chart">3</view>
+                    <view class="new-flow-text">人满成团</view>
+                    <view class="new-flow-text1">拼团成功</view>
+                </view>
+            </view>
+        </view>
+    </block>
+    
+    <!-- 流程图 end  -->
+
+
+    <block>
+        <block wx:if="{{data.is_verify==0}}">
+            <view class="fui-cell-group" id="addressInfo">
+                <view class="address-item">
+                    <navigator class="fui-cell" hoverClass="none" openType="navigate" style="padding-top:32rpx;padding-bottom:32rpx" url="/pages/member/address/select">
+                        <block>
+                            <block wx:if="{{data.address}}">
+                                <view class="fui-cell-icon" style="margin-right:24rpx">
+                                <image class="new-address-icon" src="/static/images/icon/address.png"></image>
+                                    <!-- <text class="icox icox-dingwei1"></text> -->
+                                </view>
+                            </block>
+                        </block>
+                        <block>
+                            <block wx:if="{{!data.address}}">
+                                <view class="fui-cell-icon">
+                                    <text class="icox icox-icon02" style="color:#ff5555"></text>
+                                </view>
+                            </block>
+                        </block>
+                        <view class="fui-cell-text textl info">
+                            <view class="adress">{{data.address.province}}{{data.address.city}}{{data.address.area}}{{data.address.street}}{{data.address.address}}</view>
+                            <block>
+                                <block wx:if="{{data.address}}">
+                                    <view class="has-address">
+                                        <text class="name">{{data.address.realname}} </text>
+                                        <text class="mobile">{{data.address.mobile}}</text>
+                                    </view>
+                                </block>
+                            </block>
+                            <block>
+                                <block wx:if="{{!data.address}}">
+                                    <view bindtap="address" class="text no-address" data-type="open">添加收货地址</view>
+                                </block>
+                            </block>
+                        </view>
+                        <block>
+                            <block wx:if="{{data.address}}">
+                                <image class="new-address-right" src="/static/images/icon/right.png"></image>
+                                <!-- <view class="fui-cell-remark"></view> -->
+                            </block>
+                        </block>
+                    </navigator>
+                </view>
+            </view>
+        </block>
+    </block>
+    <block>
+        <block wx:if="{{data.is_verify==1}}">
+            <view class="fui-cell-group">
+            
+            <view class="address-item">
+                <view class="fui-cell">
+                    <view class="fui-cell-label">姓名</view>
+                    <view class="fui-cell-info">
+                        <input bindinput="realname" class="fui-input textl" id="realname" placeholder="请输入姓名" type="text" value="{{list.member.realname}}"></input>
+                    </view>
+                </view>
+                <view class="fui-cell">
+                    <view class="fui-cell-label">电话</view>
+                    <view class="fui-cell-info">
+                        <input bindinput="mobile" class="fui-input textl" id="mobile" placeholder="请输入电话" type="text" value="{{list.member.mobile}}"></input>
+                    </view>
+                </view>
+            </view>
+            </view>
+        </block>
+    </block>
+    <block>
+        <block wx:if="{{data.is_verify==1}}">
+            <view class="fui-cell-group {{toggleStore?'toggleSend-group':''}}">
+            
+            <view class="address-item">
+                <view bindtap="toggle" class="fui-cell title" data-id="{{toggleStore}}" data-type="toggleStore">
+                    <view class="fui-cell-icon">
+                        <text class="icox icox-dianpu1"></text>
+                    </view>
+                    <view class="fui-cell-label differ">
+                        <text class="store">适用门店</text>
+                    </view>
+                    <view class="fui-cell-info"></view>
+                    <view class="num">{{data.stores.length}}</view>
+                    <view class="fui-cell-remark"></view>
+                </view>
+                <block wx:for="{{data.stores}}">
+                    <block>
+                        <block wx:if="{{toggleStore}}">
+                            <navigator class="fui-cell" url="/pages/order/store/map?id={{item.id}}">
+                                <view class="fui-cell-info">{{item.storename}}</view>
+                                <view class="fui-cell-remark"></view>
+                            </navigator>
+                        </block>
+                    </block>
+                </block>
+            </view>
+            </view>
+        </block>
+    </block>
+    <view class="fui-list-group">
+        <view class="address-item">
+            <view class="fui-list goods-item noclick">
+                <view bindtap="url" class="fui-list-media" data-url="/pages/goods/detail/index">
+                    <image class=" goods_img" src="{{data.goods.thumb}}"  style="border-radius: 20rpx;" ></image>
+                </view>
+                <view bindtap="url" class="fui-list-inner" data-url="/pages/goods/detail/index">
+                    <view class="text">
+                        <block>
+                            <block wx:if="{{val.hasdiscount}}">
+                                <text class="fui-label fui-label-danger">折扣</text>
+                            </block>
+                        </block>
+                        {{data.goods.title}}
+                    </view>
+                    <view class="subtitle cart-option">
+                        {{data.goods.spec_name}}
+                    </view>
+                    <view class="new-price">
+                        ￥{{data.goods.price}}
+                    </view>
+                </view>
+            </view>
+        </view> 
+    </view>
+    <view class="fui-list-group">
+        <view class="address-item">
+            <view style="width: 100%;">
+                <view class="settlement">结算</view>
+                <view class="flex settlement-item">
+                    <text class="total">订单总额：</text>
+                    <text class="total-price">¥{{data.price}}</text>
+                </view>
+                <view class="flex settlement-item" style="margin-top:20rpx">
+                    <text class="total">需支付：</text>
+                    <text class="total-price">¥{{data.price}}</text>
+                </view>
+                </view>
+        </view>
+    </view>
+    <view class="fui-list-group">
+        <view class="address-item">
+            <view class="flex" style="width:100%">
+                <text>支付方式：</text>
+                <view class="flex pay">
+                <image src="/static/images/wx_pay.png"></image>
+                <text>微信支付</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <include src="/pages/common/diyform.wxml"></include>
+    <!-- <view class="fui-cell-group">
+        <view class="fui-cell">
+            <view class="fui-cell-label">商品小计</view>
+            <view class="fui-cell-info"></view>
+            <view class="fui-cell-remark noremark">¥
+          <text>{{data.goods.price}}</text>
+            </view>
+        </view>
+        <block>
+            <block wx:if="{{data.headsmoney>0}}">
+                <view class="fui-cell">
+                    <view class="fui-cell-label">团长优惠</view>
+                    <view class="fui-cell-info"></view>
+                    <view class="fui-cell-remark noremark " style="color:#ff5555">-¥
+          <text class="text-danger">{{data.headsmoney}}</text>
+                    </view>
+                </view>
+            </block>
+        </block>
+        <view class="fui-cell">
+            <view class="fui-cell-label">运费</view>
+            <view class="fui-cell-info"></view>
+            <view class="fui-cell-remark noremark">¥
+          <text>{{data.freight}}</text>
+            </view>
+        </view>
+    </view> -->
+
+    <view class="fui-footer {{iphonexnavbar}}">
+        <view class="flex tool nopadding">
+            <view class="text">
+                <view class="title" style="padding-left: 30rpx;">需支付：
+            <text class="new-text-total-price">{{data.price}}元</text>
+                </view>
+            </view>
+            <view class="btns" style="padding-right: 30rpx;">
+                <text bindtap="submit" class=" new-button-pay {{submit&&'disabled'}}" style="">立即支付</text>
+            </view>
+        </view>
+    </view>
+    <view class="{{isIpx?'fui-iphonex-button':''}}"></view>
+</view>

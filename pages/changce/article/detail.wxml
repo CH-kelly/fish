@@ -1,0 +1,75 @@
+<import src="/utils/wxParse/wxParse.wxml" />
+<block wx:if="{{!show}}">
+  <loading>加载中...</loading></block>
+<block wx:if="{{show}}">
+
+<view class="background">
+  <view class="index-center" style="padding: 0 30rpx;">
+    <scroll-view class="scroll-view" scroll-y>
+    <view class="flex header">
+      <image src="/static/images/icon/detail.png"></image>
+      <view style="width: 90%;">
+        <view class="header-title">{{article.article_title}}</view>
+        <view class="flex header-label" style="margin-top:20rpx">
+          <view class="flex">
+            <block wx:for="{{article.article_category}}" wx:key="i">
+              <view class="label" style="color:{{item.color}};background:{{item.bgcolor}};" >{{item.title}}</view>
+            </block>
+          </view>
+          <view class="label-date">{{article.article_date}}   发布</view>
+        </view>
+      
+      </view>
+    </view> 
+    <view class="line"></view>
+    <view class="new-content">
+      <view class="detailinfo">
+        <view class="wxParse">
+          <template data="{{wxParseData:wxParseData.nodes}}" is="wxParse" /></view>
+      </view>
+    </view>
+
+    
+    </scroll-view>
+  </view>
+
+
+    
+    <view class="new-bottm">
+      <!-- <view class="line"></view> -->
+      <view class="flex new-button">
+        <view class="flex button-left" bindtap="collections" >
+            <image  class="collections-image"  wx:if="{{article.collect == 1 }}"  src="/static/images/icon/collections.png"></image>
+            <image class="collections-image"  wx:else src="/static/images/icon/collections_no.png"></image>
+            <!-- <image src="/static/images/icon/see.png"></image>
+            <text>{{article.readnum}}</text> -->
+        </view>
+
+        <view class="flex button-right">
+
+          <view class="flex right-collections" style="margin-right:120rpx">
+            <!-- <image  wx:if="{{article.collect == 1 }}"  src="/static/images/icon/collections.png"></image>
+            <image wx:else src="/static/images/icon/collections_no.png"></image> -->
+            <!-- <text>78</text> -->
+            <image class="image-see" src="/static/images/icon/see.png"></image>
+            <text>{{article.readnum}}</text>
+          </view>
+        
+          <view class="flex right-collections" bindtap="likeit" >
+            <image class="collections-image"   wx:if="{{article.like == 1 }}" src="/static/images/icon/like.png"></image>
+            <image class="collections-image"   wx:else src="/static/images/icon/like_no.png"></image>
+            <text>{{likenum}}</text>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+
+</view>
+  <block wx:if="{{article.phone}}">
+    <view bindtap="phone" class="phone" data-phone="{{article.phone}}" style="{{article.phonecolor?'background-color:'+article.phonecolor:''}}">
+      <text class="icox icox-call"></text>
+    </view>
+  </block>
+</block>

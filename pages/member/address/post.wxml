@@ -1,0 +1,68 @@
+<loading wx:if="{{!show}}">加载中...</loading>
+<view class="page" wx:if="{{show}}">
+    <view class="fui-cell-group">
+       <view class="address-item">
+            <!-- <view bindtap="chooseAddress" class="fui-cell">
+                <span class="fui-cell-text">
+                    <span class="icon icon-weixin1" style="margin-right: 12rpx;color:#62b900;font-size:40rpx"></span>
+                    获取微信收货地址
+                </span>
+                <span class="fui-cell-remark" style="margin-left: 10rpx;position: relative;top: -1rpx;"></span>
+            </view> -->
+            <view class="fui-cell">
+                <view class="fui-cell-label">收货人</view>
+                <view class="fui-cell-info">
+                    <input  bindinput="onChange" class="fui-input" data-type="realname" placeholder="请输入对您的称呼" value="{{detail.realname}}"></input>
+                </view>
+            </view>
+            <view class="fui-cell">
+                <view class="fui-cell-label">联系电话</view>
+                <view class="fui-cell-info">
+                    <input maxlength='11' bindinput="onChange" class="fui-input" data-type="mobile" placeholder="请输入您的联系电话" type="number" value="{{detail.mobile}}"></input>
+                </view>
+            </view>
+            <view class="fui-cell">
+                <view class="fui-cell-label">所在地区</view>
+                <view bindtap="selectArea" class="fui-cell-info" data-area="{{detail.province}} {{detail.city}} {{detail.area}}">{{!detail.province||!detail.city?'请选择地址':detail.province+' '+detail.city+' '+detail.area}}</view>
+            </view>
+            <view class="fui-cell" wx:if="{{street.length>0}}">
+                <view class="fui-cell-label">所在街道</view>
+                <view class="fui-cell-info">
+                    <picker bindchange="onChange" data-type="street" range="{{street}}" rangeKey="name" value="{{streetIndex||0}}">
+                        <view class="picker"> {{detail.street||'请选择街道'}}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="fui-cell new-textarea">
+                <view class="fui-cell-label">详细地址</view>
+                <view class="fui-cell-info new-cell-info">
+                    <textarea  bindinput="onChangeTextArea" class="fui-input" data-type="address" 
+                    placeholder="请输入详细地址" value="{{detail.address}}"
+                    auto-height
+                    maxlength="25"
+                    ></textarea>
+                    <text>{{number}}/20</text>
+                    <!-- <input bindinput="onChange" class="fui-input" data-type="address" placeholder="街道，楼牌号等" value="{{detail.address}}"></input> -->
+                </view>
+            </view>
+            <view class="fui-cell new-textarea">
+                <view class="fui-cell-label">默认地址</view>
+                <view class="fui-cell-info new-cell-switch">
+                
+                    <switch class="wx-switch-input" checked="{{detail.isdefault>0?true:false}}" bindchange="switch1Change" color="#01D6C0" />
+                </view>
+            </view>
+       </view>
+    </view>
+    <include src="/pages/common/city-picker.wxml"></include>
+    <view class="fui-mask {{showPicker?'show':''}}"></view>
+    <!-- <view bindtap="submit" class="btn btn-danger block mtop">{{subtext}}</view> -->
+    
+    <view bindtap="submit" class="new-button">
+        <view class="{{isAdd == 1?'add':'delete'}}">{{subtext}}</view>
+    </view>
+
+    <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">
+        <view class="text">{{FoxUIToast.text}}</view>
+    </view>
+</view>

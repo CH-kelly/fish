@@ -1,0 +1,24 @@
+<view class="index-banner" wx:if="{{diyitem.data.length>1}}" style="padding: 0 30rpx;background: #fff;">
+    <swiper 
+    autoplay="true"
+    circular="true" class="index-adcs-sqiper index-banner-sqiper {{diyitem.style.dotstyle}} left" 
+    duration="{{duration}}" 
+    indicatorDots="true" interval="{{interval}}" 
+    indicator-color="rgba(255, 255, 255, .3)"
+    indicator-active-color="rgba(255, 255, 255, 1)"
+    style="border-radius: 30rpx;height:410rpx">
+        <swiper-item wx:for="{{diyitem.data}}" wx:for-index="childid" wx:for-item="childitem" wx:key="childid">
+            <view bindtap="navigate" class="index-advs-navigator" data-appid="{{childitem.appid}}" data-appurl="{{childitem.appurl}}" data-phone="{{childitem.phone}}" data-url="{{childitem.linkurl}}">
+                <image bindload="imagesHeight" class="advimg" data-type="{{diyitemid}}" 
+                mode="widthFix" src="{{childitem.imgurl}}" ></image>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
+<block wx:else>
+    <view class="index-adcs-sqiper index-banner-sqiper" wx:for="{{diyitem.data}}" wx:for-index="childid" wx:for-item="childitem" wx:key="childid">
+        <view bindtap="navigate" class="index-advs-navigator" data-appid="{{childitem.appid}}" data-appurl="{{childitem.appurl}}" data-phone="{{childitem.phone}}" data-url="{{childitem.linkurl}}">
+            <image class="advimg" mode="widthFix" src="{{childitem.imgurl}}"></image>
+        </view>
+    </view>
+</block>

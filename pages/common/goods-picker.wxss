@@ -1,0 +1,4 @@
+.new-title{
+  position: absolute;
+  top: 40rpx;
+}

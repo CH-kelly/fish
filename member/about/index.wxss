@@ -1,0 +1,46 @@
+/* member/about/index.wxss */
+.about{
+  background: #fff;
+  padding: 0 30rpx;
+}
+.about-item{
+  height: 100rpx;
+  /* padding: 0 30rpx; */
+  display: flex;
+  align-items: center;
+}
+.about-phone{
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 28rpx;
+
+}
+.about-wx{
+  width:43rpx;
+  height:35rpx;
+  margin-right: 28rpx;
+
+}
+.line{
+  height: 1rpx;
+background: rgba(232,232,232,1);
+
+}
+.about-item>text{
+  font-size:36rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(0,0,0,1);
+}
+
+.about-complaint{
+  padding: 0 30rpx;
+  background: #fff;
+  height: 100rpx;
+  border-top: 20rpx solid #f3f3f3;
+
+}
+.complaint-image{
+  height: 22rpx;
+  width: 22rpx;
+}

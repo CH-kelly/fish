@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "v-input":"/components/input/index"
+  },
+  "component": true,
+  "navigationBarTextStyle":"black",
+  "navigationBarTitleText":"提交订单",
+  "navigationBarBackgroundColor":"#ffffff"
+}

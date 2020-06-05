@@ -1,0 +1,76 @@
+page{
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+}
+.background{
+  padding: 30rpx; 
+  background: #ffffff;
+}
+.header{
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.header>image{
+  width: 55rpx;
+  height: 88rpx;
+  margin-right: 10rpx;
+}
+.header-title{
+  
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+}
+.line{
+  height: 2rpx;
+  width: 100%;
+background:rgba(232,232,232,1);
+margin:20rpx 0 30rpx 0;
+}
+.label{
+  margin-right: 20rpx;
+
+padding: 6rpx 14rpx;
+font-size:24rpx;
+font-family:PingFang SC;
+font-weight:500;
+
+border-radius:6px;
+background:rgba(252,146,124,0.3);
+color:rgba(252,124,117,1);
+}
+.label-date{
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+}
+.new-bottm{
+  width: 90%;
+  height: 100rpx;
+  position: fixed;
+  bottom: 84rpx;
+  z-index: 1;
+
+}
+.new-button{
+}
+.new-button text{
+
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+}
+.button-left image{
+width: 41rpx;
+height: 24rpx;
+margin-right: 12rpx;
+}
+.button-right image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 12rpx;
+}

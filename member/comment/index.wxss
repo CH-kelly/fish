@@ -1,0 +1,66 @@
+page{
+  box-sizing: border-box;
+}
+.collection{
+  /* display: flex; */
+  /* align-items: center; */
+}
+.top{
+  justify-content: flex-start;
+}
+.top>image{
+  width:66rpx;
+  height:66rpx;
+  border-radius:50%;
+  margin-right: 10rpx;
+}
+.info>view{
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(1,1,1,1);
+}
+.info-date{
+  font-size:24rpx !important;
+  font-weight:400 !important;
+  color:rgba(153,153,153,1) !important;
+}
+.middel{
+  margin: 20rpx 0;
+
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(58,61,62,1);
+  line-height:48rpx;
+}
+.images>image{
+  width:128rpx;
+  height:128rpx;
+  border-radius:20rpx;
+  margin-top: 10rpx;
+  margin-right: 10rpx;
+}
+.line{
+  height:1rpx;
+  background:rgba(232,232,232,1);
+  margin: 20rpx 0;
+}
+.goods image{
+  width:88rpx;
+  height:88rpx;
+  border-radius:20rpx;
+}
+.goods-title{
+  
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(34,34,34,1);
+}
+.price{
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(231,41,72,1);
+}

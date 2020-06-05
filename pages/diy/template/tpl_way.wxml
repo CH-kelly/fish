@@ -1,0 +1,49 @@
+<view class="tpl-way">
+  <view class="flex tpl-way-title">
+    <view class="way-title">
+      最新攻略
+      <view class="way-title-border"></view>
+    </view>
+
+    <!-- <navigator url="/groups/category/index" open-type="navigate" > -->
+      <view class="flex ">
+      <navigator url="/pages/changce/article/list">
+        <text class="way-more">更多</text>
+        <image class="way-more-image" src="/static/images/icon/more.png"></image>
+      </navigator>
+      </view>
+    <!-- </navigator> -->
+  </view>
+  <block wx:for="{{diyitem.data}}" wx:key="index">
+<!-- /pages/changce/article/detail?id={{item.id}} -->
+
+ <navigator class="noclick" url="/pages/changce/article/detail?id={{item.aid}}" open-type="navigate"  >
+    <view class="flex way-item">
+      <view class="way-item-left" style="width:30%">
+        <image src="{{item.thumb}}"></image>
+      </view>
+      <view style="width:65%">
+        <view class="way-item-title hidden_1"  style="color:{{diyitem.style.titlecolor}}" >{{item.title}}</view>
+        <view class="way-item-desc hidden_2"  style="color:{{diyitem.style.contentcolor}}" >{{item.content}}</view>
+        <view class="flex way-item-label">
+          <view class="flex label-left">
+            <block wx:for="{{item.category}}" wx:key="index" wx:for-item="n">
+              <view class="label-item" style="background:{{n.bgcolor}};color:{{n.color}}">
+                <text>{{n.title}}</text>
+              </view>
+            </block>
+            <!-- <view class="label-item">{{n}}</view> -->
+            <!-- <view class="label-item">{{n}}</view> -->
+          </view>
+          <view class="label-time" style="color:{{diyitem.style.datecolor}}">{{item.date}}</view>
+        </view>
+      </view>
+    
+    </view>
+  </navigator>
+    
+  </block>
+
+
+
+</view>

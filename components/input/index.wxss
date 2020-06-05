@@ -1,0 +1,24 @@
+.weui-input{
+  margin-top: 30rpx;
+  /* height: 100rpx; */
+  padding: 0 30rpx;
+}
+.flex{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.input{
+  /* padding-left: 30rpx; */
+  padding: 20rpx 30rpx;
+  /* height: 100%; */
+  background: #ffffff;
+  border-radius: 20rpx;
+}
+.input>text{
+  
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(0,0,0,1);
+}

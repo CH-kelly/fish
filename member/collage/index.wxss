@@ -1,0 +1,65 @@
+page{
+  box-sizing: border-box;
+}
+.collage{
+  width: 100%;
+}
+.collage-item{
+  display: flex;
+  align-items: center;
+}
+.title{
+  margin-left: 30rpx;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.input-image{
+  width:200rpx;
+  height:200rpx;
+  border-radius:30rpx;
+}
+.title-h1{
+font-size:36rpx;
+font-weight:bold;
+color:rgba(34,34,34,1);
+}
+.price{
+  margin-top: 88rpx;
+  font-size:36rpx;
+  font-weight:bold;
+  color:rgba(231,41,72,1);
+}
+.line{
+  height:1rpx;
+  background:rgba(232,232,232,1);
+  margin: 40rpx 0 14rpx 0;
+}
+.total{
+  font-size:28rpx;
+  color:rgba(153,153,153,1);
+  font-weight:500;
+}
+.button-text{
+  
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(244,106,38,1);
+}
+.button{
+  margin-left: 10rpx;
+
+  width:140rpx;
+  height:60rpx;
+  line-height:60rpx;
+  text-align: center;
+  border:2rpx solid rgba(199,199,199,1);
+  border-radius:30rpx;
+
+  
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+}
+

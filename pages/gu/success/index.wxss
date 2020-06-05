@@ -1,0 +1,53 @@
+page{
+  overflow: hidden;
+}
+.background{
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+  padding-top: 240rpx;
+}
+.content{
+  justify-content: center;
+  flex-direction: column;
+}
+.content>image{
+  width:276rpx;
+  height:276rpx;
+}
+.content>text{
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(0,0,0,1);
+    line-height:44rpx;
+    margin: 46rpx 0 100rpx 0;
+}
+.but-title{
+  margin-bottom: 30rpx;
+  width:560rpx;
+  height:88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  background:rgba(244,106,38,1);
+  border-radius:30rpx;
+
+  color:rgba(255,255,255,1);
+}
+.but-text{
+  font-size:34rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+}
+.but-go-index{
+  width:560rpx;
+  height:88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  border:2rpx solid rgba(199,199,199,1);
+  border-radius:30rpx;
+}
+.but-go-index{
+
+  color:rgba(102,102,102,1);
+}

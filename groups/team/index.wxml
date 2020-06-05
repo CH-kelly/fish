@@ -1,0 +1,24 @@
+<view>
+   <!-- 拼团列表开始 -->
+    <!-- <view class="line"></view> -->
+    <view class="collage-lists">
+        <block wx:for="{{other}}" wx:key="index"> 
+        
+            <view class="flex collage-lists-item" >
+                <view class="flex item-left">
+                    <image src="{{item.avatar}}"></image>
+                    <text class="item-left-phone">{{item.nickname}}</text>
+                </view>
+                <view class="flex item-left" style="justify-content: flex-end;">
+                    <view style="margin-right: 12rpx;text-align: center;">
+                        <view class="item-left-sub">差{{item.num}}人拼团</view>
+                        <view class="item-left-sub" style="color:#000000;margin-top: 2rpx;">剩余12:00:00</view>
+                    </view>
+                    <view class="add-collage">快速参团</view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <!-- <view class="line"></view> -->
+    <!-- 拼团列表结束 -->
+</view>

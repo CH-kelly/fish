@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "拼团成功",
+  "usingComponents": {
+    "v-input":"/components/input/index"
+  },
+  "component": true
+}

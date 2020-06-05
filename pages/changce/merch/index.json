@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "商家列表",
+    "usingComponents": {
+        "v-start":"/components/start/index"
+      },
+      "navigationBarTextStyle":"black"
+}

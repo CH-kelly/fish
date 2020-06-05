@@ -1,0 +1,61 @@
+<loading wx:if="{{!show}}">加载中...</loading>
+<view class="page navbar order" wx:if="{{show}}">
+    <scroll-view class="fui-tab-scroll fixed " scrollX="true" style="overflow-x:scroll">
+        <view class="flex">
+            <view bindtap="selected" class="item {{status=='0'?'active':''}}" data-type="0">待出行</view>
+            <view bindtap="selected" class="item {{status=='1'?'active':''}}" data-type="1">进行中</view>
+            <view bindtap="selected" class="item {{status=='2'?'active':''}}" data-type="2">已完成</view>
+            <view bindtap="selected" class="item {{status=='3'?'active':''}}" data-type="3">待点评</view>
+        </view>
+    </scroll-view>
+    <view class="contain" wx:if="{{list.length!=0}}">
+        <view class="fui-list-group noclick" wx:for="{{list}}" wx:key="key">
+            <view class="address-item">
+                <navigator hoverClass="none" openType="navigate" url="/pages/order/detail/index?id={{item.id}}">
+                   <block wx:for="{{item.nogift}}" wx:for-index="key" wx:for-item="val" wx:key="key" >
+                        <view class="flex top">
+                            <image class="input-image" src="{{val.thumb}}"></image>
+                            <view class="flex title">
+                                <text class="title-h1">{{val.title}}</text>
+                                <view class="flex" style="width:100%;margin-top: 55rpx;">
+                                    <text class="price">¥{{item.price}}</text>
+                                    <view wx:if="{{status =='1'}}" class="button payment">确认完成</view>
+                                    <text wx:if="{{status =='2'}}"  class="go-evaluate">去评价 ></text>
+                                    <text wx:if="{{status =='3'}}"  class="new-completed">已完成</text>
+                                </view>
+                                <!-- <text class="number">共{{item.goods[0].goods.length}}个商品</text> -->
+                            </view>
+                        </view>
+                   </block>
+                   <view class="line"></view>
+                   <view class="flex button-bottom">
+                    <view class="flex button-left">
+                        <image class="button-image" src="/static/images/guide/avatar1.png"></image>
+                        <text>槛外人</text>
+                        <!-- <text>合计：</text> -->
+                        <!-- <text class="all-price">¥{{item.price}}</text> -->
+                    </view>
+                    <view class="flex button-right">
+                        <text>18483256879</text>
+                    </view>
+                   </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="center" wx:if="{{list.length==0&&empty}}">
+        <view class="empty">
+            <image class="light" src="/static/images/icon/nolist.png"></image>
+            <view class="text-cancel">您暂时没有任何订单哦！</view>
+            <navigator class="btn btn-danger-o" openType="switchTab" url="/pages/index/index">去首页逛逛吧</navigator>
+        </view>
+    </view>
+    <view class="goodscircle" wx:if="{{list.length!=0&&can_sync_goodscircle}}">
+        <image src="{{imgUrl+'plugin/app/static/images/wxapp/share/goodscircle.png'}}"></image>已同步至微信好物圈
+  </view>
+    <navigator class="fui-dot" hoverClass="none" openType="switchTab" url="/pages/member/index/index">
+        <text class="icox icox-huiyuan1" style="color:#fff;font-size:40rpx"></text>
+    </navigator>
+    <include src="/pages/order/public/verify.wxml"></include>
+    <include src="/pages/common/menu.wxml"></include>
+</view>

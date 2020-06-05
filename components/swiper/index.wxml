@@ -1,0 +1,14 @@
+<view>
+    <swiper class="swiper"   interval="3000" autoplay
+    indicator-dots="{{true}}"
+    circular="true"
+    indicator-color="rgba(255, 255, 255, .5)"
+    indicator-active-color="#ffffff"
+    >
+      <block wx:for="{{banner}}" wx:key="*this">
+        <swiper-item>
+            <image    src="{{item}}" ></image>
+        </swiper-item>
+      </block>
+    </swiper>
+</view>

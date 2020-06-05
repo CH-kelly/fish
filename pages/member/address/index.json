@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "收货地址管理",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "usingComponents": {}
+}

@@ -1,0 +1,212 @@
+<import src="/utils/wxParse/wxParse.wxml"></import>
+<view class="page" style="{{isIpx?'padding-bottom:168rpx':''}}">
+    <swiper circular="{{circular}}" class="index-adcs-sqiper" 
+        indicator-color="rgba(255, 255, 255, .3)"
+        indicator-active-color="rgba(255, 255, 255, .9)"
+        indicatorDots="true" style="width:100%;height:{{advHeight}}rpx;">
+        <block wx:for="{{data.thumb_url}}"  wx:key="index">
+            <swiper-item>
+                <image bindload="{{index==0?'imageLoad':''}}" class="goodsadvimg" src="{{item}}"></image>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="goods-info flex" style="align-items:flex-start">
+        <view style="width: 70%;">
+            <view class="title" style="width:100%">
+                <text class="fz-36" style="font-weight:bold;" >{{data.title}}</text>
+            </view>
+            <view class="subtitle">{{data.description}}</view>
+            <view class="flex" style="justify-content: flex-start;">
+                <view class="person">{{data.is_ladder==1?'阶梯团':data.groupnum+'人团'}}</view>
+                <view class="subtitle">邀请好友一起来拼团吧</view>
+            </view>
+        </view>
+        <view class="price" style="width:30%;text-align: right;">
+            <view class="line">原价￥{{data.price}}</view>
+            <view class="large">￥{{data.groupsprice}}</view>
+            <view class="fr">邮费：{{data.freight}}</view>
+        </view>
+        <block>
+            <block wx:if="{{data.isdiscount==1}}">
+                <view class="heads">
+                    <text class="icox icox-gengduocopy"></text>
+                    <text>团长优惠</text>{{data.headstype==0?'￥'+data.headsmoney:data.headsdiscount/10+'折'}}
+                </view>
+            </block>
+        </block>
+    </view>
+    <!-- 拼团列表开始 -->
+    <!-- <view class="line"></view> -->
+    <view class="collage-lists" hidden="{{other.length == 0}}">
+        <view class="flex collage-lists-title">
+            <text class="collage-title">小伙伴们在开团，可直接参与</text>
+            <text class="more" bindtap="teamLists">查看更多></text>
+        </view>
+        <block wx:for="{{other}}" wx:key="index"> 
+            <block wx:if="{{item.status!='hide'}}">
+            <view class="flex collage-lists-item" style="margin: 30rpx 0;" >
+                <view class="flex item-left">
+                    <image src="{{item.avatar}}"></image>
+                    <text class="item-left-phone">{{item.nickname}}</text>
+                </view>
+                <view class="flex item-left" style="justify-content: flex-end;">
+                    <view style="margin-right: 12rpx;text-align: center;">
+                        <view class="item-left-sub">差{{item.num}}人拼团</view>
+                        <view class="item-left-sub" style="color:#000000;margin-top: 2rpx;">剩余{{item.hour}}:{{item.minite}}:{{item.second}}</view>
+                    </view>
+                    <view class="add-collage"  bindtap="singlebuy" data-is="1" data-type="groups" data-id="{{data.id}}"  data-teamid="{{item.teamid}}">快速参团</view>
+                </view>
+            </view>
+            </block>
+        </block>
+    </view>
+    <!-- <view class="line"></view> -->
+    <!-- 拼团列表结束 -->
+    <!-- <navigator class="rules" url="../rules/index?id={{data.id}}">
+        <view class="title">拼团玩法</view>
+        <view class="inner">支付开团或参团,达到人数团购成功,人数不足自动退款</view>
+    </navigator> -->
+    <block>
+        <block wx:if="{{wxParseData}}">
+            <view class="detail-info">
+                <view class="flex title" style="justify-content: flex-start;">
+                    <view class="title-nav {{current==1?'title-nav-active':''}}"  data-id="1" bindtap="clickNav">商品详情</view>
+                    <view class="title-nav {{current==2?'title-nav-active':''}} " data-id="2" bindtap="clickNav">商品评价</view>
+                </view>
+                <!-- 商品详情 -->
+                <view class="wxParse" style="padding: 30rpx;" hidden="{{current != 1}}">
+                    <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}"></template>
+                </view>
+                <!-- 评价 -->
+                <view class="wxParse" style="padding: 30rpx;" hidden="{{current != 2}}">
+                    <view class="container" id="comments-all">
+                        <view class="fui-cell-group fui-comment-group">
+                            <view class="fui-cell" style="border-bottom: 1px solid #f2f2f2;" wx:for="{{commentList}}" wx:for-index="idx" wx:key="comm_list_key">
+                                <view class="fui-cell-text comment ">
+                                     <view class="flex info head">
+                                        <view>
+                                            <view class="img">
+                                                <image src="{{item.headimgurl}}" style="width:66rpx;height:66rpx"></image>
+                                            </view>
+                                            <view class="nickname" > 
+                                                <view class="new-nickname">{{item.nickname}}</view>
+                                                <view class="date" style="">{{item.createtime}}</view>
+                                            </view>
+                                        </view>
+                                        <view>
+                                            <view class="star star1">
+                                                <text class="{{item.level>=idx2+1?'shine':''}}" wx:for="{{stararr}}" wx:for-index="idx2" wx:for-item="item2" wx:key="comm_star">★</text>
+                                            </view>
+                                        </view>
+                                    </view>
+                                    <view class="remark">{{item.content}}</view>
+                                    <view class="remark img">
+                                        <view class="img" wx:for="{{item.images}}" wx:for-index="idx" wx:for-item="image" wx:key="imgs_key">
+                                            
+                                            <image bindtap="preview" data-src="{{image}}" 
+                                            data-urls="{{item.images}}" 
+                                            src="{{image}}"
+                                            style="border-radius:20rpx;width:220rpx;height: 220rpx;"
+                                            ></image>
+                                        </view>
+                                    </view>
+                                    <view class="reply-content" style="background:#EDEDED;" wx:if="{{item.reply_content}}">
+                                            掌柜回复：{{item.reply_content}}
+                                        <view class="remark img">
+                                            <view class="img" wx:for="{{item.reply_images}}" wx:for-index="idx" wx:for-item="replyImage" wx:key="imgs_key">
+                                                <image mode="widthFix" src="{{replyImage}}"></image>
+                                            </view>
+                                        </view>
+                                    </view>
+                                    <block wx:if="{{item.append_content&&item.replychecked==0}}">
+                                        <view class="remark reply-title">用户追加评价</view>
+                                        <view class="remark">{{item.append_content}}</view>
+                                    </block>
+                                    <view class="reply-content" style="background:#EDEDED;" wx:if="{{item.append_reply_content}}">
+                                        掌柜回复：{{item.append_reply_content}}
+                                        <view class="remark img">
+                                            <view class="img" wx:for="{{item.append_reply_images}}" wx:for-index="idx" wx:for-item="appendReplyImage" wx:key="imgs_key">
+                                                <image src="{{appendReplyImage}}"></image>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="fui-cell-group fui-comment-group"></view>
+                    </view>
+                    <view class="content-empty" style="{{commentEmpty?'display:block':'display:none'}}">暂时没有任何评价</view>
+                </view>
+            </view>
+        </block>
+    </block>
+    <block>
+        <block wx:if="{{data.stock>0}}">
+            <view class="detailbtn-group flex {{iphonexnavbar}}">
+                <view class="new-price" style="padding-left: 30rpx;">
+                    <view class="large">￥{{data.groupsprice}}</view>
+                    <view class="line">单独购买￥{{data.singleprice}}</view>
+                </view>
+                <view class="flex new-button" style="padding-right: 30rpx;">
+                    <block wx:if="{{data.single==1}}">
+                        <view bindtap="singlebuy" data-is="0"  data-type="single" class="button-detailbtn" style="margin-right: 30rpx;">单独购买</view>
+                    </block>
+                    <block wx:if="{{data.is_ladder==0}}">
+                        <!-- <view  bindtap="buttonOpenGroup" data-id="{{data.id}}" class="button-detailbtn button-open-group">立即开团</view> -->
+                        <view   bindtap="singlebuy" data-is="1" data-type="groups" data-id="{{data.id}}" class="button-detailbtn button-open-group">立即开团</view>
+                    </block>
+                    <block wx:if="{{data.is_ladder==1}}">
+                        <!-- <view bindtap="buttonOpenGroup" data-id="{{data.id}}" class="button-detailbtn button-open-group">参加阶梯团</view> -->
+                        <view  bindtap="singlebuy"  data-id="{{data.id}}" class="button-detailbtn button-open-group">参加阶梯团</view>
+                    </block>
+                </view>
+            </view>
+        </block>
+    </block>
+    <block>
+        <block wx:if="{{data.stock<=0}}">
+            <view class="detailbtn-group black {{iphonexnavbar}}">库存不足</view>
+        </block>
+    </block>
+    <view class="{{isIpx?'fui-iphonex-button':''}}"></view>
+</view>
+<block>
+    <block wx:if="{{layershow}}">
+        <view bindtap="close" class="layer"></view>
+    </block>
+</block>
+<block>
+    <block wx:if="{{options}}">
+        <view class="fui-modal goods-picker in goodslist">
+            <view class="option-picker">
+                <view class="option-picker-inner">
+                    <view class="fui-list" style="padding:0px">
+                        <view class="fui-list-media">
+                            <image class="thumb" src="{{optiondata.thumb||data.thumb}}"></image>
+                        </view>
+                        <view class="fui-list-inner">
+                            <view class="subtitle">{{optiondata.title||data.title}}</view>
+                            <view class="price">￥{{optiondata.single_price||data.groupsprice}}</view>
+                        </view>
+                    </view>
+                    <view class="option-picker-options">
+                        <view class="option-picker-cell option spec">
+                            <block wx:for="{{spec}}" wx:for-index="specindex" wx:for-item="items" wx:key="specindex">
+                                <view class="title">{{items.title}}</view>
+                                <view class="select">
+                                    <block wx:for="{{items.item}}" wx:for-item="options" wx:key="idnex">
+                                        <view bindtap="specsTap" class="btn btn-default btn-sm nav spec-item {{options.status=='active'?'btn-danger':''}}" data-id="{{options.id}}" data-idx="{{index}}" data-specindex="{{specindex}}" data-spedid="{{options.specid}}">{{options.title}}</view>
+                                    </block>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+                <view class="fui-navbar">
+                    <view bindtap="buy" class="btn btn-danger block"> {{optiondata.stock<=0?'库存不足':'确定'}}</view>
+                </view>
+            </view>
+            <!-- <view bindtap="close" class="icox icox-guanbi-copy" style="color:#fff;text-align:center;font-size:60rpx;margin-top:30rpx;"></view> -->
+        </view>
+    </block>
+</block>

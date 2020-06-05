@@ -1,0 +1,28 @@
+<view class="background">
+  <view class="flex complaint-item">
+      <text class="title">订单号：</text>
+      <input bindinput="inputOrderSn" class="weui-input"  maxlength="60" placeholder="" />
+  </view>
+  <view class="textarea">
+    <text class="title">投诉内容：</text>
+    <textarea bindinput="inputTextArea" maxlength="200"  />
+    <text class="title-count">{{number}}/200</text>
+  </view>
+  <view class="flex complaint-item">
+      <text class="title">您的联系电话：</text>
+      <input bindinput="inputPhone" class="weui-input" type="number"  maxlength="60" placeholder="" />
+  </view>
+  <view class="upload-images">
+      <text class="title">上传图片：</text>
+      <view class="flex upload">
+        <image src="/static/images/upload.png"></image>
+        <image src="/static/images/upload.png"></image>
+        <image src="/static/images/upload.png"></image>
+      
+      </view>
+  </view>
+  <view class="complaint-submit">
+    <view class="submit">提交</view>
+  </view>
+
+</view>

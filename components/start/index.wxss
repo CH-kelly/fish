@@ -1,0 +1,5 @@
+.start>image{
+  width: 21rpx;
+  height: 20rpx;
+  margin-right: 10rpx;
+}

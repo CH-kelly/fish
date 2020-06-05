@@ -1,0 +1,170 @@
+<view>
+
+<!-- 推荐 常规导游  车兼导游 -->
+  <view class=" title">
+    
+    <scroll-view scroll-x class="scroll-x">
+      <view class="flex" style="justify-content: right;height: 100%;">
+        <view class="flex title-h1 {{current == -1?'title-active':''}}"  bindtap="clickTitle" data-id="-1" >推荐
+          <view class="title-line"  hidden="{{current != -1}}"></view>
+        </view>
+        <block wx:for="{{cates}}" wx:key="index">
+
+          <view class="flex title-h1 {{current == item.id?'title-active':''}}"  bindtap="clickTitle" data-id="{{item.id}}" >{{item.catename}}
+            <view class="title-line" hidden="{{current != item.id}}"></view>
+          </view>
+        </block>
+      </view>
+    
+    </scroll-view>
+  </view>
+
+<!-- 正文内容 -->
+    <scroll-view scroll-y class="scroll-view"  
+    refresher-enabled="true" 
+    refresher-triggered="{{triggered}}"
+    refresher-default-style="black" 
+    bindrefresherrefresh="bindrefresherrefresh"
+    bindrefresherabort="bindrefresherabort"
+    bindscrolltolower="loadMore"
+    
+      >
+      <view class="center">
+      
+        <view class="lists">
+          <block wx:for="{{list}}" wx:for-item="item" wx:key="index">
+          
+            <view class="item">
+            
+              <view class="flex top" bindtap="gotoMerch" data-id="{{item.id}}">
+                <view class="flex info">
+                <block wx:if="{{item.logo}}">
+                  <image src="{{item.logo}}"></image>
+                </block>
+                <block wx:else>
+                  <image  src="/static/images/noface.png" ></image>
+                </block>
+                  <view class="nickname">
+                    <text>{{item.merchname}}</text>
+                    <view class="label">{{item.catename}}</view>
+                  </view>
+                </view>
+                <view class="service">
+                  <text>所在城市：{{item.city}}</text>
+                  
+                  <v-start star="{{item.star}}"></v-start>
+                </view>
+              </view>
+
+              <view class="hidden_3 middel ">{{item.desc}}</view>
+              <view class="goods">
+                <block wx:for="{{item.goods}}" wx:key="i" wx:for-item="n" >
+                
+                  <view class="flex goods-item" bindtap="gotoGoodsDetail" data-id="{{n.id}}">
+                    <view class="image">
+                      <image src="{{n.thumb}}"></image>
+                    </view>
+                    <view class="goods-title">
+                      <view class="flex">
+                        <text class="title-h2">{{n.title}}</text>
+                        <view class="price">¥{{n.marketprice}}</view>
+                      </view>
+                      <view  class="flex second-line">
+                        <text class="hidden_2 title-desc">{{n.subtitle}}</text>
+                        <view class="buy">购买</view>
+                      </view> 
+                    </view>
+                  </view>
+                  
+                </block>
+                  <!-- <view class="flex goods-item">
+                    <view class="image">
+                      <image src="/static/images/guide/image2.png"></image>
+                    </view>
+                    <view class="goods-title">
+                      <view class="flex">
+                        <text class="title-h2">熊猫基地一日游</text>
+                        <view class="price">¥198.00</view>
+                      </view>
+                      <view  class="flex second-line">
+                        <text class="hidden_2 title-desc">都江堰景区三日游，不包门票、住宿、车票，您也不用负担我的...</text>
+                        <view class="buy">购买</view>
+                      </view> 
+                    </view>
+                  </view> -->
+                  <block wx:if="{{item.goods.length>=1}}">
+                  <!-- pages/gu/detail/index -->
+                    <!-- <navigator class="fui-list noclick" url="/pages/changce/merch/detail?id={{item.id}}"> -->
+                      <view  class="fui-list noclick"   bindtap="gotoMerch" data-id="{{item.id}}" >
+                        <view class="see-more" bindtap="gotoMore">查看更多</view>
+                      </view>
+                    <!-- </navigator> -->
+                  </block>
+              </view>
+            </view>
+          
+          </block>
+          <!-- <view class="item">
+            <view class="flex top">
+              <view class="flex info">
+                <image src="/static/images/guide/avatar1.png"></image>
+                <view class="nickname">
+                  <text>槛外人</text>
+                  <view class="label">常规导游</view>
+                </view>
+              </view>
+              <view class="service">
+                <text>服务城市：成都</text>
+                <view class="start">
+                  <image src="/static/images/start_active.png"></image>
+                  <image src="/static/images/start_active.png"></image>
+                  <image src="/static/images/start_active.png"></image>
+                  <image src="/static/images/start.png"></image>
+                  <image src="/static/images/start.png"></image>
+                </view>
+              </view>
+            </view>
+            <view class="hidden_3 middel ">
+              我是成都地区的导游，对成都市区及其周边景区都很熟悉，如都江堰、武侯祠、大熊猫基地、杜甫草堂等。我将为您带来最优质的的导游服务...
+            </view>
+            <view class="goods">
+                <view class="flex goods-item">
+                  <view class="image">
+                    <image src="/static/images/guide/iamge.png"></image>
+                  </view>
+                  <view class="goods-title">
+                    <view class="flex">
+                      <text class="title-h2">都江堰三日游</text>
+                      <view class="price">¥388.00</view>
+                    </view>
+                    <view  class="flex second-line">
+                      <text class="hidden_2 title-desc">都江堰景区三日游，不包门票、住宿、车票，您也不用负担我的...</text>
+                      <view class="buy">购买</view>
+                    </view> 
+                  </view>
+                </view>
+                <view class="flex goods-item">
+                  <view class="image">
+                    <image src="/static/images/guide/image2.png"></image>
+                  </view>
+                  <view class="goods-title">
+                    <view class="flex">
+                      <text class="title-h2">熊猫基地一日游</text>
+                      <view class="price">¥198.00</view>
+                    </view>
+                    <view  class="flex second-line">
+                      <text class="hidden_2 title-desc">都江堰景区三日游，不包门票、住宿、车票，您也不用负担我的...</text>
+                      <view class="buy">购买</view>
+                    </view> 
+                  </view>
+                </view>
+                <view class="see-more">查看更多</view>
+            </view>
+          </view> -->
+        </view>
+      </view>
+
+
+    </scroll-view>
+
+</view>

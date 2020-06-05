@@ -1,0 +1,33 @@
+<view class="background">
+  <view class="nav">
+    <view class="nav-title nav-active" style="margin-right:200rpx">攻略收藏</view>
+    <view class="nav-title">商品收藏</view>
+  </view>
+
+
+  <block>
+    <v-input>
+      <view class="collection">
+        <image class="input-image" src="/static/images/guide/iamge.png"></image>
+        <view class="flex title">
+          <text class="title-h1">张家界旅游最新攻略</text>
+          <view class="title-desc hidden_2">张家界最新攻略来了，本次攻略包含了张家界景区吃、住、行...张家界最新攻略来了，本次攻略包含了张家界景区吃、住、行...</view>
+          <view class="flex title-label" style="width: 100%;">
+            <view class="flex label-left">
+              <view class="label-item">美食</view>
+              <view class="label-item">美食</view>
+              <view class="label-item">美食</view>
+            </view>
+            <view class="flex label-right">
+              <image src="/static/images/icon/start.png"></image>
+              <text class="cancel">取消收藏</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </v-input>
+  </block>
+
+
+
+</view>

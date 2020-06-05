@@ -1,0 +1,119 @@
+<view class="background">
+  <!-- 轮播图 -->
+  <v-swiper banner="{{banner}}"></v-swiper>
+
+<!-- 正文内容 -->
+    <view class="item">
+      <view class="flex top">
+        <view class="flex info">
+          <image src="{{merch.logo}}"></image>
+          <view class="nickname">
+            <text>槛外人</text>
+            <view class="label">常规导游</view>
+          </view>
+        </view>
+        <view class="service">
+          <text>服务城市：{{merch.city}}</text>
+          <v-start star="{{merch.star}}"></v-start>
+        </view>
+      </view>
+      <view class="hidden_3 middel ">{{merch.desc}}</view>
+      <view class="flex wx"  wx:if="{{type == 1}}">
+        <!-- <view class="left">
+          <image class="wx-icon" src="/static/images/guide/wx.png"></image>
+          <text>购买后查看</text>
+        </view> -->
+        <view class="left">
+          <image class="phone-icon"  src="/static/images/guide/phone.png"></image>
+          <text>购买后查看</text>
+          <text hidden="{{true}}" class="phone" bindtap="copyPhone">{{merch.mobile}}</text>
+        </view>
+      </view>
+    </view>
+      <view class="line"></view>
+      
+    <view class="item">
+      <view class="flex detail-title" >
+        <view class="detail-title-h1 {{current==1?'title-active':''}} " bindtap="change" data-id="1">旅游线路
+          <view hidden="{{current!=1}}" class="detail-active"></view>
+        </view>
+        <view class="detail-title-h1 {{current==2?'title-active':''}} " bindtap="change" data-id="2">相关资质
+          <view hidden="{{current!=2}}"  class="detail-active"></view>
+        </view>
+        <block wx:if="{{type == 1}}">
+          <view class="detail-title-h1 {{current==3?'title-active':''}} " bindtap="change" data-id="3">游客评价
+            <view hidden="{{current!=3}}"  class="detail-active"></view>
+          </view>
+        </block>
+      </view>
+      <view class="goods" hidden="{{current!=1}}">
+        <block wx:for="{{list}}" wx:key="index"> 
+          <view class="flex goods-item"  bindtap="gotoLine" data-id="{{itme.id}}">
+            <view class="image">
+              <image src="{{item.thumb}}"></image>
+            </view>
+            <view class="goods-title">
+              <view class="flex">
+                <text class="title-h2">{{item.title}}</text>
+                <view class="price">¥{{item.minprice}}</view>
+              </view>
+              <view  class="flex second-line">
+                <text class="hidden_2 title-desc">{{item.subtitle}}</text>
+                <view class="buy">购买</view>
+              </view> 
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="goods" hidden="{{current!=2}}" >
+        <view class="flex qualifications">
+          <view class="qualifications-line"></view>
+          <text wx:if="{{type==1}}" >导游资格证</text>
+          <text wx:else >营业执照</text>
+        </view>
+        <view class="qualifications-image" bindtap="previewImage"  >
+          <image src="{{merch.license}}"></image>
+        </view>
+
+      </view>
+      <view class="goods" hidden="{{current!=3 || type == 0}}" >
+        <view class="evaluate">
+          <view class="flex evaluate-top">
+            <image src="{{merch.license}}"></image>
+            <view class="flex evaluate-nickname">
+              <text class="evaluate-nickname">李商隐</text>
+              <text class="evaluate-date">2020-05-22</text>
+            </view>
+          </view>      
+          <view class="hidden_3 evaluate-middel">纸巾很好用，家人和我都很喜欢。老婆还叫我再买一火车皮，给老丈人用。</view>
+          <view class="flex  evaluate-image">
+            <image src="{{merch.license}}"></image>
+            <image src="{{merch.license}}"></image>
+            <image src="{{merch.license}}"></image>
+            <image src="{{merch.license}}"></image>
+            <image src="{{merch.license}}"></image>
+          </view>
+          <view class="evaluate-line"></view>
+        </view>
+        <view class="evaluate">
+          <view class="flex evaluate-top">
+            <image src="{{merch.logo}}"></image>
+            <view class="flex evaluate-nickname">
+              <text class="evaluate-nickname">李商隐</text>
+              <text class="evaluate-date">2020-05-22</text>
+            </view>
+          </view>      
+          <view class="hidden_3 evaluate-middel">纸巾很好用，家人和我都很喜欢。老婆还叫我再买一火车皮，给老丈人用。</view>
+          <view class="flex evaluate-image">
+            <image src="{{merch.logo}}"></image>
+            <image src="{{merch.logo}}"></image>
+            <image src="{{merch.logo}}"></image>
+            <image src="{{merch.logo}}"></image>
+            <image src="{{merch.logo}}"></image>
+          </view>
+          <view class="evaluate-line"></view>
+        </view>
+      </view>
+    </view>
+
+</view>

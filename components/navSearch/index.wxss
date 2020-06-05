@@ -1,0 +1,53 @@
+.flex{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.background{
+  width: 100%;
+  height: 90rpx;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+text{
+font-family:PingFang SC;
+font-size:30rpx;
+font-weight:bold;
+}
+.left{
+  width:23%;
+  height:80rpx;
+  background:rgba(1,214,192,1);
+  border-radius:40rpx;
+  justify-content: center;
+}
+.left>text{
+color:rgba(255,255,255,1);
+}
+.left>image{
+  width:24rpx;
+  height:28rpx;
+}
+.right{
+  width:63%;
+  height:80rpx;
+  background:rgba(242,242,242,1);
+  border-radius:40rpx;
+  padding: 0 40rpx;
+  display: flex;
+  align-items: center;
+}
+.weui-input{
+  width: 90%;
+  height: 100%;
+  padding-left: 20rpx;
+}
+.right>image{
+  width: 27rpx;
+  height: 28rpx;
+}
+.placeholder-class{
+  font-size:30rpx;
+  font-weight:400;
+  color:rgba(183,183,183,1);
+}

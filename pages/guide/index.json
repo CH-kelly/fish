@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "nav-search":"/components/navSearch/index",
+    "v-start":"/components/start/index"
+  },
+  "navigationBarTextStyle":"black",
+  "navigationBarTitleText":"导游",
+  "navigationBarBackgroundColor":"#ffffff"
+}

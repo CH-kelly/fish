@@ -1,0 +1,154 @@
+.page{
+    background-color: #f3f3f3;
+
+}
+.address-item {
+    /* padding-bottom: 20rpx; */
+    padding: 20rpx;
+    background-color: #fff;border-radius: 20rpx;
+
+}
+
+.address-item radio {
+    vertical-align: top;
+    margin-top: -2rpx;
+}
+
+.address-item image {
+    margin-right: 5rpx;
+    margin-top: -8rpx;
+}
+
+.fui-list-inner .bar {
+    font-size: 28rpx;
+}
+
+.btn-del {
+    margin-left: 10rpx;
+}
+
+.btn-del text,.btn-edit text {
+    display: inline-block;
+    font-size: 26rpx;
+    line-height: 26rpx;
+}
+
+.fui-list-inner .title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.fui-list-inner .title .realname {
+    display: inline-block;
+    max-width: 450rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-right: 48rpx;
+}
+
+.fui-navbar,.fui-footer {
+    height: 90rpx;
+}
+
+.fui-navbar .nav-item.btn {
+    color: #fff;
+    border-radius: 0;
+    height: 90rpx;
+    line-height: 90rpx;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.icon {
+    padding: 0 10rpx;
+}
+
+.btn-edit-icon{
+    width: 24rpx;
+    height: 24rpx;
+}
+.new-title{
+    align-items: baseline;
+}
+.new-address{
+    width: 80%;
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(0,0,0,1);
+    line-height:44rpx;
+}
+.new-default{
+    width:60rpx;
+    height:32rpx;
+    line-height: 32rpx;
+    text-align: center;
+    background:rgba(1,214,192,1);
+    border-radius:5rpx;
+    
+    font-size:24rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+
+    margin-right: 20rpx;
+}
+.new-buttom{
+    margin-top: 40rpx;
+    justify-content: flex-start;
+}
+.realname{
+    
+    font-size:28rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(102,102,102,1);
+    margin-right: 50rpx;
+}
+.new-edit{
+    align-items: baseline;
+    margin-left: 10rpx;
+}
+.new-edit>text{
+    font-size:26rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(102,102,102,1);
+}
+
+/* 底部按钮 */
+.new-navbar{
+    margin-top: 142rpx;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.new-navbar-button{
+    width:560rpx;
+    height:88rpx;
+    background:rgba(255,255,255,1);
+    border:1rpx solid rgba(199,199,199,1);
+    border-radius:20rpx;
+    
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.new-navbar-button>text{
+
+    font-size:34rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(102,102,102,1);
+}
+.new-navbar-button>image{
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 10rpx;
+}

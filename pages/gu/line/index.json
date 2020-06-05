@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "v-swiper":"/components/swiper/index"
+  },
+  "navigationBarTextStyle":"black",
+  "navigationBarTitleText":"线路详情",
+  "navigationBarBackgroundColor":"#ffffff"
+}

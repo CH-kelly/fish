@@ -1,0 +1,5 @@
+<view class="weui-input">
+  <view class="flex input">
+    <slot></slot>
+  </view>     
+</view>

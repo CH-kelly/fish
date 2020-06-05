@@ -1,0 +1,26 @@
+<view class="background">
+  <v-input>
+    <view class="collage">
+        <view class="collage-item">
+          <image class="input-image" src="/static/images/guide/iamge.png"></image>
+          <view class="flex title">
+            <text class="title-h1">都江堰三日游</text>
+            <text class="price">¥388.00</text>
+          </view>
+        </view>
+        <view class="line"></view>
+        <view class="flex">
+          <view class="flex buttom-left">
+            <text class="total">合计：</text>
+            <text class="price" style="margin-top:0">¥388.00</text>
+          </view>
+          <view class="flex buttom-right">
+            <text class="button-text" >待成团</text>
+            <text class="button-text" style="color:#01D6C0">拼团成功</text>
+            <view class="button">取消订单</view>
+          </view>
+        </view>
+    </view>
+  </v-input>
+
+</view>

@@ -1,0 +1,1 @@
+Object.defineProperty(exports,"__esModule",{value:!0});var t={original:["http://localhost:3000/javascripts","http://localhost:8001","http://mp.weixin.qq.com","https://mp.weixin.qq.com"],getStraightOut:"f=json",target:"liveplayer",type:"record",rtx:"gabyliuDev",from:"mpRecord"};exports.default=t;

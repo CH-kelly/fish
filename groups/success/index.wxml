@@ -1,0 +1,31 @@
+<view class="background">
+  <view class="flex content">
+    <image src="/static/images/success-icon.png"></image>
+  </view> 
+  <v-input>
+    <view style="width: 100%;">
+      <view class="flex group-title" >
+        拼团列表
+      </view>
+      <view class="group-item">
+        <view class="flex" style="margin-top: 30rpx;position: relative;">
+          <view>
+            <image src="/static/images/guide/avatar2.png"></image>
+            <view class="group-item-title">团长</view>
+          </view>
+        </view>
+        <view class="flex" style="margin-top: 30rpx;position: relative;">
+          <image src="/static/images/guide/avatar2.png"></image>
+        </view>
+      </view>
+    </view>
+  </v-input>
+
+  <view class="flex" style="flex-direction: column;margin-top: 100rpx;">
+    <view class="but-title but-text">查看订单</view>
+    <view class="but-go-index but-text" bindtap="gotoIndex">回到首页</view>
+  </view>
+
+
+
+</view>

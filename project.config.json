@@ -1,0 +1,280 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.11.1",
+	"appid": "wx5bfe0aa749c1a14b",
+	"projectname": "%E6%87%92%E9%B1%BC%E6%B8%B8%E5%B0%8F%E7%A8%8B%E5%BA%8F",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "导游",
+					"pathName": "pages/guide/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "导游详情页",
+					"pathName": "pages/gu/detail/index",
+					"query": "id=6",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "线路详情",
+					"pathName": "pages/gu/line/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "提交订单页面",
+					"pathName": "pages/gu/buy/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "收货地址管理",
+					"pathName": "pages/member/address/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "商户入驻",
+					"pathName": "pages/changce/merch/apply",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加收货地址",
+					"pathName": "pages/member/address/post",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "导游入驻",
+					"pathName": "pages/gu/merch/apply",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "导游入驻成功后提示",
+					"pathName": "pages/gu/success/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单详情",
+					"pathName": "pages/order/detail/index",
+					"query": "id=3",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的订单列表",
+					"pathName": "pages/order/index",
+					"query": "id=3",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "我的",
+					"pathName": "pages/member/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "待出行-订单",
+					"pathName": "pages/gu/order/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "导游端-管理",
+					"pathName": "pages/gu/admin/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商户端-管理",
+					"pathName": "pages/gu/merch/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "攻略详情",
+					"pathName": "pages/gu/introduction/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/goods/detail/index",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": 17,
+					"name": "拼团详情页面-",
+					"pathName": "groups/goods/index",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我要参团",
+					"pathName": "groups/jointeam/index",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "拼团中列表",
+					"pathName": "groups/team/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "拼团订单-收银台页面",
+					"pathName": "groups/pay/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "拼团-开团-支付成功页面",
+					"pathName": "groups/paySuccess/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "拼团-拼团成功",
+					"pathName": "groups/success/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "线路",
+					"pathName": "pages/guide/line",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的收藏",
+					"pathName": "member/collection/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的评价",
+					"pathName": "member/comment/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的拼团",
+					"pathName": "member/collage/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "联系/关于 我们",
+					"pathName": "member/about/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的投诉",
+					"pathName": "member/complaint/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 29,
+					"name": "攻略列表",
+					"pathName": "pages/changce/article/list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商家列表",
+					"pathName": "pages/changce/merch/index",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,57 @@
+<view class="background">
+  <v-input>
+    <text>出发地址：</text>
+    <input class="input-item" maxlength="30" placeholder="" bindinput=""  />
+  </v-input>
+
+  <v-input>
+    <text>联系电话：</text>
+    <input class="input-item" maxlength="30" placeholder="" bindinput=""  />
+  </v-input>
+
+  <v-input>
+    <view class="flex">
+      <image class="input-image" src="/static/images/guide/iamge.png"></image>
+      <view class="flex title">
+        <text class="title-h1">都江堰三日游</text>
+        <text class="price">¥388.00</text>
+      </view>
+    </view>
+  </v-input>
+
+  <v-input>
+    <view style="width: 100%;">
+      <view class="settlement">结算</view>
+      <view class="flex settlement-item">
+        <text class="total">订单总额：</text>
+        <text class="total-price">¥38.00</text>
+      </view>
+      <view class="flex settlement-item" style="margin-top:20rpx">
+        <text class="total">需支付：</text>
+        <text class="total-price">¥38.00</text>
+      </view>
+    </view>
+  </v-input>
+
+  <v-input>
+    <view class="flex" style="width:100%">
+        <text>支付方式：</text>
+        <view class="flex pay">
+          <image src="/static/images/wx_pay.png"></image>
+          <text>微信支付</text>
+        </view>
+    </view>
+  </v-input>
+
+  <view class="button">
+    <view class="flex" style="padding: 0 30rpx;height: 100rpx;">
+      <view >
+        <text>需支付：</text>
+        <text>¥38.00</text>
+      </view>
+      <view class="buy" bindtap="buy">去支付</view>
+    </view>
+  </view>
+
+
+</view>
