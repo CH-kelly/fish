@@ -43,7 +43,7 @@
                     <navigator class="btn btn-warning pull-right {{member['commission_ok']==0?' disabled':''}}" hoverClass="none" openType="navigate" url="{{member['commission_ok']==0?'':'./withdraw/index'}}">{{set['texts']['commission']}}{{set['texts']['withdraw']}}</navigator>
                 </view>
             </view>
-            <view class="fui-block-group">
+            <view class="fui-block-group" style="padding: 0 30rpx;">
                 <navigator class="fui-block-child" url="./withdraw/index">
                     <view class="icon" style="color: #ff4357;">
                         <i class="icox icox-qian"></i>
@@ -114,6 +114,6 @@
         </view>
     </block>
 </block>
-<navigator class="commission-shouye" openType="switchTab" url="/pages/index/index">
+<navigator class="commission-shouye" openType="switchTab" url="/pages/member/index/index">
     <text class="icox icox-shouye"></text>
 </navigator>

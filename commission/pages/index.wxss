@@ -53,6 +53,9 @@
 
 .commission .userblock {
     margin-top: 20rpx;
+    
+    padding: 0 30rpx;
+
 }
 
 .commission .userblock .line {

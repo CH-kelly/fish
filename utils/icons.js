@@ -8,7 +8,7 @@ module.exports = {
     cart: "/static/images/icon/cart.png",
     cart_red: "/static/images/icon-red/cart.png",
     people: "/static/images/icon/people.png",
-    people_red: "/static/images/icon-red/people.png",
+    // people_red: "/static/images/icon-red/people.png",
     shop: "/static/images/icon/shop.png",
     order: "/static/images/icon/order.png",
     cartWhite: "/static/images/icon-white/cart.png",

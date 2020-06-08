@@ -7,7 +7,7 @@
     <block wx:if="{{show}}">
         <view class="page navbar com-down">
             <view class="fui-tab fui-tab-warning">
-                <block wx:for="{{levels}}">
+                <block wx:for="{{levels}}" wx:key="index">
                     <view bindtap="myTab" class="item {{level==item.level?'active':''}}" data-level="{{item.level}}">{{item.name}}(<text>{{item.total}}</text>)</view>
                 </block>
             </view>
