@@ -1,5 +1,7 @@
 // pages/guide/line.js
-var t = getApp();
+var t = getApp(),
+    a = t.requirejs("core"),
+    e = t.requirejs("jquery");
 Page({
 
   /**
@@ -8,7 +10,8 @@ Page({
   data: {
     address:'',
     region: ['', '', ''],
-    customItem: '全部'
+    customItem: '全部',
+    list:[],
   },
 
   /**
@@ -36,12 +39,41 @@ Page({
       region:region,
     })
     console.log(address,region)
+
+    this.get_lists();
+  },
+  get_lists(){
+    var that = this;
+    a.get("line/get_list", {
+     
+    }, function(e) {
+      console.log(e);
+      if(e.error == 0){
+        that.setData({
+          list:e.list
+        })
+      }
+    })
   },
   // 选择省市区
   bindRegionChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       region: e.detail.value
+    })
+  },
+  //线路详情
+  gotoDetail(e){
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/gu/line/index?id='+id,
+    })
+  },
+  // 导游详情
+  gotoGuDetail(e){
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/gu/detail/index?id='+id,
     })
   },
   /**

@@ -58,7 +58,7 @@
             </navigator>
             <view class="fui-cell-tip">{{member.bindtext}}</view>
         </view>
-        <view class="fui-cell-group fui-cell-click new-fui-cell">
+        <!-- <view class="fui-cell-group fui-cell-click new-fui-cell">
             <view  class="address-item">
                 <navigator class="fui-cell" hoverClass="none" openType="navigate" url="/pages/order/index">
                     <view class="fui-cell-text">导游订单</view>
@@ -86,7 +86,7 @@
                     </navigator>
                 </view>
             </view>
-        </view>
+        </view> -->
         <view class="fui-cell-group fui-cell-click new-fui-cell">
             <view  class="address-item">
                 <navigator class="fui-cell" hoverClass="none" openType="navigate" url="/pages/order/index">
@@ -132,7 +132,8 @@
         
         <view class="fui-cell-group fui-cell-click new-fui-cell">
             <view  class="address-item">
-                <view class="fui-cell" hoverClass="none" openType="navigate" url="/pages/order/index">
+                <!-- <view class="fui-cell" hoverClass="none" openType="navigate" url="/pages/order/index"> -->
+                <view class="fui-cell" >
                     <view class="fui-cell-text">更多服务</view>
                 </view>
                 <view class="flex fui-icon-group col-{{iscycelbuy?5:4}} nomargin new-service">
@@ -148,9 +149,15 @@
                         <image  class="guide-icon" src="/static/images/icon/service_3.png"></image>
                         <view class="text">我的拼团</view>
                     </navigator>
-                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/order/index?status=3">
+                    <!-- pages/transfer/commission/index -->
+                    <navigator wx:if="{{commission==false}}" class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/transfer/commission/index">
                         <image  class="guide-icon" src="/static/images/icon/service_4.png"></image>
                         <view class="text">成为分销商</view>
+                    </navigator>
+                     <navigator  wx:if="{{commission==true}}" class="flex fui-icon-col" hoverClass="none" 
+                     openType="navigate" url="/commission/pages/index">
+                        <image  class="guide-icon" src="/static/images/icon/service_4.png"></image>
+                        <view class="text">分销中心</view>
                     </navigator>
                     <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/member/about/index?type=1">
                         <image  class="guide-icon" src="/static/images/icon/service_5.png"></image>
@@ -161,12 +168,12 @@
                         <view class="text">关于我们</view>
                     </navigator>
                     
-                    <navigator hidden="{{(type==0 &&  regstatus==1)}}" class="flex fui-icon-col" hoverClass="none" openType="navigate" url="{{(type == null || type==1)?'/pages/gu/merch/apply':''}}">
+                    <!-- <navigator hidden="{{(type==0 &&  regstatus==1)}}" class="flex fui-icon-col" hoverClass="none" openType="navigate" url="{{(type == null || type==1)?'/pages/gu/merch/apply':''}}">
                         <block wx:if="{{type == null || type==1 }}">
                             <image  class="guide-icon" src="/static/images/icon/service_7.png"></image>
                             <view class="text">导游入驻</view>
                         </block>
-                    </navigator>
+                    </navigator> -->
 
                     <navigator hidden="{{(type==1 &&  regstatus==1)}}" class="flex fui-icon-col" hoverClass="none" openType="navigate" url="{{(type == null || type==0)?'/pages/changce/merch/apply':''}}">
                         <block wx:if="{{type == null || type==0 }}">
@@ -176,12 +183,12 @@
                     </navigator>
 
                     <!-- <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/admin/index"> -->
-                    <view bindtap="{{(type==1 &&  regstatus==1)?'gotoAdmin':''}}" class="flex fui-icon-col" >
+                    <!-- <view bindtap="{{(type==1 &&  regstatus==1)?'gotoAdmin':''}}" class="flex fui-icon-col" >
                         <block wx:if="{{type==1 &&  regstatus==1}}">
                             <image  class="guide-icon" src="/static/images/icon/service_8.png"></image>
                             <view class="text">导游端</view>
                         </block>
-                    </view>
+                    </view> -->
                     <!-- </navigator> -->
 
                     <!-- <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/merch/index"> -->

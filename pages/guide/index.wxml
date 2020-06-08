@@ -1,6 +1,6 @@
 <view class="">
-<!-- 导航轮播图 -->
-  <!-- <nav-search ></nav-search> -->
+<!-- 导航搜素 -->
+  <nav-search ></nav-search>
 
 <!-- 推荐 常规导游  车兼导游 -->
   <view class="flex  title">
@@ -60,17 +60,17 @@
             <view class="goods">
                 <block wx:for="{{item.goods}}" wx:key="i" wx:for-item="n" >
 
-                  <view class="flex goods-item">
+                  <view class="flex goods-item" bindtap="gotoDetail" data-id="{{n.id}}">
                     <view class="image">
-                      <image src="/static/images/guide/iamge.png"></image>
+                      <image src="{{n.thumb}}"></image>
                     </view>
                     <view class="goods-title">
                       <view class="flex">
-                        <text class="title-h2">都江堰三日游</text>
-                        <view class="price">¥388.00</view>
+                        <text class="title-h2">{{n.title}}</text>
+                        <view class="price">¥{{n.marketprice}}</view>
                       </view>
                       <view  class="flex second-line">
-                        <text class="hidden_2 title-desc">都江堰景区三日游，不包门票、住宿、车票，您也不用负担我的...</text>
+                        <text class="hidden_2 title-desc">{{n.subtitle}}</text>
                         <view class="buy">购买</view>
                       </view> 
                     </view>

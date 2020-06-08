@@ -151,12 +151,12 @@ font-weight:500;
   margin-right: 10rpx;
 }
 .info{
-  width: 70%;
+  width: 50%;
   justify-content: left;
 }
 .service{
   text-align: right;
-  width: 30%;
+  width: 50%;
 }
 .service>text{
 font-size:26rpx;

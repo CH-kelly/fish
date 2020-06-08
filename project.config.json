@@ -68,7 +68,7 @@
 					"id": 1,
 					"name": "导游详情页",
 					"pathName": "pages/gu/detail/index",
-					"query": "id=6",
+					"query": "id=10",
 					"scene": null
 				},
 				{
@@ -219,8 +219,8 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "线路",
+					"id": 23,
+					"name": "线路列表",
 					"pathName": "pages/guide/line",
 					"query": "",
 					"scene": null

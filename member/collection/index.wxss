@@ -22,6 +22,7 @@ page{
   border-bottom: 4rpx solid rgba(1,214,192,1);
 }
 .collection{
+  width: 100%;
   display: flex;
   align-items: center;
 }
@@ -67,6 +68,9 @@ color:rgba(34,34,34,1);
   font-weight:500;
   color:rgba(252,124,117,1);
 }
+.label-right{
+  width: 40%;
+}
 .label-right>image{
   width:33rpx;
   height:31rpx;
@@ -77,4 +81,9 @@ font-size:28rpx;
 font-family:PingFang SC;
 font-weight:500;
 color:#999999
+}
+
+
+.scroll-view{
+  height: calc(100vh - 72rpx);
 }

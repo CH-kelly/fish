@@ -56,43 +56,44 @@
   
   <scroll-view scroll-y  class="scroll-view"  >
   
+    <block wx:for="{{list}}" wx:key="index"> 
     <view class="goods">
-      <view class="flex goods-item">
+      <view class="flex goods-item"  bindtap="gotoDetail" data-id="{{item.id}}">
         <view class="image">
-          <image src="/static/images/guide/iamge.png"></image>
+          <image src="{{item.thumb}}"></image>
         </view>
         <view class="goods-title">
           <view class="flex">
-            <text class="title-h2">都江堰三日游</text>
-            <view class="price">¥388.00</view>
+            <text class="title-h2">{{item.title}}</text>
+            <view class="price">¥{{item.marketprice}}</view>
           </view>
           <view  class="flex second-line" bindtap="gotoLine">
-            <text class="hidden_2 title-desc">都江堰景区三日游，不包门票、住宿、车票，您也不用负担我的...</text>
+            <text class="hidden_2 title-desc">{{item.subtitle}}</text>
             <view class="buy">购买</view>
           </view> 
         </view>
       </view>
       <view class="line"></view>
-      <view class="flex top">
+      <view class="flex top"  bindtap="gotoGuDetail" data-id="{{item.merchid}}">
         <view class="flex info">
-          <image src="/static/images/guide/avatar1.png"></image>
+          <image src="{{item.logo}}"></image>
           <view class="nickname">
-            <text>槛外人</text>
-            <view class="label">常规导游</view>
+            <text>{{item.merchname}}</text>
+            <view class="label">{{item.catename}}</view>
           </view>
         </view>
         <view class="service">
-          <text>服务城市：成都</text>
+          <text>服务城市：{{item.city}}</text>
           <view class="start">
-            <image src="/static/images/start_active.png"></image>
-            <image src="/static/images/start_active.png"></image>
-            <image src="/static/images/start_active.png"></image>
-            <image src="/static/images/start.png"></image>
-            <image src="/static/images/start.png"></image>
+                <v-start star="{{item.star}}"></v-start>
           </view>
         </view>
       </view>
     </view>
+
+    </block>
+
+
   </scroll-view>
 
   

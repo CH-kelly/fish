@@ -9,7 +9,7 @@
         </scroll-view>
         <view class="fui-list-group">
           <block wx:for="{{list}}" wx:for-item="item"  wx:key="index" >
-            <navigator class="noclick" style='background: #fff;border-radius: 20rpx;' url="/pages/changce/article/detail?id={{item.id}}">
+            <navigator class="noclick" style='background: #fff;border-radius: 20rpx;margin-bottom: 20rpx;' url="/pages/changce/article/detail?id={{item.id}}">
             <!-- <navigator class="fui-list noclick" style='line-height:30px;height:30px;background: #fff;' url="/pages/gu/introduction/index?id={{item.id}}"> -->
             <!-- pages/gu/introduction/index -->
               

@@ -82,7 +82,13 @@ Page({
                 phonenumber: e.phonenumber || "",
                 iscycelbuy: e.iscycelbuy,
                 bargain: e.bargain,
+                commission:e.commission,
+                commission_text:e.commission_text,
+                commission_url:e.commission_url,
                 
+
+
+
                 type:e.type || null,  //type为空什么都没入住   0是商家，1是导游
                 regstatus:e.regstatus || null,   //-1是驳回，0-申请中，1-入驻成功
                 merchstatus:e.merchstatus || null,  //入驻后的状态   0-待入驻，1-入驻中，2-暂停中，3-即将到期，4-已到期

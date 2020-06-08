@@ -65,6 +65,12 @@ Page({
            
       })
   },
+  gotoDetail(e){
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/gu/line/index?id='+id,
+    })
+  },
   clickTitle(e){
     let id = e.currentTarget.dataset.id;
     let isrecommand = (id == "-1" )? 1 : 0

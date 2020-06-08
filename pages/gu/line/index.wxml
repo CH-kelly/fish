@@ -1,21 +1,21 @@
 <view class="background">
   <!-- 轮播图 -->
-  <v-swiper></v-swiper>
+  <v-swiper banner="{{list.thumbs}}"></v-swiper>
 
   <view class="center">
     <view class="header">
       <view class="flex top">
-        <text class="title-h2">都江堰三日游</text>
-        <text class="price">¥388.00</text>
+        <text class="title-h2">{{list.title}}</text>
+        <text class="price">¥{{list.marketprice}}</text>
       </view>
-      <view class="desc hidden_2">都江堰景区三日游，不包门票、住宿、车票，您也不用负担我的旅途费用。都江堰景区三日游，不包门票、住宿、车票，您也不用负担我的旅途费用。</view>
+      <view class="desc hidden_2">{{list.subtitle}}</view>
       <view class="line"></view>
       <view class="flex qualifications">
         <view class="qualifications-line"></view>
         <text>线路详情</text>
       </view>
       <view class="qualifications">
-        <rich-text nodes=""></rich-text>
+        <rich-text nodes="{{list.content}}"></rich-text>
       </view>
     </view>
   

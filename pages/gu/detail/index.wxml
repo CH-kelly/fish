@@ -48,14 +48,14 @@
       </view>
       <view class="goods" hidden="{{current!=1}}">
         <block wx:for="{{list}}" wx:key="index"> 
-          <view class="flex goods-item"  bindtap="gotoLine" data-id="{{itme.id}}">
+          <view class="flex goods-item"  bindtap="gotoLine"  data-id="{{item.id}}"  >
             <view class="image">
               <image src="{{item.thumb}}"></image>
             </view>
             <view class="goods-title">
               <view class="flex">
                 <text class="title-h2">{{item.title}}</text>
-                <view class="price">¥{{item.minprice}}</view>
+                <view class="price">¥{{item.minprice || item.marketprice}}</view>
               </view>
               <view  class="flex second-line">
                 <text class="hidden_2 title-desc">{{item.subtitle}}</text>

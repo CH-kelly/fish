@@ -20,17 +20,18 @@ Page({
     type:0, // 0：商户详情    1：导游  
     approot: t.globalData.approot,
     banner:[],
+   
+    line_list:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (t) {
-
     this.setData({
       merchid: t.id,
       type:t.type || 1    //1导游  0商户
-  }), this.getMerch(), this.getList()
+    });
   },
   copyPhone(){
     let mobile = this.data.merch.mobile;
@@ -77,6 +78,20 @@ getList: function() {
          t.setData(i), a.hideLoading()
     })
 },
+get_line_list(){
+  var t = this;
+    a.get("changce/merch/line_list", {
+      page: this.data.page,
+      pagesize:20,
+      id: t.data.merchid,
+  }, function(e) {
+      if(e.error == 0){
+        t.setData({
+          list:e.list
+        })
+      }
+  })
+},
   change(e){
     console.log(e);
     this.setData({
@@ -85,6 +100,7 @@ getList: function() {
   },
   gotoLine(e){ //线路详情
     let id = e.currentTarget.dataset.id;
+    console.log(e,id)
     let type = this.data.type;  //0商家  1导游
     let url = '';
     if(type == 1){
@@ -109,7 +125,9 @@ getList: function() {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getMerch();
+    this.getList();
+    this.get_line_list();
   },
 
   /**

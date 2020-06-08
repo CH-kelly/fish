@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "v-input":"/components/input/index"
+    "v-input":"/components/input/index",
+    "v-start":"/components/start/index"
   },
   "component": true,
   "navigationBarTextStyle":"black",
