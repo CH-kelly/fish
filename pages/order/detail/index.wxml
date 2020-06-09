@@ -4,11 +4,11 @@
     <view class="background">
         <v-input>
             <text>订单状态：</text>
-            <text class="flex input-item order-status "  hidden="{{order.status!=1}}" style="color:#01D6C0">待发货</text>
-            <text class="flex input-item order-status "  hidden="{{order.status!=2}}" style="color:#F46A26">待收货</text>
-            <text class="flex input-item order-status "  hidden="{{order.status!=0}}" style="color:#01D6C0">待付款</text>
-            <text class="flex input-item order-status "  hidden="{{order.status!=3}}" style="color:#E72948">已完成</text>
-            <text class="flex input-item order-status "  hidden="{{order.status!=-1}}" style="color:#999999">已关闭</text>
+            <text class="flex input-item order-status "  wx:if="{{order.status==1}}" style="color:#01D6C0">待发货</text>
+            <text class="flex input-item order-status "  wx:if="{{order.status==2}}" style="color:#F46A26">待收货</text>
+            <text class="flex input-item order-status "  wx:if="{{order.status==0}}" style="color:#01D6C0">待付款</text>
+            <text class="flex input-item order-status "  wx:if="{{order.status==3}}" style="color:#E72948">已完成</text>
+            <text class="flex input-item order-status "  wx:if="{{order.status==-1}}" style="color:#999999">已关闭</text>
         </v-input>
         <v-input>
             <text>订单编号：</text>

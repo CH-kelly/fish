@@ -5,7 +5,7 @@
 </block>
 <block>
     <block wx:if="{{show}}">
-        <view class="page navbar com-order">
+        <view class="page navbar com-order" style="background-color:#f3f3f3">
             <view class="fui-cell-group" style="margin-top:0px;background: #fea23d;color: #fff;">
                 <view class="fui-cell">
                     <view class="fui-cell-info" style="width:auto;color: #fff;text-align:left">{{textctotal}}<text>{{comtotal}}</text>{{textyuan}}</view>
@@ -18,7 +18,7 @@
                 <view bindtap="myTab" class="item {{status=='3'?'active':''}}" data-status="3">已完成</view>
             </view>
             <block wx:for="{{list}}">
-                <view class="fui-cell-group {{item.code==1?'toggleSend-group':''}}">
+                <view class="fui-cell-group {{item.code==1?'toggleSend-group':''}}  new-group-item  ">
                     <view class="fui-list">
                         <view class="fui-list-media">
                             <image class="round" src="{{item.buyer.avatar}}" style="width:1.4rem;height:1.4rem;border-radius: 50%"></image>

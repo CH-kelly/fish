@@ -21,6 +21,7 @@ Page({
         streetIndex: 0,
         noArea: !1,
         number:0,   //输入的数字
+        isdefault:1,    //是否默认 0-默认，1-不默认
     },
     onLoad: function(t) {
         console.log(t.params );
@@ -74,6 +75,8 @@ Page({
     },
     submit: function() {
         var i = this, s = i.data.detail;
+        console.log( 's.isdefault'+ s.isdefault);
+        s.isdefault =( s.isdefault == true ||  s.isdefault == 1) ? 1: 0;
         i.data.posting || ("" != s.realname && s.realname ? "" != s.mobile && s.mobile ? "" != s.city && s.city ? !(i.data.street.length > 0) || "" != s.street && s.street ? "" != s.address && s.address ? (console.log(s), 
         s.is_from_wx && i.onConfirm("is_from_wx"), console.log(s), s.datavalue ? /^[1][3-9]\d{9}$|^([6|9])\d{7}$|^[0][9]\d{8}$|^[6]([8|6])\d{5}$/.test(s.mobile) ? (s.id = i.data.id || "", 
         i.setData({
@@ -93,6 +96,22 @@ Page({
             }, 1e3);
         })) : a.toast(i, "请填写正确联系电话") : a.toast(i, "地址数据出错，请重新选择")) : a.toast(i, "请填写详细地址") : a.toast(i, "请选择所在街道") : a.toast(i, "请选择所在地区") : a.toast(i, "请填写联系电话") : a.toast(i, "请填写收件人"));
     },
+    
+    deleteItem: function() {
+        var a = this, s = this.data.detail.id;
+        t.confirm("删除后无法恢复, 确认要删除吗 ?", function() {
+            a.setData({
+                loaded: !1
+            }), t.get("member/address/delete", {
+                id: s
+            }, function(e) {
+                t.toast("删除成功");
+                setTimeout(() => {
+                    wx.navigateBack()
+                }, 1000);
+            });
+        });
+    },
     onChange: function(e) {
         var t = this.data.detail, a = e.currentTarget.dataset.type, s = i.trim(e.detail.value);
         "street" == a && (t.streetdatavalue = this.data.street[s].code, s = this.data.street[s].name), 
@@ -111,10 +130,10 @@ Page({
         })
     },
     switch1Change(e){
+        console.log(e.detail.value);
         this.setData({
             [`detail.isdefault`]:e.detail.value
         })
-
     },
     getStreet: function(e, a) {
         if (console.log(e, a), e && a) {

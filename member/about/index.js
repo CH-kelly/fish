@@ -1,11 +1,17 @@
 // member/about/index.js
+var t = getApp(),
+a = t.requirejs("core");
+t.requirejs("jquery");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    type:1
+    type:1,
+    tel:'',
+    wxchat:'',
+    description:''
   },
 
   /**
@@ -16,6 +22,7 @@ Page({
     this.setData({
       type:type
     })
+    this.get_set();
   },
   copyPhone(){
     wx.setClipboardData({
@@ -63,6 +70,20 @@ Page({
         title: '关于我们',
       })
     }
+  },
+  get_set(){
+    var t = this;
+    a.get("shop/get_set", {}, function(a) {
+      if(a.error == 0){
+        let shop = a.sets.shop;
+        console.log(shop)
+        t.setData({
+          tel:shop.tel,
+          wxchat:shop.wxchat,
+          description:shop.description
+        })
+      }
+    })
   },
 
   /**

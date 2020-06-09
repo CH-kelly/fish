@@ -24,18 +24,24 @@ text{
   margin-left: 6rpx;
 }
 .nav-right{
-  /* width: 40%; */
+  width: 60%;
+  text-align: right;
 }
 .nav-right>text{
 font-weight:500;
 }
+.cate-active{
+  color: #01D6C0;
+}
+.category-active>text{
 
+  color: #01D6C0;
+}
 
 /* 分类 */
 .category{
-  height: 270rpx;
-
-  padding: 0 30rpx;
+  /* height: 270rpx; */
+  padding: 30rpx 30rpx 0 30rpx;
   justify-content: flex-start;
 }
 .category-item{
@@ -48,6 +54,7 @@ font-weight:500;
 .category-item>image{
 width: 140rpx;
 height: 160rpx;
+border-radius: 20rpx;
 }
 .category-item>text{
   /* height: 60rpx; */
@@ -66,12 +73,13 @@ font-size:28rpx;
   height: calc(100vh - 80rpx - 270rpx);
 }
 .center-lists{
-  padding: 0 30rpx;
+  padding: 20rpx 30rpx  0 30rpx;
 }
 .goods{
   background: #fff;
   border-radius: 20rpx;
   padding: 20rpx;
+  margin-bottom: 20rpx;
 }
 .goods-item{
   /* margin-top: 30rpx; */
@@ -83,6 +91,7 @@ font-size:28rpx;
 }
 .goods-title{
   padding-left: 30rpx;
+  width: 80%;
 }
 .title-h2{
 font-size:30rpx;

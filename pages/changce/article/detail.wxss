@@ -135,3 +135,13 @@ margin-right: 12rpx;
   height: 30rpx;
   margin-right: 12rpx;
 } */
+.button-left>text{
+
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color: #999;
+}
+.collection-active{
+  color:rgba(1,214,192,1) !important;
+}

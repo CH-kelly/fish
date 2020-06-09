@@ -1,5 +1,5 @@
 <loading wx:if="{{!show}}">加载中...</loading>
-<view class="page" wx:if="{{show}}">
+<view class="page" wx:if="{{show}}" style="background-color:#f3f3f3">
     <view class="fui-cell-group">
        <view class="address-item">
             <!-- <view bindtap="chooseAddress" class="fui-cell">
@@ -57,9 +57,12 @@
     <include src="/pages/common/city-picker.wxml"></include>
     <view class="fui-mask {{showPicker?'show':''}}"></view>
     <!-- <view bindtap="submit" class="btn btn-danger block mtop">{{subtext}}</view> -->
-    
-    <view bindtap="submit" class="new-button">
-        <view class="{{isAdd == 1?'add':'delete'}}">{{subtext}}</view>
+      <view bindtap="submit" class="new-button">
+        <view class="add">保存</view>
+    </view>
+
+    <view bindtap="deleteItem" class="new-button" wx:if="{{isAdd != 1}}" style="margin-top: 20rpx;">
+        <view class="delete">删除收货地址</view>
     </view>
 
     <view class="fui-toast {{FoxUIToast.show?'in':'out'}}">

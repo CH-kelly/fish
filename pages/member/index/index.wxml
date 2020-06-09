@@ -58,7 +58,7 @@
             </navigator>
             <view class="fui-cell-tip">{{member.bindtext}}</view>
         </view>
-        <!-- <view class="fui-cell-group fui-cell-click new-fui-cell">
+        <view class="fui-cell-group fui-cell-click new-fui-cell">
             <view  class="address-item">
                 <navigator class="fui-cell" hoverClass="none" openType="navigate" url="/pages/order/index">
                     <view class="fui-cell-text">导游订单</view>
@@ -86,7 +86,7 @@
                     </navigator>
                 </view>
             </view>
-        </view> -->
+        </view>
         <view class="fui-cell-group fui-cell-click new-fui-cell">
             <view  class="address-item">
                 <navigator class="fui-cell" hoverClass="none" openType="navigate" url="/pages/order/index">

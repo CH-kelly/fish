@@ -12,13 +12,31 @@ Page({
     region: ['', '', ''],
     customItem: '全部',
     list:[],
+    page:1,
+    city:[],
+    cates:[],
+    cateid:'',  //分类id
+    current:-1,  //分类id
+
+    CateIndex:-1,
+    cityName:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let address = t.globalData.address || '成都';
+    let region = ['','',address]
+    this.setData({
+      address:address,
+      cityName:address,
+      region:region,
+    })
+    console.log(address,region)
 
+    this.get_lists();
+    this.get_city();
   },
 
   /**
@@ -32,25 +50,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let address = t.globalData.address || '成都';
-    let region = ['','',address]
-    this.setData({
-      address:address,
-      region:region,
-    })
-    console.log(address,region)
 
-    this.get_lists();
   },
   get_lists(){
     var that = this;
-    a.get("line/get_list", {
-     
+    a.post("line/get_list",{
+      city:this.data.cityName,
+      cateid:this.data.cateid
+    },function(e) {
+      if(e.error == 0){
+        that.setData({
+          list:e.list,
+          cates:e.cates
+        })
+      }
+    })
+  },
+  get_city(){
+    var that = this;
+    let page = this.data.page;
+    a.post("line/get_city", {
+      page:page,
+      pagesize:20
     }, function(e) {
       console.log(e);
       if(e.error == 0){
         that.setData({
-          list:e.list
+          city:e.list
         })
       }
     })
@@ -58,9 +84,34 @@ Page({
   // 选择省市区
   bindRegionChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
+    let region = e.detail.value;
+    let cityName = region[1];
     this.setData({
-      region: e.detail.value
+      region: region,
+      cityName:cityName
     })
+    
+    this.get_lists();
+  },
+  changeNav(e){
+    let index = e.currentTarget.dataset.index;
+    let id = e.currentTarget.dataset.id;
+    this.setData({
+      current:index,
+      cateid:id,
+    })
+    
+    this.get_lists();
+  },
+  changeCate(e){
+    let index = e.currentTarget.dataset.index;
+    let cityName = this.data.city[index].city;
+    this.setData({
+      CateIndex:index,
+      cityName:cityName,
+    })
+    
+    this.get_lists();
   },
   //线路详情
   gotoDetail(e){

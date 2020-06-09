@@ -41,6 +41,7 @@
         <view class="flex button-left" bindtap="collections" >
             <image  class="collections-image"  wx:if="{{article.collect == 1 }}"  src="/static/images/icon/collections.png"></image>
             <image class="collections-image"  wx:else src="/static/images/icon/collections_no.png"></image>
+            <text class="{{article.collect == 1  ?'collection-active':''}}">收藏</text>
             <!-- <image src="/static/images/icon/see.png"></image>
             <text>{{article.readnum}}</text> -->
         </view>

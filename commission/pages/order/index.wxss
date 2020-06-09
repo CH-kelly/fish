@@ -31,3 +31,10 @@
 .fui-cell-group.toggleSend-group .fui-cell .fui-cell-remark::after {
     transform: rotate(135deg);
 }
+
+.new-group-item{
+    margin: 0 30rpx;
+    border-radius: 20rpx;
+    background: #fff;
+
+}

@@ -58,7 +58,22 @@ Page({
     },
     select: function(s) {
         var a = t.pdata(s).index;
-        e.setCache("orderAddress", this.data.list[a], 30), wx.navigateBack();
+        var list = this.data.list;
+        list.forEach((item,index)=>{
+            if(index == a){
+                item.isdefault = 1;
+            }else{
+                item.isdefault = 0;
+            }
+        })
+        this.setData({
+            list:list
+        })
+        let item = list[a];
+        e.setCache("orderAddress", item, 30);
+        setTimeout(() => {
+            wx.navigateBack()
+        }, 1000);
     },
     searchlist: function(e) {
         var s = this, a = e.detail.value;

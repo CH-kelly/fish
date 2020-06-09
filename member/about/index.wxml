@@ -1,15 +1,15 @@
-<view>
+<view class="{{type == 2? 'background' : ''}}">
 <!-- 联系我们 -->
   <block wx:if="{{type == 1}}">
     <view class="about">
       <view class="about-item">
           <image class="about-phone"  src="/static/images/icon/phone.png"></image>
-          <text bindtap="copyPhone">客服热线：0862-8565444</text>
+          <text bindtap="copyPhone">客服热线：{{tel}}</text>
       </view>
       <view class="line"></view>
       <view class="about-item">
           <image class="about-wx" src="/static/images/icon/wx.png"></image>
-          <text  bindtap="copyWx">客服微信：wo1856548</text>
+          <text  bindtap="copyWx">客服微信：{{wxchat}}</text>
       </view>
     </view>
     
@@ -23,7 +23,9 @@
   
   <!-- 关于我们 -->
   <block wx:if="{{type == 2}}">
-    <rich-text nodes="关于我们富文本"></rich-text>
+    <view style="padding: 0 30rpx;">
+      <rich-text nodes="{{description}}"></rich-text>
+    </view>
   </block>
 
 </view>

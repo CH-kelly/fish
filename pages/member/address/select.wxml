@@ -35,7 +35,7 @@
             <view class="address-item">
             <view class="fui-list address-item">
                 <view bindtap="select" class="fui-list-media" data-index="{{index}}">
-                    <radio checked="{{item.isdefault>0?true:false}}" class="zoom-70" color="#fd5454" name="default"></radio>
+                    <radio checked="{{item.isdefault>0?true:false}}" class="zoom-70" color="#01D6C0" name="default"></radio>
                 </view>
                 <view bindtap="select" class="fui-list-inner" data-index="{{index}}">
                     <view class="title">
@@ -44,11 +44,15 @@
                     </view>
                     <view class="text">{{item.province}}{{item.city}}{{item.area}} {{item.address}}</view>
                 </view>
-                <navigator class="fui-list-angle" hoverClass="none" openType="redirect" url="/pages/member/address/post?id={{item.id}}&type=order">
+                <navigator  class="flex new-edit" hoverClass="none" openType="navigate" url="/pages/member/address/post?id={{item.id}}&type=member">
+                    <image class="btn-edit-icon" src="/static/images/icon/edit.png"></image>
+                    <text>编辑</text>
+                </navigator>
+                <!-- <navigator class="fui-list-angle" hoverClass="none" openType="redirect" url="/pages/member/address/post?id={{item.id}}&type=order">
                     <view class="fui-cell-icon">
                         <text class="icox icox-icon_huida_tianxiebtn" style="font-size: 48rpx;color: #666;"></text>
                     </view>
-                </navigator>
+                </navigator> -->
             </view>
             </view>
         </view>

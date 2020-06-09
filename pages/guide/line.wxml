@@ -14,40 +14,37 @@
     <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
       <view class="flex nav-left" >
           <image class="left-address" src="/static/images/icon/address_1.png"></image>
-          <text>{{region[2]}}</text>
+          <text>{{cityName}}</text>
           <image  class="left-down" src="/static/images/icon/down_1.png"></image>
       </view>
     </picker>
     <view class="nav-right">
-      <text style="margin-right: 40rpx;">常规导游</text>
-      <text>车兼导游</text>
+      <scroll-view scroll-x  >
+        <block wx:for="{{cates}}" wx:key="index">
+          <text style="margin-right: 40rpx;"
+           class="{{current==index?'cate-active':''}}"
+           bindtap="changeNav" data-index="{{index}}"
+           data-id="{{item.id}}"
+           >{{item.catename}}</text>
+        </block>
+      <!-- <text>车兼导游</text> -->
+      </scroll-view>
     </view>
   </view>
 
 
-  <view class="flex category">
+  <view class="flex category" wx:if="{{city.length>0}}">
     <scroll-view scroll-x  >
       <view class="flex" style="justify-content: flex-start;">
-        <view class="category-item">
-          <image src="/static/images/guide/cate.png"></image>
-          <text>三亚</text>
-        </view>
-        <view class="category-item">
-          <image src="/static/images/guide/cate.png"></image>
-          <text>三亚</text>
-        </view>
-        <view class="category-item">
-          <image src="/static/images/guide/cate.png"></image>
-          <text>三亚</text>
-        </view>
-        <view class="category-item">
-          <image src="/static/images/guide/cate.png"></image>
-          <text>三亚</text>
-        </view>
-        <view class="category-item">
-          <image src="/static/images/guide/cate.png"></image>
-          <text>三亚</text>
-        </view>
+        <block wx:for="{{city}}" wx:key="index">
+          <view class="category-item {{CateIndex==index?'category-active':''}}"   
+           bindtap="changeCate" data-index="{{index}}"
+
+          >
+            <image src="{{item.thumb}}"></image>
+            <text>{{item.city}}</text>
+          </view>
+        </block>
       </view>
     </scroll-view>
   </view>
@@ -74,7 +71,7 @@
         </view>
       </view>
       <view class="line"></view>
-      <view class="flex top"  bindtap="gotoGuDetail" data-id="{{item.merchid}}">
+      <view class="flex top"  wx:if="{{item.logo !=''}}"  bindtap="gotoGuDetail" data-id="{{item.merchid}}">
         <view class="flex info">
           <image src="{{item.logo}}"></image>
           <view class="nickname">

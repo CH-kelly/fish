@@ -153,7 +153,8 @@ Page({
             iphonexnavbar: "",
             paddingb: ""
         }), s && (this.setData({
-            "list.address": s
+            "list.address": s,
+            "address": s
         }), i.caculate(i.data.list)), d && this.setData({
             "list.carrierInfo": d,
             "list.storeInfo": d
