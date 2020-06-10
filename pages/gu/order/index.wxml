@@ -2,46 +2,69 @@
 <view class="page navbar order" wx:if="{{show}}">
     <scroll-view class="fui-tab-scroll fixed " scrollX="true" style="overflow-x:scroll">
         <view class="flex">
-            <view bindtap="selected" class="item {{status=='0'?'active':''}}" data-type="0">待出行</view>
-            <view bindtap="selected" class="item {{status=='1'?'active':''}}" data-type="1">进行中</view>
-            <view bindtap="selected" class="item {{status=='2'?'active':''}}" data-type="2">已完成</view>
-            <view bindtap="selected" class="item {{status=='3'?'active':''}}" data-type="3">待点评</view>
+            <view bindtap="selected" class="item {{status==''?'active':''}}" data-type="">全部</view>
+            <view bindtap="selected" class="item {{status=='0'?'active':''}}" data-type="0">未付款</view>
+            <view bindtap="selected" class="item {{status=='1'?'active':''}}" data-type="1">待出行</view>
+            <view bindtap="selected" class="item {{status=='2'?'active':''}}" data-type="2">进行中</view>
+            <view bindtap="selected" class="item {{status=='3'?'active':''}}" data-type="3">已完成</view>
+            <view bindtap="selected" class="item {{status=='-1'?'active':''}}" data-type="-1">已关闭</view>
         </view>
     </scroll-view>
-    <view class="contain" wx:if="{{list.length!=0}}">
+    <view class="contain" wx:if="{{list.length!=0}}" style="margin-top: 90rpx;">
         <view class="fui-list-group noclick" wx:for="{{list}}" wx:key="key">
             <view class="address-item">
-                <navigator hoverClass="none" openType="navigate" url="/pages/order/detail/index?id={{item.id}}">
-                   <block wx:for="{{item.nogift}}" wx:for-index="key" wx:for-item="val" wx:key="key" >
+                    <block >
                         <view class="flex top">
-                            <image class="input-image" src="{{val.thumb}}"></image>
+                            <image class="input-image" src="{{item.thumb}}"></image>
                             <view class="flex title">
-                                <text class="title-h1">{{val.title}}</text>
-                                <view class="flex" style="width:100%;margin-top: 55rpx;">
+                                <text class="title-h1">{{item.title}}</text>
+                                <view class="flex " style="width: 100%;">
                                     <text class="price">¥{{item.price}}</text>
-                                    <view wx:if="{{status =='1'}}" class="button payment">确认完成</view>
-                                    <text wx:if="{{status =='2'}}"  class="go-evaluate">去评价 ></text>
-                                    <text wx:if="{{status =='3'}}"  class="new-completed">已完成</text>
+                                    <view class="button cancel" style="margin-top: 55rpx;">
+                                        <picker bindchange="cancel" data-orderid="{{item.id}}" range="{{cancel}}" value="{{cancelindex}}">取消订单</picker>
+                                    </view>
+                                    <!-- <view class="button cancel" wx:if="{{item.cancancel}}">
+                                        <picker bindchange="cancel" data-orderid="{{item.id}}" range="{{cancel}}" value="{{cancelindex}}">取消订单</picker>
+                                    </view> -->
+                                    <navigator class="button  payment" openType="navigate" url="/pages/order/pay/index?id={{item.id}}"
+                                     wx:if="{{item.canpay}}">
+                                        去付款
+                                    </navigator>
+                                    <view bindtap="delete" class="button cancel"  data-orderid="{{item.id}}" data-type="1" wx:if="{{item.candelete}}">
+                                        删除订单
+                                    </view>
+                                    <navigator  class="button-cancomment2"  openType="navigate" url="/pages/order/comment/index?type=1&id={{item.id}}" 
+                                    wx:if="{{item.cancomment2}}">
+                                    追加评价
+                                    </navigator>
+                                    <navigator  class="button-cancomment2"  openType="navigate" url="/pages/order/comment/index?type=1&id={{item.id}}" 
+                                    wx:if="{{item.cancomment}}">
+                                        评价
+                                    </navigator>
+                                    <view bindtap="finish" class="order-button"   data-orderid="{{item.id}}" 
+                                    wx:if="{{item.cancomplete&&item.iscycelbuy!=1}}" >确认完成</view>
+
                                 </view>
-                                <!-- <text class="number">共{{item.goods[0].goods.length}}个商品</text> -->
                             </view>
                         </view>
                    </block>
                    <view class="line"></view>
-                   <view class="flex button-bottom">
-                    <view class="flex button-left">
-                        <image class="button-image" src="/static/images/guide/avatar1.png"></image>
-                        <text>槛外人</text>
-                        <!-- <text>合计：</text> -->
-                        <!-- <text class="all-price">¥{{item.price}}</text> -->
-                    </view>
-                    <view class="flex button-right">
-                        <text>18483256879</text>
-                    </view>
-                   </view>
-                </navigator>
+                   <navigator hoverClass="none" openType="navigate" url="/pages/order/detail/index?id={{item.id}}">
+                   
+                        <view class="flex button-bottom">
+                            <view class="flex button-left">
+                                <image src="{{item.merchlogo}}"></image>
+                                <text>{{item.merchname}}</text>
+                            </view>
+                            <view class="flex button-right">
+                                {{item.merchmobile}}
+                            </view>
+                        </view>
+                   
+                    </navigator>
             </view>
         </view>
+    
     </view>
     <view class="center" wx:if="{{list.length==0&&empty}}">
         <view class="empty">

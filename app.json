@@ -132,6 +132,7 @@
         "success/index",
         "order/index",
         "buy/index",
+        "order/pay",
         "introduction/index"
       ]
     },

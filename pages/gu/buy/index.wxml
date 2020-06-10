@@ -1,47 +1,88 @@
 <view class="background">
-  <v-input>
-    <text style="width:26%">出发地址：</text>
-    <input style="width:74%" type="text" class="input-item" maxlength="100" placeholder="" bindinput="inputAddress"  />
-  </v-input>
 
-  <v-input>
-    <text style="width:26%">联系电话：</text>
-    <input  style="width:74%" type="number" class="input-item" maxlength="11" placeholder="" bindinput="inputPhone"  />
-  </v-input>
+<scroll-view  scroll-y class="scroll-view">
 
-  <v-input>
-    <view class="flex">
-      <image class="input-image" src="{{list.thumb}}"></image>
-      <view class="flex title">
-        <text class="title-h1">{{list.title}}</text>
-        <text class="price">¥{{list.marketprice}}</text>
-      </view>
-    </view>
-  </v-input>
 
-  <v-input>
-    <view style="width: 100%;">
-      <view class="settlement">结算</view>
-      <view class="flex settlement-item">
-        <text class="total">订单总额：</text>
-        <text class="total-price">¥{{list.marketprice}}</text>
-      </view>
-      <view class="flex settlement-item" style="margin-top:20rpx">
-        <text class="total">需支付：</text>
-        <text class="total-price">¥{{list.marketprice}}</text>
-      </view>
-    </view>
-  </v-input>
+  <view>
+  
+    <v-input>
+        <text style="width:26%">出发城市：</text>
+        <picker style="width:74%"  mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+            <view class="picker">
+              当前选择：{{region[0]}}  {{region[1]}}  {{region[2]}}
+            </view>
+        </picker>
+      </v-input>
+      <v-input>
+        <text style="width:26%">出发地址：</text>
+        <input style="width:74%" type="text" class="input-item" maxlength="100" 
+        placeholder="请输入出发地址" placeholder-class="placeholder-class" bindinput="inputAddress"  />
+      </v-input>
+      <v-input>
+        <text style="width:26%">联系人：</text>
+        <input style="width:74%" type="text" class="input-item" maxlength="100" placeholder="请输入联系人" placeholder-class="placeholder-class" 
+        bindinput="inputRealname"  />
+      </v-input>
+      <v-input>
+        <text style="width:26%">联系电话：</text>
+        <input  style="width:74%" type="number" class="input-item" maxlength="11" placeholder="请输入联系电话" placeholder-class="placeholder-class" 
+        bindinput="inputPhone"  />
+      </v-input>
 
-  <v-input>
-    <view class="flex" style="width:100%">
-        <text>支付方式：</text>
-        <view class="flex pay">
-          <image src="/static/images/wx_pay.png"></image>
-          <text>微信支付</text>
+
+      <v-input>
+        <view class="flex" style="width: 100%;">
+          <image class="input-image" src="{{list.thumb}}"></image>
+          <view class="flex title" style="width: 80%;">
+            <text class="title-h1">{{list.title}}</text>
+            <view class="flex" style="width: 100%;">
+              <text class="price">¥{{list.marketprice}}</text>
+              <view class="flex number">
+                <view class="number-button reduce" bindtap="{{linenum > 1 ? 'reduce':''}}"  >-</view>
+                <view class="number-button total">{{linenum}}</view>
+                <view class="number-button plus"  bindtap="{{linenum <10 ? 'plus':''}}" >+</view>
+              </view>
+            </view>
+          </view>
         </view>
-    </view>
-  </v-input>
+      </v-input>
+
+      <v-input>
+        <view style="width: 100%;">
+          <view class="settlement">结算</view>
+          <view class="flex settlement-item">
+            <text class="total">订单总额：</text>
+            <text class="total-price">¥{{list.marketprice}}</text>
+          </view>
+          <view class="flex settlement-item" style="margin-top:20rpx">
+            <text class="total">需支付：</text>
+            <text class="total-price">¥{{list.marketprice}}</text>
+          </view>
+        </view>
+      </v-input>
+
+      <v-input>
+        <view style="width: 100%;">
+          <view class="settlement">订单备注</view>
+          <view class="flex settlement-item">
+            <textarea class="total-price" placeholder="请输入订单备注"  maxlength="200"   placeholder-class="placeholder-class"  bindinput="inputRemark"  />
+          </view>
+        </view>
+      </v-input>
+      <v-input>
+        <view class="flex" style="width:100%">
+            <text>支付方式：</text>
+            <view class="flex pay">
+              <image src="/static/images/wx_pay.png"></image>
+              <text>微信支付</text>
+            </view>
+        </view>
+      </v-input>
+
+  
+  </view>
+
+</scroll-view>
 
   <view class="button">
     <view class="flex" style="padding: 0 30rpx;height: 100rpx;">
@@ -49,9 +90,12 @@
         <text>需支付：</text>
         <text>¥{{list.marketprice}}</text>
       </view>
-      <view class="buy" bindtap="buy">去支付</view>
+      <view class="buy" bindtap="buyOrder">去支付</view>
     </view>
   </view>
 
 
 </view>
+  <view class="fui-toast {{FoxUIToast.show?'in':'out'}}" style="bottom: 300rpx;">
+    <view class="text">{{FoxUIToast.text}}</view>
+  </view>

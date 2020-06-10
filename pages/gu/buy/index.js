@@ -1,7 +1,8 @@
 // pages/gu//buy/index.js
 var t = getApp(),
 a = t.requirejs("core"),
-e = t.requirejs("jquery");
+e = t.requirejs("jquery"),
+i = t.requirejs("foxui");
 Page({
 
   /**
@@ -11,8 +12,16 @@ Page({
 
     id:0,
     list:{},
-    address:'',
+    address:'',   //详细地址
     phone:'',
+    linenum:1,    //线路数量
+    realname:'',  //联系人
+    province:'',  //省市区
+    city:'',  //省市区
+    district:'',  //省市区
+    remark:'',  //订单备注
+    price:'', //原价
+    region:[],
   },
 
   /**
@@ -24,7 +33,34 @@ Page({
       id:options.id || 0
     })
   },
-
+  // 加
+  reduce(){
+    let linenum = this.data.linenum - 1;
+    if(linenum<0){
+      wx.showToast({
+        title: '最少1人',
+      })
+      return 
+    }
+    let marketprice = this.data.price;
+    let price = (marketprice*linenum).toFixed(2)
+    this.setData({
+      linenum:linenum,
+      [`list.marketprice`] : price
+    })
+    
+  },
+  // 加
+  plus(){
+    let linenum = this.data.linenum + 1;
+    let marketprice = this.data.price;
+    let price = (marketprice*linenum).toFixed(2)
+    this.setData({
+      linenum:linenum,
+      [`list.marketprice`]: price
+    })
+    
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -48,33 +84,64 @@ Page({
       console.log(e);
       if(e.error==0){
         that.setData({
-          list:e.line
+          list:e.line,
+          price:e.line.marketprice
         })
       }
 
     })
   },
   inputAddress(e){
-    console.log(e);
     this.setData({
-      address:0,
+      address:e.detail.value,
     })
   },
   inputPhone(e){
-    console.log(e);
     this.setData({
-      phone:0,
+      phone:e.detail.value,
     })
   },
-  buy(){
+  inputRealname(e){
+    this.setData({
+      realname:e.detail.value,
+    })
+  },
+  inputRemark(e){
+    this.setData({
+      remark:e.detail.value,
+    })
+  },
+  bindRegionChange: function (e) {
+    let region = e.detail.value
+    this.setData({
+      region: region,
+      province:region[0],
+      city:region[1],
+      district:region[2],
+    })
+  },
+  buyOrder(){
+    var e = this;
     let address = this.data.address;
+    let realname = this.data.realname;
     let phone = this.data.phone;
     let id = this.data.id;
+    let remark = this.data.remark;
+    let province = this.data.province;
+    let city = this.data.city;
+    let district = this.data.district;
+    if(!province && !city && !district){
+      return void i.toast(e, "请选择出发城市"); 
+    }
+
     if(!id){
       return void i.toast(e, "请选择线路"); 
     }
     if(!address){
       return void i.toast(e, "请输入出发地址"); 
+    }
+    if(!realname){
+      return void i.toast(e, "请输入联系人"); 
     }
     if(!phone){
       return void i.toast(e, "请输入手机号码"); 
@@ -86,9 +153,29 @@ Page({
     let data={
       id:id,
       address:address,
-      phone:phone
+      mobile:phone,
+      remark:remark,
+      province:province,
+      city:city,
+      district:district,
+      realname:realname,
+      linenum:this.data.linenum,
+
     };
-    console.log(data);
+    a.post("line/order/create_order",data, function(t) {
+      console.log(t);
+      if(t.error ==0 ){
+        i.toast(e, "支付成功，请等待商家接单！");
+        setTimeout(() => {
+          wx.navigateTo({
+            url: "/pages/order/pay/index?id=" + t.orderid,
+          })
+        }, 1000);
+      }else{
+        return void i.toast(e, "订单创建失败"); 
+      }
+    }, !0, !0)
+
   },
   /**
    * 生命周期函数--监听页面隐藏

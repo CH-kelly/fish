@@ -3,7 +3,7 @@ var t = getApp(), a = t.requirejs("core"), e = t.requirejs("biz/order");
 Page({
     data: {
         icons: t.requirejs("icons"),
-        status: "0",
+        status: "",
         list: [],
         page: 1,
         code: !1,
@@ -17,7 +17,7 @@ Page({
             success: function(s) {
                 s.authSetting["scope.userInfo"] && (e.setData({
                     options: a,
-                    status: a.status || "0",
+                    status: a.status || "",
                     imgUrl: t.globalData.approot
                 }), t.url(a), e.get_list());
             }
@@ -27,7 +27,7 @@ Page({
         var e = this;
         e.setData({
             loading: !0,
-        }), a.get("order/get_list", {
+        }), a.get("line/order", {
             page: e.data.page,
             status: e.data.status,
             merchid: 0
@@ -76,16 +76,35 @@ Page({
     },
     cancel: function(t) {
         var s = a.data(t).orderid;
-        e.cancel(s, t.detail.value, "/pages/order/index?status=" + this.data.status);
+        let index = t.detail.value;
+        let cancel_reason = this.data.cancel[index];
+        console.log(s, index,cancel_reason);
+        a.post("line/order/cancel", {
+            id: s,
+            cancel_reason:cancel_reason
+        }, function(t) {
+            console.log(t);
+        }, !0);
+        // e.cancel(s, t.detail.value, "/pages/gu/order/index?status=" + this.data.status);
     },
     delete: function(t) {
-        var s = a.data(t).type, i = a.data(t).orderid;
-        e.delete(i, s, "/pages/order/index", this);
+        var i = a.data(t).orderid;
+        a.post("line/order/delete", {
+            id: i
+        }, function(t) {
+            console.log(t);
+        }, !0);
+        // e.delete(i, s, "/pages/gu/order/index", this);
     },
     finish: function(t) {
         a.data(t).type;
         var s = a.data(t).orderid;
-        e.finish(s, "/pages/order/index");
+        a.post("line/order/finish", {
+            id: s
+        }, function(t) {
+            console.log(t);
+        }, !0);
+        // e.finish(s, "/pages/gu/order/index");
     },
     onShareAppMessage: function() {
         return a.onShareAppMessage();

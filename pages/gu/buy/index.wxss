@@ -82,3 +82,46 @@ color:rgba(24,188,103,1);
   color:rgba(255,255,255,1);
   border-radius: 16rpx;
 }
+
+
+/* 购买份数 */
+.number{
+  margin-top: 88rpx;
+  width: 150rpx;
+  height: 50rpx;
+}
+.number-button{
+  width: 33%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.reduce{
+  border-radius: 10rpx 0  0 10rpx;
+  background: #f3f3f3;
+}
+.plus{
+  border-radius: 0 10rpx 10rpx 0;
+  background: #f3f3f3;
+}
+.placeholder-class{
+  font-size: 28rpx;
+font-weight: 500;
+color: rgba(153,153,153,1);
+
+}
+.picker{
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(0,0,0,1);
+
+}
+
+.scroll-view{
+  height: calc(100vh - 100rpx);
+}

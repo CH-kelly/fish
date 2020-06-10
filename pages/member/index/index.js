@@ -25,6 +25,11 @@ Page({
             options: t
         });
     },
+    gotoAuth(){
+        wx.navigateTo({
+          url: '/pages/auth/index',
+        })
+    },
     gotoAdmin(){
         if(this.data.merchstatus == 0){
             this.showMessage('待入驻');

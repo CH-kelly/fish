@@ -1,4 +1,3 @@
-@import "../../order/cycle/order.wxss";
 .page{
   background-color: #f3f3f3;
 }
@@ -18,7 +17,7 @@
   justify-content: flex-start;
 }
 .title{
-  width: 64%;
+  width: 60%;
   margin-left: 30rpx;
   flex-direction: column;
   align-items: flex-start;
@@ -34,7 +33,7 @@ font-weight:bold;
 color:rgba(34,34,34,1);
 }
 .price{
-  /* margin-top: 55rpx; */
+  margin-top: 55rpx;
   font-size:36rpx;
   font-weight:bold;
   color:rgba(231,41,72,1);
@@ -48,7 +47,6 @@ color:rgba(34,34,34,1);
 }
 .line{
   margin-top: 30rpx;
-
   width: 100%;
   height: 2rpx;
 background:rgba(226,226,226,1);
@@ -59,10 +57,23 @@ background:rgba(226,226,226,1);
 .button-left{
   width: 60%;
   justify-content: flex-start;
-  /* align-items: baseline; */
+  align-items: center;
+}
+.button-left>image{
+  width:60rpx;
+  height:60rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+
 }
 .button-left>text{
-  font-size:34rpx;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(0,0,0,1);
+}
+.button-right{
+  font-size:28rpx;
   font-family:PingFang SC;
   font-weight:500;
   color:rgba(0,0,0,1);
@@ -73,41 +84,43 @@ background:rgba(226,226,226,1);
   font-weight:bold !important;
   color:rgba(231,41,72,1) !important;
 }
-.button-right>text{
-  font-size:34rpx;
-  font-family:PingFang SC;
-  font-weight:500;
-  color:rgba(0,0,0,1);
+.scroll-view{
+  height: calc(100vh - 80rpx);
 }
-.payment{
-  width:140rpx;
+
+.order-button{
+  width:150rpx;
   height:60rpx;
+  background:rgba(231,41,72,1);
   border-radius:30rpx;
-  
-  text-align: center;
+
   font-size:28rpx;
   font-family:PingFang SC;
   font-weight:500;
-  line-height:60rpx;
-  background:rgba(231,41,72,1);
   color:rgba(255,255,255,1);
-
 }
-.button-image{
-    width:60rpx;
-  height:60rpx;
-  margin-right: 20rpx;
-}
-.go-evaluate{
-    
+.button-cancomment2{
   font-size:30rpx;
   font-family:PingFang SC;
   font-weight:500;
   color:rgba(244,106,38,1);
 }
-
-.new-completed{
+.button-finish{
   font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+}
+.cancel{
+  width:140rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border:2rpx solid rgba(199,199,199,1);
+  border-radius:30rpx;
+
+  
+  font-size:28rpx;
   font-family:PingFang SC;
   font-weight:500;
   color:rgba(153,153,153,1);

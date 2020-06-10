@@ -32,7 +32,11 @@
                 </view>
             </view>
             <view class="new-member-right">
-                <image src="{{member.avatar||'/static/images/noface.png'}}"></image>
+               <!-- /pages/auth/index -->
+                <image  wx:if="{{member.avatar}}" src="{{member.avatar}}" ></image>
+               
+                <image wx:else  src="/static/images/noface.png" bindtap="gotoAuth"  ></image>
+               
             </view>
         </view>
         <view class="member_header"></view>
@@ -60,7 +64,7 @@
         </view>
         <view class="fui-cell-group fui-cell-click new-fui-cell">
             <view  class="address-item">
-                <navigator class="fui-cell" hoverClass="none" openType="navigate" url="/pages/order/index">
+                <navigator class="fui-cell" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=0">
                     <view class="fui-cell-text">导游订单</view>
                 </navigator>
                 <view class="flex fui-icon-group col-{{iscycelbuy?5:4}} nomargin">
