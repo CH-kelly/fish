@@ -129,3 +129,8 @@ background:rgba(226,226,226,1);
   font-weight:500;
   color:rgba(153,153,153,1);
 }
+
+.new-buttom{
+  justify-content: flex-end;
+
+}

@@ -1,6 +1,7 @@
 <loading wx:if="{{!show}}">加载中...</loading>
 <import src="/pages/common/diyform_view.wxml"></import>
-<view class="page navbar {{seckill_color}} {{paddingb}}" wx:if="{{show}}">
+<!-- <view class="page navbar {{seckill_color}} {{paddingb}}" wx:if="{{show}}"> -->
+<view class="" wx:if="{{show}}">
 <scroll-view scroll-y class="scroll-view" >
     <view class="background" style="margin-bottom: 40rpx;">
         <v-input>
@@ -15,11 +16,11 @@
             <text>订单编号：</text>
             <text class="flex input-item order-status " 
             bindtap="copyOrderSn"
-            style="color:{{textColor}}">{{order.ordersn}}</text>
+            style="color:{{textColor}}">{{order.ordersn  || order.orderno}}</text>
         </v-input>
         <v-input>
-            <text>出发地址：</text>
-            <text class="input-item">{{address.province}}{{address.city}}{{address.area}}{{address.address}}</text>
+            <text>{{type==1?'出发地址：':'收货地址'}}</text>
+            <text class="input-item">{{address.province}} {{address.city}} {{address.area || address.district}} {{address.address}}</text>
         </v-input>
 
         <v-input>
@@ -37,17 +38,46 @@
             <text class="input-item">{{order.createtime}}</text>
         </v-input> -->
 
-        <v-input>
-            <block wx:for="{{goods}}" wx:key="index">
+        <view wx:if="{{type==1}}">
+            <v-input>
+                <block>
+                    <view class="flex" style="width: 100%;justify-content: flex-start;">
+                        <image class="input-image" src="{{line.thumb}}"></image>
+                        <view class="flex title">
+                            <text class="title-h1">{{line.title}}</text>
+                            <text class="price">¥{{line.marketprice}}</text>
+                        </view>
+                    </view>
+                </block>
+            </v-input>
+            <v-input>
+            <view style="width: 100%;">
+                <view class="settlement">导游信息：</view>
                 <view class="flex" style="width: 100%;justify-content: flex-start;">
-                    <image class="input-image" src="{{item.thumb}}"></image>
+                    <image class="input-image" src="{{merch.logo}}"></image>
                     <view class="flex title">
-                        <text class="title-h1">{{item.title}}</text>
-                        <text class="price">¥{{item.price}}</text>
+                        <text class="title-h1">{{merch.merchname}}</text>
+                        <text style="margin-top: 40rpx;"   bindtap="copyMobile" >{{merch.mobile}}</text>
                     </view>
                 </view>
-            </block>
-        </v-input>
+                
+            </view>
+            
+            </v-input>
+        </view>
+        <view wx:else >
+            <v-input>
+                <block wx:for="{{goods}}" wx:key="index">
+                    <view class="flex" style="width: 100%;justify-content: flex-start;">
+                        <image class="input-image" src="{{item.thumb}}"></image>
+                        <view class="flex title">
+                            <text class="title-h1">{{item.title}}</text>
+                            <text class="price">¥{{item.price}}</text>
+                        </view>
+                    </view>
+                </block>
+            </v-input>
+        </view>
         
 
         <v-input>
@@ -79,16 +109,16 @@
                 <view class="settlement">结算</view>
                 <view class="flex settlement-item">
                     <text class="total">订单总额：</text>
-                    <text class="total-price">¥{{order.goodsprice}}</text>
+                    <text class="total-price">¥{{order.goodsprice || order.price}}</text>
                 </view>
-                <view class="flex settlement-item" style="margin-top:20rpx"  wx:if="{{!order.verifyinfo}}">
+                <view class="flex settlement-item" style="margin-top:20rpx"  wx:if="{{!order.verifyinfo && type==0}}">
                     <text class="total">{{order.city_express_state=='1'?'同城运费':'运费'}}：</text>
                     <text class="total-price" wx:if="{{order.iscycelbuy!=1}}">¥ {{order.dispatchprice}}</text>
                     <text class="total-price" wx:if="{{order.iscycelbuy==1}}">¥ {{order.dispatchprice}}({{order.cycelComboPeriods}}期)</text>
                 </view>
                 <view class="flex settlement-item" style="margin-top:20rpx">
                     <text class="total">需支付：</text>
-                    <text class="total-price">¥{{order.goodsprice}}</text>
+                    <text class="total-price">¥{{order.goodsprice  || order.price}}</text>
                 </view>
             </view>
         </v-input>

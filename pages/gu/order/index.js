@@ -42,7 +42,8 @@ Page({
                 page: e.data.page + 1,
                 list: e.data.list.concat(t.list)
             }), t.list.length < t.pagesize && e.setData({
-                loaded: !0
+                loaded: !0,
+                list: t.list
             })) : a.toast(t.message, "loading");
         }, this.data.show);
     },
@@ -69,6 +70,11 @@ Page({
             }) : a.alert(t.message);
         }, !0);
     },
+    // copyMobile(e){
+    //     let index = e.data(t).index;
+    //     let mobile = this.data.list[index].merchmobile
+    //     getApp().copyContent(mobile)
+    // },
     close: function() {
         this.setData({
             code: !1
@@ -79,9 +85,12 @@ Page({
         let index = t.detail.value;
         let cancel_reason = this.data.cancel[index];
         let that = this;
+        that.setData({
+            page:0
+        })
         a.post("line/order/cancel", {
             id: s,
-            cancel_reason:cancel_reason
+            cancelreason:cancel_reason
         }, function(t) {
             if(t.error == 0){
                 that.get_list();
@@ -96,6 +105,10 @@ Page({
     },
     delete: function(t) {
         var i = a.data(t).orderid;
+        var that = this;
+        that.setData({
+            page:0
+        })
         a.post("line/order/delete", {
             id: i
         }, function(t) {
@@ -113,6 +126,9 @@ Page({
     finish: function(t) {
         a.data(t).type;
         var s = a.data(t).orderid;
+        that.setData({
+            page:0
+        })
         a.post("line/order/finish", {
             id: s
         }, function(t) {

@@ -153,7 +153,9 @@ App({
             success (res) {
               wx.getClipboardData({
                 success (res) {
-                  console.log(res.data) // data
+                //   wx.showToast({
+                //     title: '复制成功',
+                //   })
                 }
               })
             }

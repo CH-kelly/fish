@@ -11,11 +11,16 @@ Page({
         city_express_state: 0,
         textColor:'#01D6C0',
         order:{},
-        goods:[]
+        goods:[],
+        type:0,     //1导游订单  0商品订单
+        orderid:0,
+        line:{},     //线路
     },
     onLoad: function(t) {
         this.setData({
-            options: t
+            options: t,
+            type:t.type || 0,
+            orderid:t.id
         }), a.url(t);
     },
     onShow: function() {
@@ -31,35 +36,62 @@ Page({
         });
     },
     copyOrderSn(){
-        let ordersn = this.data.order.ordersn
-        a.copyContent(ordersn)
+        let ordersn = this.data.order.ordersn || this.data.order.orderno
+        getApp().copyContent(ordersn)
+    },
+    copyMobile(){
+        let mobile = this.data.merch.mobile
+        getApp().copyContent(mobile)
     },
     get_list: function() {
         var a = this;
-        t.get("order/detail", a.data.options, function(e) {
-            if (e.error > 0 && (5e4 != e.error && t.toast(e.message, "loading"), wx.redirectTo({
-                url: "/pages/order/index"
-            })), null != e.nogift[0].fullbackgoods) {
-                var i = e.nogift[0].fullbackgoods.fullbackratio, o = e.nogift[0].fullbackgoods.maxallfullbackallratio;
-                i = Math.round(i), o = Math.round(o);
-            }
-            if (0 == e.error) {
-                e.show = !0;
-                var n = Array.isArray(e.ordervirtual);
-                a.setData(e), a.setData({
-                    ordervirtualtype: n,
-                    fullbackgoods: e.nogift[0].fullbackgoods,
-                    maxallfullbackallratio: o,
-                    fullbackratio: i,
-                    invoice: e.order.invoicename,
-                    membercard_info: e.membercard_info,
-                    order:e.order,
-                    goods:e.goods,
-                    address:e.address,
-
-                });
-            }
-        });
+        var type = this.data.type;
+        if(type == 1){
+            t.get("line/order/details", {orderid:this.data.orderid}, function(e) {
+                if (0 == e.error) {
+                    e.show = !0;
+                    var address = {
+                        province:e.order.province,
+                        district:e.order.district,
+                        city:e.order.city,
+                        address:e.order.address,
+                        realname:e.order.realname,
+                        mobile:e.order.mobile
+                    }
+                    a.setData(e),a.setData({
+                        line:e.line,
+                        merch:e.merch,
+                        order:e.order,
+                        address:address,
+                    });
+                }
+            });
+        }else{
+            t.get("order/detail", a.data.options, function(e) {
+                if (e.error > 0 && (5e4 != e.error && t.toast(e.message, "loading"), wx.redirectTo({
+                    url: "/pages/order/index"
+                })), null != e.nogift[0].fullbackgoods) {
+                    var i = e.nogift[0].fullbackgoods.fullbackratio, o = e.nogift[0].fullbackgoods.maxallfullbackallratio;
+                    i = Math.round(i), o = Math.round(o);
+                }
+                if (0 == e.error) {
+                    e.show = !0;
+                    var n = Array.isArray(e.ordervirtual);
+                    a.setData(e), a.setData({
+                        ordervirtualtype: n,
+                        fullbackgoods: e.nogift[0].fullbackgoods,
+                        maxallfullbackallratio: o,
+                        fullbackratio: i,
+                        invoice: e.order.invoicename,
+                        membercard_info: e.membercard_info,
+                        order:e.order,
+                        goods:e.goods,
+                        address:e.address,
+    
+                    });
+                }
+            });
+        }
     },
     more: function() {
         this.setData({

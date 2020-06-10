@@ -167,8 +167,9 @@ Page({
       if(t.error ==0 ){
         i.toast(e, "支付成功，请等待商家接单！");
         setTimeout(() => {
+          //  url: "/pages/order/pay/index?id=" + t.orderid,
           wx.navigateTo({
-            url: "/pages/order/pay/index?id=" + t.orderid,
+            url: "../order/pay?id=" + t.orderid,
           })
         }, 1000);
       }else{

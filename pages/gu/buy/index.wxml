@@ -3,7 +3,7 @@
 <scroll-view  scroll-y class="scroll-view">
 
 
-  <view>
+  <view style="margin-bottom: 30rpx;">
   
     <v-input>
         <text style="width:26%">出发城市：</text>
