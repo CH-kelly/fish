@@ -1,3 +1,5 @@
+/* @import "/pages/order/cycle//order.wxss"; */
+@import "../../order/cycle/order.wxss";
 .page{
   background-color: #f3f3f3;
 }
@@ -91,6 +93,8 @@ background:rgba(226,226,226,1);
 .order-button{
   width:150rpx;
   height:60rpx;
+  line-height: 60rpx;
+  text-align: center;
   background:rgba(231,41,72,1);
   border-radius:30rpx;
 

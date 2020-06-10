@@ -20,36 +20,39 @@
                                 <text class="title-h1">{{item.title}}</text>
                                 <view class="flex " style="width: 100%;">
                                     <text class="price">¥{{item.price}}</text>
-                                    <view class="button cancel" style="margin-top: 55rpx;">
-                                        <picker bindchange="cancel" data-orderid="{{item.id}}" range="{{cancel}}" value="{{cancelindex}}">取消订单</picker>
-                                    </view>
-                                    <!-- <view class="button cancel" wx:if="{{item.cancancel}}">
+                                    <!-- <view class="button cancel" style="margin-top: 55rpx;">
                                         <picker bindchange="cancel" data-orderid="{{item.id}}" range="{{cancel}}" value="{{cancelindex}}">取消订单</picker>
                                     </view> -->
-                                    <navigator class="button  payment" openType="navigate" url="/pages/order/pay/index?id={{item.id}}"
-                                     wx:if="{{item.canpay}}">
-                                        去付款
-                                    </navigator>
-                                    <view bindtap="delete" class="button cancel"  data-orderid="{{item.id}}" data-type="1" wx:if="{{item.candelete}}">
-                                        删除订单
+                                    <view style="margin-top: 55rpx;">
+                                    
+                                        <view class="button cancel" wx:if="{{item.cancancel}}">
+                                            <picker bindchange="cancel" data-orderid="{{item.id}}" range="{{cancel}}" value="{{cancelindex}}">取消订单</picker>
+                                        </view>
+                                        <navigator class="order-button" openType="navigate" url="/pages/order/pay/index?id={{item.id}}"
+                                        wx:if="{{item.canpay}}" >
+                                            去付款
+                                        </navigator>
+                                        <view bindtap="delete" class="button cancel"  data-orderid="{{item.id}}" data-type="1" wx:if="{{item.candelete}}" >
+                                            删除订单
+                                        </view>
+                                        <navigator  class="button-cancomment2"  openType="navigate" url="/pages/order/comment/index?type=1&id={{item.id}}" 
+                                        wx:if="{{item.cancomment2}}">
+                                        追加评价
+                                        </navigator>
+                                        <navigator  class="button-cancomment2"  openType="navigate" url="/pages/order/comment/index?type=1&id={{item.id}}" 
+                                        wx:if="{{item.cancomment}}">
+                                            评价
+                                        </navigator>
+                                        
+                                        <view bindtap="finish" class="order-button"   data-orderid="{{item.id}}" 
+                                        wx:if="{{item.cancomplete&&item.iscycelbuy!=1}}"  >确认完成</view>
                                     </view>
-                                    <navigator  class="button-cancomment2"  openType="navigate" url="/pages/order/comment/index?type=1&id={{item.id}}" 
-                                    wx:if="{{item.cancomment2}}">
-                                    追加评价
-                                    </navigator>
-                                    <navigator  class="button-cancomment2"  openType="navigate" url="/pages/order/comment/index?type=1&id={{item.id}}" 
-                                    wx:if="{{item.cancomment}}">
-                                        评价
-                                    </navigator>
-                                    <view bindtap="finish" class="order-button"   data-orderid="{{item.id}}" 
-                                    wx:if="{{item.cancomplete&&item.iscycelbuy!=1}}" >确认完成</view>
-
                                 </view>
                             </view>
                         </view>
                    </block>
                    <view class="line"></view>
-                   <navigator hoverClass="none" openType="navigate" url="/pages/order/detail/index?id={{item.id}}">
+                   <navigator hoverClass="none" openType="navigate" url="/pages/order/detail/index?type=1&id={{item.id}}">
                    
                         <view class="flex button-bottom">
                             <view class="flex button-left">
@@ -66,7 +69,7 @@
         </view>
     
     </view>
-    <view class="center" wx:if="{{list.length==0&&empty}}">
+    <view class="center" wx:if="{{list.length==0&&empty}}"  style="margin-top: 90rpx;">
         <view class="empty">
             <image class="light" src="/static/images/icon/nolist.png"></image>
             <view class="text-cancel">您暂时没有任何订单哦！</view>

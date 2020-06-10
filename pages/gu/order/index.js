@@ -78,12 +78,19 @@ Page({
         var s = a.data(t).orderid;
         let index = t.detail.value;
         let cancel_reason = this.data.cancel[index];
-        console.log(s, index,cancel_reason);
+        let that = this;
         a.post("line/order/cancel", {
             id: s,
             cancel_reason:cancel_reason
         }, function(t) {
-            console.log(t);
+            if(t.error == 0){
+                that.get_list();
+            }else{
+                wx.showToast({
+                  title: t.message,
+                  icon:'loading'
+                })
+            }
         }, !0);
         // e.cancel(s, t.detail.value, "/pages/gu/order/index?status=" + this.data.status);
     },
@@ -92,7 +99,14 @@ Page({
         a.post("line/order/delete", {
             id: i
         }, function(t) {
-            console.log(t);
+            if(t.error == 0){
+                that.get_list();
+            }else{
+                wx.showToast({
+                  title: t.message,
+                  icon:'loading'
+                })
+            }
         }, !0);
         // e.delete(i, s, "/pages/gu/order/index", this);
     },
@@ -102,7 +116,14 @@ Page({
         a.post("line/order/finish", {
             id: s
         }, function(t) {
-            console.log(t);
+            if(t.error == 0){
+                that.get_list();
+            }else{
+                wx.showToast({
+                  title: t.message,
+                  icon:'loading'
+                })
+            }
         }, !0);
         // e.finish(s, "/pages/gu/order/index");
     },
