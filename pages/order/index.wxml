@@ -76,7 +76,7 @@
                             <navigator class="button cancel" openType="navigate" wx:if="{{item.cancancelrefund}}">
                                 取消申请
                             </navigator>
-                            <view wx:if="{{item.cancomment==false && item.cancomment2==false}}">
+                            <view class="button cancel "  wx:if="{{item.cancomment==false && item.cancomment2==false&&item.cancancel==false && item.candelete ==false}}">
                                 <navigator class="button cancel " openType="navigate" url="/pages/order/express/index?id={{item.id}}" 
                                 wx:if="{{item.hasexpress&&item.iscycelbuy!=1}}">
                                     查看物流

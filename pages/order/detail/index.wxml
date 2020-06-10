@@ -100,6 +100,15 @@
                     <text class="total">完成时间：</text>
                     <text class="total-price">{{order.finishtime}}</text>
                 </view>
+                
+                <view  wx:if="{{type==1}}" class="flex settlement-item" style="margin-top:20rpx" >
+                    <text class="total">备注：</text>
+                    <text class="total-price">{{order.remark}}</text>
+                </view>
+                <view  wx:if="{{type==1}}" class="flex settlement-item" style="margin-top:20rpx" >
+                    <text class="total">购买数量：</text>
+                    <text class="total-price">{{order.linenum}}</text>
+                </view>
             </view>
         </v-input>
 

@@ -1,6 +1,6 @@
 <loading wx:if="{{!show}}">加载中...</loading>
-<view class="page {{successData.seckill_color}}" wx:if="{{!success&&show}}">
-    <view class="fui-cell-group">
+<view class="page {{successData.seckill_color}}" wx:if="{{!success&&show}}" style="background:#f3f3f3">
+    <view class="fui-cell-group new-cell-group">
         <view class="fui-cell">
             <view class="fui-cell-label">订单编号</view>
             <view class="fui-cell-text textl"></view>
@@ -13,7 +13,7 @@
             </view>
         </view>
     </view>
-    <view class="fui-list-group">
+    <view class="fui-list-group new-cell-group">
         <view bindtap="pay" class="btn btn-danger block" data-type="credit" style="margin-top:1.25rem" wx:if="{{list.credit.success&&list.order.price==0}}">
            确认支付
         </view>

@@ -22,11 +22,11 @@
                 <view class="nickname">{{member.nickname||'未更新用户信息'}}</view>
                 <view class="flex" style="justify-content: flex-start;">
                     <view class="member-left">
-                        <view class="new-member-left-number">12</view>
+                        <view class="new-member-left-number">{{member.statics.cart}}</view>
                         <view class="new-member-left-count">累计出行</view>
                     </view>
                     <view class="member-left">
-                        <view class="new-member-left-number">12</view>
+                        <view class="new-member-left-number">{{member.statics.collect}}</view>
                         <view class="new-member-left-count">收藏</view>
                     </view>
                 </view>
@@ -69,22 +69,22 @@
                 </navigator>
                 <view class="flex fui-icon-group col-{{iscycelbuy?5:4}} nomargin">
                     <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=0">
-                        <view class="badge" wx:if="{{member.statics.order_0>0}}">{{member.statics.order_0}}</view>
+                        <view class="badge" wx:if="{{member.statics.line_1>0}}">{{member.statics.line_1}}</view>
                         <image  class="guide-icon" src="/static/images/icon/guide1.png"></image>
                         <view class="text">待出行</view>
                     </navigator>
                     <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=1">
-                        <view class="badge" wx:if="{{member.statics.order_1>0}}">{{member.statics.order_1}}</view>
+                        <view class="badge" wx:if="{{member.statics.line_2>0}}">{{member.statics.line_2}}</view>
                         <image class="guide-icon" src="/static/images/icon/guide2.png"></image>
                         <view class="text">进行中</view>
                     </navigator>
                     <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=2">
-                        <view class="badge" wx:if="{{member.statics.order_2>0}}">{{member.statics.order_2}}</view>
+                        <view class="badge" wx:if="{{member.statics.line_3>0}}">{{member.statics.line_3}}</view>
                         <image  class="guide-icon" src="/static/images/icon/guide3.png"></image>
                         <view class="text">已完成</view>
                     </navigator>
                     <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=3">
-                        <view class="badge" wx:if="{{member.statics.order_3>0}}">{{member.statics.order_3}}</view>
+                        <view class="badge" wx:if="{{member.statics.line_4>0}}">{{member.statics.line_4}}</view>
                         <image  class="guide-icon" src="/static/images/icon/guide4.png"></image>
                         <view class="text">待点评</view>
                     </navigator>
