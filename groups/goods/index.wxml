@@ -37,13 +37,13 @@
     </view>
     <!-- 拼团列表开始 -->
     <!-- <view class="line"></view> -->
-    <view class="collage-lists" hidden="{{other.length == 0}}">
+    <view class="collage-lists" wx:if="{{isShow==true  && other.length >= 0}}">
         <view class="flex collage-lists-title">
             <text class="collage-title">小伙伴们在开团，可直接参与</text>
             <text class="more" bindtap="teamLists">查看更多></text>
         </view>
         <block wx:for="{{other}}" wx:key="index"> 
-            <block wx:if="{{item.status!='hide'}}">
+            <block wx:if="{{isShow==true  && item.status!='hide' }}">
             <view class="flex collage-lists-item" style="margin: 30rpx 0;" >
                 <view class="flex item-left">
                     <image src="{{item.avatar}}"></image>

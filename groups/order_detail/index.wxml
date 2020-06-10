@@ -7,7 +7,7 @@
 <import src="/pages/common/diyform_view.wxml"></import>
 <block>
     <block wx:if="{{show}}">
-        <view class="page navbar {{seckill_color}} {{paddingb}}">
+        <view class="page navbar {{seckill_color}} {{paddingb}}" style="background: #f3f3f3;">
             <view class="fui-list bg">
                 <view class="row" style="font-size:34rpx">
                     <view class="">{{order.status_str}}{{order.refundstate>0?'('+order.refundtext+')':''}}</view>
@@ -18,7 +18,7 @@
             </view>
             <block>
                 <block wx:if="{{address}}">
-                    <view class="fui-list-group">
+                    <view class="fui-list-group  new-group-item">
                         <block>
                             <block wx:if="{{order.status>1}}">
                                 <navigator class="fui-list" url="../express/index?id={{order.id}}">
@@ -48,7 +48,8 @@
                         <navigator class="fui-list" hoverClass="none">
                             <view class="fui-list-media">
                                 <view class="fui-list-icon">
-                                    <text class="icox icox-dingwei1"></text>
+                                    <image src="/static/images/icon/address.png"></image>
+                                    <!-- <text class="icox icox-dingwei1"></text> -->
                                 </view>
                             </view>
                             <view class="fui-list-inner">
@@ -61,7 +62,7 @@
             </block>
             <block>
                 <block wx:if="{{carrier||store}}">
-                    <view class="fui-list-group">
+                    <view class="fui-list-group   new-group-item">
                         <block>
                             <block wx:if="{{carrier}}">
                                 <view class="fui-list noclick">
@@ -77,7 +78,7 @@
                     </view>
                 </block>
             </block>
-            <view class="fui-list-group" style="padding-bottom:20rpx">
+            <view class="fui-list-group  new-group-item" style="padding-bottom:20rpx">
                 <view class="fui-list-group-title">
                     <view class="fui-list-icon">
                         <text class="icox icox-dianpu1"></text>
@@ -86,7 +87,7 @@
                 </view>
                 <navigator class="fui-list goods-item" openType="redirect" url="../goods/index?id={{order.goodid}}">
                     <view class="fui-list-media">
-                        <image class="goods_img" src="{{goods.thumb}}"></image>
+                        <image class="goods_img" src="{{goods.thumb}}" style="border-radius: 20rpx;"></image>
                     </view>
                     <view class="fui-list-inner" style="height:140rpx">
                         <view class="text">{{goods.title}}</view>
@@ -114,7 +115,7 @@
             </view>
             <block>
                 <block wx:if="{{order.isvirtualsend>0&&order.virtualsend_info!=null}}">
-                    <view class="fui-cell-group">
+                    <view class="fui-cell-group new-group-item">
                         <view class="fui-cell-title">发货信息</view>
                         <view class="fui-cell">
                             <view class="fui-cell-info">>
@@ -126,7 +127,7 @@
             </block>
             <block>
                 <block wx:if="{{order.isverify==1&&order.status>0&&(order.success==1||order.is_team==0)&&order.verifynum>0}}">
-                    <view class="fui-cell-group {{toggleConsume?'toggleSend-group':''}}">
+                    <view class="fui-cell-group {{toggleConsume?'toggleSend-group':''}} new-group-item">
                         <view bindtap="toggle" class="fui-cell" data-id="{{toggleConsume}}" data-type="toggleConsume">
                             <view class="fui-cell-icon">
                                 <text class="icox icox-viewlist"></text>
@@ -174,7 +175,7 @@
             </block>
             <block>
                 <block wx:if="{{store&&order.isverify==1}}">
-                    <view class="fui-cell-group {{toggleStore?'toggleSend-group':''}}">
+                    <view class="fui-cell-group {{toggleStore?'toggleSend-group':''}}  new-group-item">
                         <view bindtap="toggle" class="fui-cell" data-id="{{toggleStore}}" data-type="toggleStore">
                             <view class="fui-list-icon">
                                 <text class="icox icox-dianpu1"></text>
@@ -216,7 +217,7 @@
                     </view>
                 </block>
             </block>
-            <view class="fui-cell-group price-cell-group">
+            <view class="fui-cell-group price-cell-group new-group-item">
                 <view class="fui-cell">
                     <view class="fui-cell-label">商品小计</view>
                     <view class="fui-cell-info"></view>
@@ -282,7 +283,7 @@
                     </view>
                 </view>
             </view>
-            <view class="fui-cell-group">
+            <view class="fui-cell-group new-group-item">
                 <view class="order-info">
                     <view class="fui-cell-label" style="font-size:24rpx;color:#999">
                         <text class="fui-cell-label" selectable="true">订单编号：{{order.orderno}}</text>

@@ -3,7 +3,7 @@ var t = getApp(), a = t.requirejs("core"), e = t.requirejs("biz/order");
 Page({
     data: {
         icons: t.requirejs("icons"),
-        status: "0",
+        status: "",
         list: [],
         page: 1,
         code: !1,
@@ -17,7 +17,7 @@ Page({
             success: function(s) {
                 s.authSetting["scope.userInfo"] && (e.setData({
                     options: a,
-                    status: a.status || "0",
+                    status: a.status || "",
                     imgUrl: t.globalData.approot
                 }), t.url(a), e.get_list());
             }

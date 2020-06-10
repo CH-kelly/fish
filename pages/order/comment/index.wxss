@@ -108,3 +108,18 @@
 .fui-cell.must .icox.selected {
     color: #ff8000;
 }
+
+/* 新样式 */
+.new-fui-group{
+    margin: 20rpx;
+    background: #fff;
+    border-radius: 20rpx;    
+}
+.new-footer{
+    width: 100vw;
+    margin-top: 50rpx;
+}
+.new-button{
+    width: 96%;
+    border-radius: 20rpx;
+}

@@ -36,7 +36,7 @@ color:rgba(34,34,34,1);
   color:rgba(231,41,72,1);
 }
 .line{
-  height:1rpx;
+  height:2rpx;
   background:rgba(232,232,232,1);
   margin: 40rpx 0 14rpx 0;
 }

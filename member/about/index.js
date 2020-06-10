@@ -25,8 +25,9 @@ Page({
     this.get_set();
   },
   copyPhone(){
+
     wx.setClipboardData({
-      data: '0862-8565444',
+      data: this.data.tel,
       success (res) {
         wx.getClipboardData({
           success (res) {
@@ -38,7 +39,7 @@ Page({
   },
   copyWx(){
     wx.setClipboardData({
-      data: 'wo1856548',
+      data: this.data.wx,
       success (res) {
         wx.getClipboardData({
           success (res) {

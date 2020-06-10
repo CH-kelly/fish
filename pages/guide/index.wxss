@@ -128,10 +128,11 @@ color:rgba(1,214,192,1);
 .image>image{
   width: 140rpx;
   height: 140rpx;
-  border-radius: 4rpx;
+  border-radius: 8rpx;
 }
 .goods-title{
   padding-left: 30rpx;
+  width: 80%;
 }
 .title-h2{
   

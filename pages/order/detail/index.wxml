@@ -1,7 +1,8 @@
 <loading wx:if="{{!show}}">加载中...</loading>
 <import src="/pages/common/diyform_view.wxml"></import>
 <view class="page navbar {{seckill_color}} {{paddingb}}" wx:if="{{show}}">
-    <view class="background">
+<scroll-view scroll-y class="scroll-view" >
+    <view class="background" style="margin-bottom: 40rpx;">
         <v-input>
             <text>订单状态：</text>
             <text class="flex input-item order-status "  wx:if="{{order.status==1}}" style="color:#01D6C0">待发货</text>
@@ -22,14 +23,19 @@
         </v-input>
 
         <v-input>
+            <text>联系人：</text>
+            <text class="input-item">{{address.realname}} </text>
+        </v-input>
+
+        <v-input>
             <text>联系电话：</text>
             <text class="input-item">{{address.mobile}}</text>
         </v-input>
 
-        <v-input>
+        <!-- <v-input>
             <text>订单创建时间：</text>
             <text class="input-item">{{order.createtime}}</text>
-        </v-input>
+        </v-input> -->
 
         <v-input>
             <block wx:for="{{goods}}" wx:key="index">
@@ -42,18 +48,48 @@
                 </view>
             </block>
         </v-input>
+        
 
         <v-input>
             <view style="width: 100%;">
-            <view class="settlement">结算</view>
-            <view class="flex settlement-item">
-                <text class="total">订单总额：</text>
-                <text class="total-price">¥{{order.goodsprice}}</text>
+                <view class="settlement">订单信息：</view>
+                <view class="flex settlement-item">
+                    <text class="total">订单创建时间：</text>
+                    <text class="total-price">{{order.createtime}}</text>
+                </view>
+                <view class="flex settlement-item" style="margin-top:20rpx" >
+                    <text class="total">支付时间：</text>
+                    <text class="total-price">{{order.paytime}}</text>
+                </view>
+                <view class="flex settlement-item" style="margin-top:20rpx" >
+                    <text class="total">发货时间：</text>
+                    <text class="total-price">{{order.sendtime}}</text>
+                </view>
+                
+                <view class="flex settlement-item" style="margin-top:20rpx" >
+                    <text class="total">完成时间：</text>
+                    <text class="total-price">{{order.finishtime}}</text>
+                </view>
             </view>
-            <view class="flex settlement-item" style="margin-top:20rpx">
-                <text class="total">需支付：</text>
-                <text class="total-price">¥{{order.goodsprice}}</text>
-            </view>
+        </v-input>
+
+
+        <v-input>
+            <view style="width: 100%;">
+                <view class="settlement">结算</view>
+                <view class="flex settlement-item">
+                    <text class="total">订单总额：</text>
+                    <text class="total-price">¥{{order.goodsprice}}</text>
+                </view>
+                <view class="flex settlement-item" style="margin-top:20rpx"  wx:if="{{!order.verifyinfo}}">
+                    <text class="total">{{order.city_express_state=='1'?'同城运费':'运费'}}：</text>
+                    <text class="total-price" wx:if="{{order.iscycelbuy!=1}}">¥ {{order.dispatchprice}}</text>
+                    <text class="total-price" wx:if="{{order.iscycelbuy==1}}">¥ {{order.dispatchprice}}({{order.cycelComboPeriods}}期)</text>
+                </view>
+                <view class="flex settlement-item" style="margin-top:20rpx">
+                    <text class="total">需支付：</text>
+                    <text class="total-price">¥{{order.goodsprice}}</text>
+                </view>
             </view>
         </v-input>
 
@@ -67,11 +103,31 @@
             </view>
         </v-input>
     </view>
-        
-    <view class="flex button">
-        <view class="buy" bindtap="buy">确认收货</view>
-    </view>
+</scroll-view>  
 
+
+
+<block wx:if="{{!order.canrestore}}">
+    <view class="flex button" wx:if="{{order.cancomplete&&order.iscycelbuy==0&&!order.isonlyverifygoods}}">
+        <view class="buy"  bindtap="finish" >确认收货</view>
+    </view>
+    <view class="flex button" wx:else>
+        <view class="btn btn-default btn-default-o btn-sm" wx:if="{{order.cancancel}}">
+            <picker bindchange="cancel" range="{{cancel}}" value="{{cancelindex}}">取消订单</picker>
+        </view>
+        <navigator class="btn btn-danger-o btn-sm" url="/pages/order/pay/index?id={{order.id}}" wx:if="{{order.canpay}}">支付订单</navigator>
+        <view bindtap="code" class="btn btn-default btn-default-o btn-sm pull-left" data-orderid="{{order.id}}" wx:if="{{order.canverify&&!order.isonlyverifygoods}}">{{order['dispatchtype']==1?'我要取货':'我要使用'}}</view>
+        <navigator class="btn btn-default btn-default-o btn-sm" url="/pages/verifygoods/detail/index?id={{order.verifygoods_id}}" wx:if="{{order.canverify&&order.verifygoods_id&&order.isonlyverifygoods}}">我要使用</navigator>
+        <view bindtap="delete" class="btn btn-default btn-default-o btn-sm" data-type="1" wx:if="{{order.candelete}}">删除订单</view>
+        <navigator class="btn btn-default btn-default-o btn-sm" url="/pages/order/comment/index?id={{order.id}}" wx:if="{{order.cancomment2}}">追加评价</navigator>
+        <navigator class="btn btn-default btn-default-o btn-sm" url="/pages/order/comment/index?id={{order.id}}" wx:if="{{order.cancomment}}">评价</navigator>
+        <navigator class="btn btn-default btn-sm" url="/pages/order/refund/index?id={{order.id}}" wx:if="{{order.canrefund&&order.iscycelbuy==0&&order.refundstate!=3}}">{{order.refundtext}}</navigator>
+        <block wx:if="{{order.refundstate!=3}}">
+            <navigator class="btn btn-default btn-sm" url="/pages/order/refund/index?id={{order.id}}" wx:if="{{order.canrefund&&order.iscycelbuy==1&&order.status==1}}">{{order.refundtext}}</navigator>
+            <view bindtap="refundcancel" class="btn btn-default-o btn-sm btn-cancel" wx:if="{{order.cancancelrefund}}">取消申请</view>
+        </block>
+    </view>
+</block>
 
 
 

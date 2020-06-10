@@ -5,7 +5,13 @@
 }
 
 .bg {
-    background: linear-gradient(to right,#ffb43e 0%,#fd9526 100%);
+    /* 新样式 */
+    border-radius: 20rpx;
+    margin: 20rpx;
+    /* end */
+
+    background: linear-gradient(to right,#5CE0D3 0%,#01D6C0 100%);
+    /* background: linear-gradient(to right,#ffb43e 0%,#fd9526 100%); */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffb43e, endColorstr=#fd9526,gradientType='1');
     -webkit-box-flex: 1;
     flex: 1;
@@ -276,4 +282,16 @@
     width: 530rpx;
     word-wrap: break-word;
     word-break: break-all;
+}
+
+
+/* 新样式 */
+.new-group-item{
+    border-radius: 10px;
+    background: #fff;
+    margin: 20rpx;
+}
+.fui-list-icon>image{
+    width:23rpx;
+    height:30rpx;   
 }

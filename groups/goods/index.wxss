@@ -527,7 +527,7 @@ picker-view-column {
 /* 拼团列表样式 */
 .collage-lists{
     border-top: 2rpx solid rgba(199,199,199,0.3);
-    border-bottom: 2rpx solid rgba(199,199,199,0.3);
+    /* border-bottom: 2rpx solid rgba(199,199,199,0.3); */
     padding: 45rpx 30rpx ;
 }
 .collage-title{
@@ -719,7 +719,7 @@ color:rgba(153,153,153,1);
 }
 
 .new-shop-info{
-    border-top: 1px solid rgba(199,199,199,1);
-    border-bottom: 1px solid rgba(199,199,199,1);
+    border-top: 1px solid rgba(199,199,199,0.3);
+    border-bottom: 1px solid rgba(199,199,199,0.3);
 
 }

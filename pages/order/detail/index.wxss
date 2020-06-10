@@ -77,6 +77,8 @@ page{
     width: 100vw;
     height: 100rpx;
     background: #ffffff;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+
     position: fixed;
     bottom: 0;
     justify-content: center;
@@ -95,3 +97,7 @@ page{
     border-radius: 16rpx;
   }
   
+
+  .scroll-view{
+    height: calc(100vh - 100rpx);
+  }

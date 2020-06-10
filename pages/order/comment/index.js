@@ -48,7 +48,10 @@ Page({
             t.comments.push(i);
         }
         a.post("order/comment/submit", t, function(t) {
-            0 != t.error && a.toast(t.message, "loading"), wx.navigateBack();
+            0 != t.error && a.toast(t.message, "loading");
+            setTimeout(() => {
+                wx.navigateBack()
+            }, 1000);
         }, !0);
     },
     upload: function(t) {

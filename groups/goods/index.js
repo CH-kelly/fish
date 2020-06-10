@@ -11,6 +11,7 @@ Page({
         data:{},
         teamid:0,   //拼团id
         isTeamGroup:0,  //是否拼团  1是  0单独购买
+        isShow:false
     },
     clickNav(e){
         var id = e.currentTarget.dataset.id;
@@ -62,26 +63,36 @@ Page({
     fight_groups(){
         let id = this.data.goods_id
         var d = this,  e = this.data.goods_id;
+        let isShow = false;
         a.post("groups/goods/fight_groups", {
             id: id,
             ladder_id: '',
             limit:2
         }, function(t) {
             1 != t.error ? (d.setData({
-                other: t.other
-            }), setInterval(function() {
+                other: t.other,
+                isShow:isShow
+            }),setInterval(function() {
                 var t = d.data.other;
                 for (var a in t) {
-                    var e = t[a].residualtime, o = 0, i = 0;
-                    e > 60 && (i = parseInt(e / 60), e = parseInt(e % 60), 
-                    i > 60 && (o = parseInt(i / 60), i = parseInt(i / 60))),
-                    e < 0 && (o = 0, i = 0, e = 0, d.data.other[a].status = "hide", d.data.other = []), 
-                    o<10 ? d.data.other[a].hours = '0'+o : d.data.other[a].hours = o, 
-                    i<10 ? d.data.other[a].minite ='0'+i : d.data.other[a].minite = i, 
-                    d.data.other[a].second = e,d.data.other[a].residualtime = d.data.other[a].residualtime - 1;
+
+                    if(d.data.other[a].hours > 0 && d.data.other[a].minite>0 && d.data.other[a].second>0  ){
+                        isShow = true;
+                        d.data.other[a].status = 'show';
+                        var e = t[a].residualtime, o = 0, i = 0;
+                        e > 60 && (i = parseInt(e / 60), e = parseInt(e % 60), 
+                        i > 60 && (o = parseInt(i / 60), i = parseInt(i / 60))),
+                        e < 0 && (o = 0, i = 0, e = 0, d.data.other[a].status = "hide", d.data.other = []), 
+                        o<10 ? d.data.other[a].hours = '0'+o : d.data.other[a].hours = o, 
+                        i<10 ? d.data.other[a].minite ='0'+i : d.data.other[a].minite = i, 
+                        d.data.other[a].second = e,d.data.other[a].residualtime = d.data.other[a].residualtime - 1;
+                    }else{
+                        d.data.other[a].status = 'hide';
+                    }
                 }
                 d.setData({
-                    other: t
+                    other: t,
+                    isShow:isShow
                 });
             }, 1e3)) : a.alert(t.message);
         });
