@@ -52,13 +52,13 @@ Page({
         });
     },
     gotoIndex(){
-        wx.navigateTo({
+        wx.switchTab({
           url: '/pages/index/index',
         })
     },
     gotoOrder(){
         wx.navigateTo({
-            url: '/groups/order/index',
+            url: '/member/collage/index',
           })
     },
     countDown: function(t, a, e) {
