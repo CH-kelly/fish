@@ -38,3 +38,11 @@
     transform-origin: 0 0;
     transform: scaleY(0.5);
 }
+
+
+.new-cell-group{
+    margin: 20rpx;
+    background: #fff;
+    border-radius: 20rpx;
+
+}

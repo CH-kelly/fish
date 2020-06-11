@@ -8,8 +8,10 @@
 }
 
 .fui-list.success {
-    background: linear-gradient(to right,#ffb43e 0%,#fd9526 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffb43e, endColorstr=#fd9526,gradientType='1');
+    background: linear-gradient(to right,#3DCFD1 0%,#12BFD3 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#3DCFD1, endColorstr=#12BFD3,gradientType='1');
+    /* background: linear-gradient(to right,#ffb43e 0%,#fd9526 100%); */
+    /* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffb43e, endColorstr=#fd9526,gradientType='1'); */
     -webkit-box-flex: 1;
     flex: 1;
     display: -webkit-box;

@@ -169,19 +169,7 @@
         "pages/index/index"
       ]
     },
-    {
-      "root": "dividend/",
-      "pages": [
-        "pages/index/index",
-        "pages/down/index",
-        "pages/withdraw/index",
-        "pages/order/index",
-        "pages/log/index",
-        "pages/log/detail/index",
-        "pages/apply/index",
-        "pages/register/index"
-      ]
-    },
+
     {
       "root": "member/",
       "pages": [

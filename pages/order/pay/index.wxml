@@ -62,14 +62,14 @@
     </view>
     <include src="/pages/common/menu.wxml"></include>
 </view>
-<view class="page {{successData.seckill_color}}" wx:if="{{success}}">
-    <view class="fui-list success">
+<view class="page {{successData.seckill_color}}" wx:if="{{success}}"  style="background:#f3f3f3">
+    <view class="fui-list success  new-cell-group">
         <view class="row">
             <view class="">{{successData.order.status}}</view>
         </view>
         <view class="">{{successData.order.text}}</view>
     </view>
-    <view class="fui-cell-group" wx:if="{{successData.address}}">
+    <view class="fui-cell-group  new-cell-group" wx:if="{{successData.address}}">
         <navigator class="fui-cell" hoverClass="none">
             <view class="fui-cell-icon">
                 <text class="icox icox-dingwei1"></text>
@@ -85,7 +85,7 @@
             </view>
         </navigator>
     </view>
-    <view class="fui-cell-group {{shop?'toggleSend-group':''}}" wx:if="{{successData.stores&&!successData.store}}">
+    <view class="fui-cell-group {{shop?'toggleSend-group':''}}  new-cell-group" wx:if="{{successData.stores&&!successData.store}}">
         <view bindtap="shop" class="fui-cell" data-id="{{shop}}">
             <view class="fui-cell-icon">
                 <text class="icox icox-dianpu1"></text>
@@ -119,7 +119,7 @@
             </view>
         </view>
     </view>
-    <view class="fui-list-group" wx:if="{{successData.carrier||successData.store}}">
+    <view class="fui-list-group  new-cell-group" wx:if="{{successData.carrier||successData.store}}">
         <view class="fui-list noclick" wx:if="{{successData.carrier}}">
             <view class="fui-list-media">
                 <text class="icox icox-huiyuan1"></text>
@@ -152,7 +152,7 @@
             </view>
         </view>
     </view>
-    <view class="fui-cell-group">
+    <view class="fui-cell-group  new-cell-group">
         <view class="fui-cell">
             <view class="fui-cell-label">{{successData.paytype}}</view>
             <view class="fui-cell-text "></view>
@@ -162,7 +162,7 @@
     </view>
     <block wx:if="{{order.virtual>0&&order.virtual_str!=''}}">
         <block wx:if="{{ordervirtualtype&&ordervirtual.length>0}}">
-            <view class="fui-cell-group {{toggleCode?'toggleSend-group':''}}" wx:for="{{ordervirtual}}">
+            <view class="fui-cell-group {{toggleCode?'toggleSend-group':''}}  new-cell-group" wx:for="{{ordervirtual}}">
                 <view class="fui-cell-title">发货信息{{ordervirtual.length>1?index+1:''}}</view>
                 <view class="fui-cell" wx:for="{{item}}" wx:for-item="item2">
                     <view class="fui-cell-label">
@@ -174,7 +174,7 @@
                 </view>
             </view>
         </block>
-        <view class="fui-cell-group" wx:else>
+        <view class="fui-cell-group  new-cell-group" wx:else>
             <view class="fui-cell-title">发货信息</view>
             <view class="fui-cell">
                 <view class="fui-cell-info">
@@ -183,7 +183,7 @@
             </view>
         </view>
     </block>
-    <view class="fui-cell-group" wx:if="{{order.isvirtualsend>0&&order.virtualsend_info!=null}}">
+    <view class="fui-cell-group  new-cell-group" wx:if="{{order.isvirtualsend>0&&order.virtualsend_info!=null}}">
         <view class="fui-cell-title">发货信息</view>
         <view class="fui-cell">
             <view class="fui-cell-info" style="white-space:normal">

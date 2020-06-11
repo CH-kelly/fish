@@ -29,6 +29,10 @@
                         <view class="new-member-left-number">{{member.statics.collect}}</view>
                         <view class="new-member-left-count">收藏</view>
                     </view>
+                    <view class="member-left">
+                        <view class="new-member-left-number">{{member.credit2}}</view>
+                        <view class="new-member-left-count">剩余余额</view>
+                    </view>
                 </view>
             </view>
             <view class="new-member-right">

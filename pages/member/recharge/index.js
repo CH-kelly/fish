@@ -54,9 +54,10 @@ Page({
                 }, function(e) {
                     if (0 == e.error) {
                         var a = wx.getStorageSync("orderid");
-                        if (0 != a) return wx.removeStorage("orderid"), void wx.redirectTo({
-                            url: "/pages/order/pay/index?id=" + a
-                        });
+                        // if (0 != a) return wx.removeStorage("orderid"), void wx.redirectTo({
+                        //     url: "/pages/order/pay/index?id=" + a
+                        // });
+                        if (0 != a) return wx.removeStorage("orderid");
                         wx.navigateBack();
                     } else t.alert(e.message);
                 }, !0);

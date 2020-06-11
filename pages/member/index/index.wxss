@@ -576,7 +576,7 @@ color:rgba(0,0,0,1);
 background: #fff !important;
 }
 .new-member-left{
-    width: 60%;
+    width: 80%;
 }
 .new-member-left>.nickname{
     font-size:38rpx;
