@@ -110,10 +110,7 @@ bindrefresherrefresh(){
 },
 loadMore(){
   console.log('上拉加载');
-  let page = this.data.page + 1;
-  this.setData({
-    page: page
-}), this.get_list();
+  this.get_list();
 },
   /**
    * 生命周期函数--监听页面初次渲染完成

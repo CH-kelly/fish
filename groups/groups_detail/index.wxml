@@ -30,22 +30,24 @@
         </view>
       </view>
 
-      <view class="group-item">
-        <view class="flex" style="margin-top: 30rpx;position: relative;">
+      <view class="group-item" style="">
+
+        <view class="flex group-item-felx">
             <block wx:for="{{data.orders}}" wx:for-index="idx">
-                <view>
+                <view  style="margin-top: 30rpx;position: relative;">
                     <image src="{{item.avatar}}"></image>
                     <view wx:if="{{idx==0}}" class="group-item-title">团长</view>
                 </view>
            </block>
+           <block wx:for="{{data.arr}}" wx:for-index="idx">
+                <view  style="margin-top: 30rpx;position: relative;">
+                  <image src="/static/images/guide/avatar2.png"></image>
+                </view>
+            </block>
         </view>
-        <block wx:for="{{data.arr}}" wx:for-index="idx">
-            <view class="flex" style="margin-top: 30rpx;position: relative;">
-                <image src="/static/images/guide/avatar2.png"></image>
-            </view>
-        </block>
 
       </view>
+
     </view>
   </v-input>
 
@@ -69,20 +71,38 @@
       <view class="flex group-title" >
         拼团列表
       </view>
-      <view class="group-item">
-        <view class="flex" style="margin-top: 30rpx;position: relative;">
+      <view class="group-item" style="">
+        <view class="flex" style="flex-flow: wrap;">
+          <block wx:for="{{groupList}}" wx:for-index="idx">    
+                <view class="group-item-felx" style="margin-top: 30rpx;position: relative;">
+
+                    <image wx:if="{{item.avatar}}" src="{{item.avatar}}"></image>
+                    <image wx:else src="/static/images/guide/avatar2.png"></image>
+
+                    <view wx:if="{{idx==0}}" class="group-item-title">团长</view>
+                </view>
+          </block>
+        </view>
+
+        <!-- <view class="flex group-item-felx">
           <block wx:for="{{data.orders}}" wx:for-index="idx">
-                <view>
+                <view style="margin-top: 30rpx;position: relative;">
                     <image src="{{item.avatar}}"></image>
                     <view wx:if="{{idx==0}}" class="group-item-title">团长</view>
                 </view>
            </block>
-        </view>
-        <block wx:for="{{data.arr}}" wx:for-index="idx">
+           
+          <block wx:for="{{data.arr}}" wx:for-index="idx">
+              <view  style="margin-top: 30rpx;position: relative;">
+                <image src="/static/images/guide/avatar2.png"></image>
+              </view>
+          </block>
+        </view> -->
+        <!-- <block wx:for="{{data.arr}}" wx:for-index="idx">
             <view class="flex" style="margin-top: 30rpx;position: relative;">
                 <image src="/static/images/guide/avatar2.png"></image>
             </view>
-        </block>
+        </block> -->
       </view>
     </view>
   </v-input>
@@ -95,17 +115,18 @@
     <block wx:if="{{!count_down||data.tuan_first_order.success==-1}}">
         <view class="but-title but-text">拼团已结束</view>
     </block>
-
-    <block wx:if="{{data.tuan_first_order.success==1}}">
-        <view class="but-title but-text" bindtap="gotoOrder">查看订单</view>
-    </block>
-    
-    <block wx:if="{{data.tuan_first_order.success==0&&data.myorder}}">
+    <!-- <block wx:if="{{data.tuan_first_order.success==0&&data.myorder && data.tuan_first_order.success!=-1}}"> -->
+    <block wx:else>
         <button openType="share"  class="but-title but-text"> 
         快邀请好友
         </button>
     </block>
     
+    <block wx:if="{{data.tuan_first_order.success==1}}">
+        <view class="but-title but-text" bindtap="gotoOrder">查看订单</view>
+    </block>
+    
+   
     <block>
         <block wx:if="{{data.tuan_first_order.success==0&&!data.myorder}}">
             <button bindtap="tuxedobuy"  class="but-title but-text" >我要参团</button>

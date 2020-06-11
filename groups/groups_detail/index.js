@@ -8,7 +8,8 @@ Page({
         time: "",
         share: 1,
         options: "",
-        show: !1
+        show: !1,
+        groupList:[],
     },
     onLoad: function(a) {
         t.getCache("isIpx") ? this.setData({
@@ -26,9 +27,17 @@ Page({
         a.get("groups/team/details", {
             teamid: t
         }, function(t) {
+            let groupList = [];
+            if(t.error==0){
+                let order = t.data.orders;
+                let arr = t.data.arr;
+                groupList.push(...order);
+                groupList.push(...arr);
+            }
             if (0 == t.error && (t.data.goods.content = t.data.goods.content.replace(/data-lazy/g, "src"), 
             e.setData({
-                data: t.data
+                data: t.data,
+                groupList:groupList,
             }), o.wxParse("wxParseData", "html", t.data.goods.content, e, "0")), 0 == t.data.tuan_first_order.success) {
                 if (t.data.lasttime2 <= 0) return void e.setData({
                     count_down: !1

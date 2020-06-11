@@ -26,13 +26,15 @@
   <view wx:for="{{list}}" wx:key="index">
     <v-input>
       <view class="collage">
-          <view class="collage-item">
-            <image class="input-image" src="{{item.thumb}}"></image>
-            <view class="flex title">
-              <text class="title-h1 hidden_1">{{item.title}}</text>
-              <text class="price">¥{{item.price}}</text>
+          <navigator class="group-list" url="/groups/groups_detail/index?teamid={{item.teamid}}">
+            <view class="collage-item">
+              <image class="input-image" src="{{item.thumb}}"></image>
+              <view class="flex title">
+                <text class="title-h1 hidden_1">{{item.title}}</text>
+                <text class="price">¥{{item.price}}</text>
+              </view>
             </view>
-          </view>
+          </navigator>
           <view class="line"></view>
            <view class="fui-list-group-title" style="color:#666;font-size:26rpx;padding:0">
               <view class="order-num" style="margin-right: 10rpx;" bindtap="copyOrderNo"  data-index="{{index}}" >
@@ -85,9 +87,9 @@
               <text class="price" style="margin-top:0">¥{{item.amount}}</text>
             </view>
             <view class="flex buttom-right">
-              <text class="button-text" wx:if="{{item.teamstatus == 0}}" >待成团</text>
-              <text class="button-text" wx:if="{{item.teamstatus == 1}}" style="color:#01D6C0">拼团成功</text>
-              <text class="button-text" wx:if="{{item.teamstatus == 2}}" style="color:#666">拼团失败</text>
+              <text class="button-text" wx:if="{{item.success == 0}}" >待成团</text>
+              <text class="button-text" wx:if="{{item.success == 1}}" style="color:#01D6C0">拼团成功</text>
+              <text class="button-text" wx:if="{{item.success == 2}}" style="color:#666">拼团失败</text>
               
               <block wx:if="{{item.status==0}}">
                   <view class="btn button">
