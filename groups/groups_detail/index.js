@@ -42,6 +42,16 @@ Page({
             }
         });
     },
+    gotoIndex(){
+        wx.navigateTo({
+          url: '/pages/index/index',
+        })
+    },
+    gotoOrder(){
+        wx.navigateTo({
+            url: '/groups/order/index',
+          })
+    },
     countDown: function(t, a, e) {
         var o = parseInt(Date.now() / 1e3), s = parseInt((t > o ? t : a) - o), i = Math.floor(s / 86400), d = Math.floor((s - 24 * i * 60 * 60) / 3600), n = Math.floor((s - 24 * i * 60 * 60 - 3600 * d) / 60), r = Math.floor(s - 24 * i * 60 * 60 - 3600 * d - 60 * n);
         0 == i && 0 == d && 0 == n && 0 == r && this.get_details(this.data.teamid);

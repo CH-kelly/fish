@@ -1,6 +1,9 @@
 {
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "团详情",
-    "usingComponents": {}
+    "navigationBarTitleText": "支付成功",
+    "usingComponents": {
+        "v-input":"/components/input/index"
+    },
+    "component": true
 }

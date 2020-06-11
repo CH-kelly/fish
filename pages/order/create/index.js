@@ -295,19 +295,22 @@ Page({
             }), console.log(c), a.post("order/create/submit", c, function(t) {
                 e.setData({
                     submit: !1
-                });
-                if(1 != a.error){   //订单创建成功，开启微信支付
-                    //TODO::微信支付成功回调
+                }), 0 == t.error ? wx.navigateTo({
+                    url: "/pages/order/pay/index?id=" + t.orderid
+                }) : a.alert(t.message);
+               
+                // if(1 != a.error){   //订单创建成功，开启微信支付
+                //     //TODO::微信支付成功回调
                     
-                    //如果开团那么就跳转到拼团支付成功页面  isTeamGroup:0,  //是否拼团  1是  0单独购买
+                //     //如果开团那么就跳转到拼团支付成功页面  isTeamGroup:0,  //是否拼团  1是  0单独购买
                    
-                    wx.navigateTo({
-                        url: "/pages/gu/success/index?type=4"
-                    })
+                //     wx.navigateTo({
+                //         url: "/pages/gu/success/index?type=4"
+                //     })
                     
-                }else{
-                    t.alert(a.message);
-                }
+                // }else{
+                //     t.alert(a.message);
+                // }
                 //  0 == t.error ? wx.navigateTo({
                 //     url: "/pages/order/pay/index?id=" + t.orderid
                 // }) : a.alert(t.message);

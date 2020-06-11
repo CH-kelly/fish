@@ -173,22 +173,23 @@ Page({
             deduct: this.data.deduct,
             diydata: e
         }, function(a) {
-            if(1 != a.error){   //订单创建成功，开启微信支付
-                //TODO::微信支付成功回调
+            1 != a.error ? wx.navigateTo({
+                url: "../pay/index?id=" + a.orderid + "&teamid=" + a.teamid
+            }) : t.alert(a.message);
+            // if(1 != a.error){   //订单创建成功，开启微信支付
+            //     //TODO::微信支付成功回调
                 
-                //如果开团那么就跳转到拼团支付成功页面  isTeamGroup:0,  //是否拼团  1是  0单独购买
-                if(taht.data.isTeamGroup ==0){
-                    wx.navigateTo({
-                        url: "../paySuccess/index"
-                    })
-                }else{
-                    wx.navigateTo({
-                        url: "/pages/gu/success/index?type=4"
-                    })
-                }
-            }else{
-                t.alert(a.message);
-            }
+            //     //如果开团那么就跳转到拼团支付成功页面  isTeamGroup:0,  //是否拼团  1是  0单独购买
+            //     if(taht.data.isTeamGroup ==0){
+            //         wx.navigateTo({
+            //             url: "../paySuccess/index"
+            //         })
+            //     }else{
+            //         wx.navigateTo({
+            //             url: "/pages/gu/success/index?type=4"
+            //         })
+            //     }
+            // }
         });
     },
     onReady: function() {},

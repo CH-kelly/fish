@@ -215,3 +215,12 @@
     color: #ff4174;
     font-size: 32rpx;
 }
+
+
+
+.new-cell-group{
+    margin: 20rpx;
+    background: #fff;
+    border-radius: 20rpx;
+
+}
