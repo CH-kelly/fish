@@ -8,7 +8,7 @@
         <view class="flex info">
           <image src="{{merch.logo}}"></image>
           <view class="nickname">
-            <text>槛外人</text>
+            <text>{{merch.merchname}}</text>
             <view class="label">常规导游</view>
           </view>
         </view>
@@ -46,7 +46,7 @@
           </view>
         </block>
       </view>
-      <view class="goods" hidden="{{current!=1}}">
+      <view class="goods" wx:if="{{current==1}}">
         <block wx:for="{{list}}" wx:key="index"> 
           <view class="flex goods-item"  bindtap="gotoLine"  data-id="{{item.id}}"  >
             <view class="image">
@@ -77,42 +77,31 @@
 
       </view>
       <view class="goods" hidden="{{current!=3 || type == 0}}" >
-        <view class="evaluate">
-          <view class="flex evaluate-top">
-            <image src="{{merch.license}}"></image>
-            <view class="flex evaluate-nickname">
-              <text class="evaluate-nickname">李商隐</text>
-              <text class="evaluate-date">2020-05-22</text>
+        <block  wx:for="{{commentList}}" wx:for-index="idx" wx:key="comm_list_key">
+          <view class="evaluate">
+            <view class="flex evaluate-top">
+              <image src="{{item.headimgurl}}"></image>
+              <view class="flex evaluate-nickname">
+                <text class="evaluate-nickname">{{item.nickname}}</text>
+                <text class="evaluate-date">{{item.createtime}}</text>
+              </view>
+              <view>
+                <v-start star="{{item.level}}"></v-start>
+              </view>
+            </view>      
+            <view class="hidden_3 evaluate-middel">{{item.content}}</view>
+            <view class=" evaluate-image">
+              <block  wx:for="{{item.images}}" wx:for-index="idx" wx:for-item="image" wx:key="imgs_key">
+                  <image bindtap="preview" data-src="{{image}}" 
+                  data-urls="{{item.images}}" 
+                  src="{{image}}"
+                  style="border-radius:20rpx;width:220rpx;height: 220rpx;margin-right: 20rpx;"
+                  ></image>
+              </block>
             </view>
-          </view>      
-          <view class="hidden_3 evaluate-middel">纸巾很好用，家人和我都很喜欢。老婆还叫我再买一火车皮，给老丈人用。</view>
-          <view class="flex  evaluate-image">
-            <image src="{{merch.license}}"></image>
-            <image src="{{merch.license}}"></image>
-            <image src="{{merch.license}}"></image>
-            <image src="{{merch.license}}"></image>
-            <image src="{{merch.license}}"></image>
+            <view class="evaluate-line"></view>
           </view>
-          <view class="evaluate-line"></view>
-        </view>
-        <view class="evaluate">
-          <view class="flex evaluate-top">
-            <image src="{{merch.logo}}"></image>
-            <view class="flex evaluate-nickname">
-              <text class="evaluate-nickname">李商隐</text>
-              <text class="evaluate-date">2020-05-22</text>
-            </view>
-          </view>      
-          <view class="hidden_3 evaluate-middel">纸巾很好用，家人和我都很喜欢。老婆还叫我再买一火车皮，给老丈人用。</view>
-          <view class="flex evaluate-image">
-            <image src="{{merch.logo}}"></image>
-            <image src="{{merch.logo}}"></image>
-            <image src="{{merch.logo}}"></image>
-            <image src="{{merch.logo}}"></image>
-            <image src="{{merch.logo}}"></image>
-          </view>
-          <view class="evaluate-line"></view>
-        </view>
+        </block>
       </view>
     </view>
 

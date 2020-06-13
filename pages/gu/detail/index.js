@@ -22,6 +22,7 @@ Page({
     banner:[],
    
     line_list:[],
+    commentList:[],
   },
 
   /**
@@ -43,6 +44,32 @@ Page({
    */
   onReady: function () {
 
+  },
+  preview: function(t) {
+      wx.previewImage({
+          current: t.currentTarget.dataset.src,
+          urls: t.currentTarget.dataset.urls
+      });
+  },
+  preview: function(t) {
+    wx.previewImage({
+        current: t.currentTarget.dataset.src,
+        urls: t.currentTarget.dataset.urls
+    });
+},
+  get_comment(){  //获取导游评论
+      var that = this;
+      a.get("line/get_comments", {
+          id: that.data.merchid,
+          page:30
+      }, function(t) {
+          console.log(t);
+          if(t.error == 0){
+            that.setData({
+              commentList:t.list
+            })
+          }
+      });
   },
   getMerch: function() {
     var t = this;
@@ -128,6 +155,9 @@ get_line_list(){
     this.getMerch();
     this.getList();
     this.get_line_list();
+    if(this.data.type == 1){
+      this.get_comment();
+    }
   },
 
   /**

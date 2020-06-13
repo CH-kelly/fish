@@ -9,16 +9,28 @@ Page({
         key: -1,
         content: "",
         images: [],
-        imgs: []
+        imgs: [],
+        type:0,     //类型 1线路评价  2拼团评价
     },
     onLoad: function(a) {
         this.setData({
-            options: a
+            options: a,
+            type:a.type || 0
         }), t.url(a), this.get_list();
     },
     get_list: function() {
         var t = this;
-        a.get("order/comment", t.data.options, function(e) {
+        var type = this.data.type;
+        let url = '';
+        if(type == 1){  //线路评价
+            url = "line/comment"
+        }else if(type == 2){  //拼团
+            url = "groups/comment"
+        }else{  //商品评价
+            url = "order/comment"
+        }
+
+        a.get(url, t.data.options, function(e) {
             0 == e.error ? (e.show = !0, t.setData(e)) : (a.toast(e.message, "loading"), wx.navigateBack());
         }, !0);
     },
@@ -47,7 +59,18 @@ Page({
             };
             t.comments.push(i);
         }
-        a.post("order/comment/submit", t, function(t) {
+        
+        let type = this.data.type;
+        let url = '';
+        if(type == 1){  //线路评价
+            url = "line/comment/submit"
+        }else if(type == 2){  //拼团
+            url = "groups/comment/submit"
+        }else{  //商品评价
+            url = "order/comment/submit"
+        }
+        
+        a.post(url, t, function(t) {
             0 != t.error && a.toast(t.message, "loading");
             setTimeout(() => {
                 wx.navigateBack()

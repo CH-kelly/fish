@@ -390,13 +390,18 @@
                             <text class="title-wel">{{goods.shopdetail.btntext2}}</text>
                         </view>
                         <view class="subtitle" style="font-size: 24rpx;color: rgba(153,153,153,1);"
-                         wx:if="{{goods.shopdetail.description}}">{{goods.shopdetail.description}}</view>
+                         wx:if="{{goods.shopdetail.description}}">
+                         {{goods.shopdetail.description}}
+                         </view>
+                        <!-- <view class="subtitle" style="font-size: 24rpx;color: rgba(153,153,153,1);"
+                         wx:if="{{goods.shopdetail.description}}">{{goods.shopdetail.description}}</view> -->
                     </view>
                 </navigator>
             </view>
             <view class="fui-cell-group" wx:if="{{goods.buycontentshow>0}}">
                 <view class="fui-cell" style="display: block;">
-                    <template is="wxParse" data="{{wxParseData:wxParseData_buycontent.nodes}}"></template>
+                    <rich-text nodes="{{goods.content}}"></rich-text>
+                    <!-- <template is="wxParse" data="{{wxParseData:wxParseData_buycontent.nodes}}"></template> -->
                 </view>
             </view>
         </view>
@@ -416,7 +421,8 @@
         </view>
         <view class="goods-detail-info {{info}}" style="padding:0 30rpx;box-sizing: border-box;">
             <view class="wxParse" style="overflow: hidden;">
-                <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}"></template>
+                <rich-text nodes="{{goods.content}}"></rich-text>
+                <!-- <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}"></template> -->
             </view>
             <view class="bottom-image">
                 <image mode="widthFix" src="{{item}}" wx:for="{{bottomFixedImageUrls}}" wx:key="img_key"></image>
@@ -452,9 +458,7 @@
                                     </view>
                                 </view>
                                 <view>
-                                    <view class="star star1">
-                                        <text class="{{item.level>=idx2+1?'shine':''}}" wx:for="{{stararr}}" wx:for-index="idx2" wx:for-item="item2" wx:key="comm_star">★</text>
-                                    </view>
+                                    <v-start star="{{item.level}}"></v-start>
                                 </view>
                             </view>
                             <view class="remark">{{item.content}}</view>

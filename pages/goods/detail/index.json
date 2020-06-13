@@ -1,5 +1,6 @@
 {
     "navigationBarTitleText": "商品详情",
     "usingComponents": {
-}
+        "v-start":"/components/start/index"
+    }
 }

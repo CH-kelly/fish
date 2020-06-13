@@ -11,7 +11,14 @@ Page({
         data:{},
         teamid:0,   //拼团id
         isTeamGroup:0,  //是否拼团  1是  0单独购买
-        isShow:false
+        isShow:false,
+        commentList:[], //商品评价
+    },
+    preview: function(t) {
+        wx.previewImage({
+            current: t.currentTarget.dataset.src,
+            urls: t.currentTarget.dataset.urls
+        });
     },
     clickNav(e){
         var id = e.currentTarget.dataset.id;
@@ -24,6 +31,21 @@ Page({
         wx.navigateTo({
           url: '../team/index?id='+id,
         })
+    },
+
+    get_comment(){  //获取拼团评论
+        // groups/comment
+        var that = this;
+        a.get("groups/goods/get_comments", {
+            id: that.data.goods_id,
+            page:30
+        }, function(t) {
+            if(t.error == 0){
+                that.setData({
+                    commentList:t.list
+                })
+            }
+        });
     },
     buttonOpenGroup(e){ //拼团购买
         console.log(e);
@@ -70,13 +92,11 @@ Page({
             limit:2
         }, function(t) {
             1 != t.error ? (d.setData({
-                other: t.other,
-                isShow:isShow
+                other: t.other
             }),setInterval(function() {
                 var t = d.data.other;
                 for (var a in t) {
-
-                    if(d.data.other[a].hours > 0 && d.data.other[a].minite>0 && d.data.other[a].second>0  ){
+                    if(d.data.other[a].hour > 0 && d.data.other[a].minite>0 && d.data.other[a].second>0  ){
                         isShow = true;
                         d.data.other[a].status = 'show';
                         var e = t[a].residualtime, o = 0, i = 0;
@@ -187,6 +207,8 @@ Page({
     onReady: function() {},
     onShow: function() {
         this.fight_groups();
+        
+        this.get_comment();  
     },
     onHide: function() {},
     onUnload: function() {},

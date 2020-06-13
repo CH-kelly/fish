@@ -1,3 +1,8 @@
+
+
+@import "/pages/order/cycle/order.wxss";
+
+
 page{
   box-sizing: border-box;
 }
@@ -50,6 +55,7 @@ page{
   width:88rpx;
   height:88rpx;
   border-radius:20rpx;
+  margin-right: 20rpx;
 }
 .goods-title{
   

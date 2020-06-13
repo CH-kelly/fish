@@ -13,7 +13,7 @@
             </view>
         </view>
     </view>
-    <view class="fui-list-group">
+    <view class="fui-list-group new-cell-group">
         <view bindtap="pay" class="btn btn-danger block" data-type="credit" style="margin-top:1.25rem" wx:if="{{list.credit.success&&list.order.price==0}}">
            确认支付
         </view>

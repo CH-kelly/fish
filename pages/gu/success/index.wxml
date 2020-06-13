@@ -4,9 +4,12 @@
     <image src="/static/images/success-icon.png"></image>
     <text>{{title}}</text>
 
+      <!-- <view bindtap="clickButTitle" wx:if="{{isShowButton == 0}}" class="but-title but-text">{{butTitle}}</view> -->
 
-    <view bindtap="clickButTitle" wx:if="{{isShowButton == 0}}" class="but-title but-text">{{butTitle}}</view>
-   
+    <navigator url="{{url}}" hover-class="navigator-hover">
+      <view wx:if="{{isShowButton == 0}}" class="but-title but-text">{{butTitle}}</view>
+    </navigator>
+    
 
     <view class="but-go-index but-text" bindtap="gotoIndex">回到首页</view>
   </view> 

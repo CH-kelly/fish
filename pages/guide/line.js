@@ -28,12 +28,14 @@ Page({
   onLoad: function (options) {
     let address = t.globalData.address || '成都';
     let region = ['','',address]
+    let keywords = options.keywords || ''
     this.setData({
       address:address,
       cityName:address,
       region:region,
+      keywords:keywords,
     })
-    console.log(address,region)
+    console.log(address,region,keywords)
 
     this.get_lists();
     this.get_city();
@@ -56,7 +58,8 @@ Page({
     var that = this;
     a.post("line/get_list",{
       city:this.data.cityName,
-      cateid:this.data.cateid
+      cateid:this.data.cateid,
+      keywords:this.data.keywords
     },function(e) {
       if(e.error == 0){
         that.setData({

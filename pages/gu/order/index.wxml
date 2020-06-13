@@ -55,15 +55,16 @@
                     </view>
                     <navigator  class="button-cancomment2"  openType="navigate" url="/pages/order/comment/index?type=1&id={{item.id}}" 
                     wx:if="{{item.cancomment2}}">
-                    追加评价
+                    追加评价 
                     </navigator>
-                    <navigator  class="button-cancomment2"  openType="navigate" url="/pages/order/comment/index?type=1&id={{item.id}}" 
+                    <!-- wx:if="{{item.cancomment}}" -->
+                    <navigator  class="order-button"  openType="navigate" url="/pages/order/comment/index?type=1&id={{item.id}}" 
                     wx:if="{{item.cancomment}}">
                         评价
                     </navigator>
 
                     <view bindtap="finish" class="order-button"   data-orderid="{{item.id}}" 
-                    wx:if="{{item.cancomplete&&item.iscycelbuy!=1}}"  >确认完成</view>
+                    wx:if="{{item.cancomplete}}"  >确认完成</view>
                 </view>
             </view>
         </view>

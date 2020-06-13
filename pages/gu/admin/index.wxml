@@ -3,9 +3,9 @@
 
     <view class="flex header">
       <view class="flex header-left">
-        <image src="/static/images/guide/avatar1.png"></image>
+        <image src="{{merch.logo}}"></image>
         <view class="info">
-          <text>槛外人</text>
+          <text>{{merch.merchname}}</text>
           <view class="info-label">常规导游</view>
         </view>
       </view>
@@ -23,38 +23,39 @@
 
   <view class="new-center">
     <view class="center-lists">
-      
-    <view class="center-item">
-      <!-- <view class="tips">您有一条新订单，请立即处理！</view> -->
-      <view class="tips" style="color:#999999">订单号：5465123165461</view>
-      <view class="line"></view>
-      <view class="flex middle">
-        <image src="/static/images/guide/image2.png"></image>
-        <view class="flex info">
-          <text>都江堰三日游</text>
-          <text class="price">¥388.00</text>
-        </view>
-      </view>
-      
-      <view class="line"></view>
-      <view class="flex buttom" style="margin-top:20rpx">
-        <view class="flex buttom-left">
-          <image src="/static/images/guide/avatar1.png"></image>
-          <view class="flex userinfo">
-            <text>渣渣星</text>
-            <text>121111111111</text>
+        <block wx:for="{{list}}" wx:key="index"> 
+          <view class="center-item">
+            <!-- <view class="tips">您有一条新订单，请立即处理！</view> -->
+            <view class="tips" style="color:#999999">订单号：5465123165461</view>
+            <view class="line"></view>
+            <view class="flex middle">
+              <image src="/static/images/guide/image2.png"></image>
+              <view class="flex info">
+                <text>都江堰三日游</text>
+                <text class="price">¥388.00</text>
+              </view>
+            </view>
+            
+            <view class="line"></view>
+            <view class="flex buttom" style="margin-top:20rpx">
+              <view class="flex buttom-left">
+                <image src="/static/images/guide/avatar1.png"></image>
+                <view class="flex userinfo">
+                  <text>渣渣星</text>
+                  <text>121111111111</text>
+                </view>
+              </view>
+              <view class="flex buttom-right">
+                <!-- <view class="new-text" >待出发</view> -->
+                <view class="new-text" style="color:#01D6C0" >进行中</view>
+                <!-- <view class="new-text" style="color:#999999" >已完成</view> -->
+                <!-- <view class="new-button refuse">拒绝此单</view> -->
+                <view class="new-button receiving" bindtap="receiv">立即接单</view>
+                <!-- <view class="new-button receiving" bindtap="serviceComplete">确认服务完成</view> -->
+              </view>
+            </view>
           </view>
-        </view>
-        <view class="flex buttom-right">
-          <!-- <view class="new-text" >待出发</view> -->
-          <view class="new-text" style="color:#01D6C0" >进行中</view>
-          <!-- <view class="new-text" style="color:#999999" >已完成</view> -->
-          <!-- <view class="new-button refuse">拒绝此单</view> -->
-          <view class="new-button receiving" bindtap="receiv">立即接单</view>
-          <!-- <view class="new-button receiving" bindtap="serviceComplete">确认服务完成</view> -->
-        </view>
-      </view>
-    </view>
+        </block>
     </view>
   </view>
 

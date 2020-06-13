@@ -165,7 +165,7 @@ Page({
     a.post("line/order/create_order",data, function(t) {
       console.log(t);
       if(t.error ==0 ){
-        i.toast(e, "支付成功，请等待商家接单！");
+        i.toast(e, "跳转中，请不要离开");
         setTimeout(() => {
           //  url: "/pages/order/pay/index?id=" + t.orderid,
           wx.navigateTo({

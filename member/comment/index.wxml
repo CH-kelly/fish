@@ -1,36 +1,58 @@
 <view class="background">
+<scroll-view class="fui-tab-scroll fixed " scrollX="true" style="overflow-x:scroll">
+    <view class="flex">
+        <view bindtap="selected" class="item {{status=='3'?'active':''}}" data-type="3">线路评论</view>
+        <view bindtap="selected" class="item {{status=='1'?'active':''}}" data-type="1">商品评论</view>
+        <view bindtap="selected" class="item {{status=='2'?'active':''}}" data-type="2">拼团评论</view>
+    </view>
+</scroll-view>
 
-  <block>
+
+<view class="contain" wx:if="{{list.length!=0}}" style="margin-top: 110rpx;">
+  <block wx:for="{{lists}}" wx:key="key">
     <v-input>
-      <view class="collection">
-          <view class="flex top">
-            <image src="/static/images/guide/avatar2.png"></image>
-            <view class="info">
-              <view class="info-nickname">李商隐</view>
-              <view class="info-date">2020-05-22</view>
+      <view class="collection" style="width: 100%;">
+          <view class="flex">
+            <view class="flex top">
+              <image src="{{item.headimgurl}}"></image>
+              <view class="info">
+                <view class="info-nickname">{{item.nickname}}</view>
+                <view class="info-date">{{item.createtime}}</view>
+              </view>
+            </view>
+            <view>
+              <v-start star="{{item.level}}"></v-start>
             </view>
           </view>
-          <view class="flex middel">纸巾很好用，家人和我都很喜欢。老婆还叫我再买一火车皮，给老丈人用。</view>
+          <view class="flex middel">{{item.content}}</view>
           <view class="images">
-            <image src="/static/images/guide/image2.png"></image>
-            <image src="/static/images/guide/image2.png"></image>
-            <image src="/static/images/guide/image2.png"></image>
-            <image src="/static/images/guide/image2.png"></image>
-            <image src="/static/images/guide/image2.png"></image>
-            <image src="/static/images/guide/image2.png"></image>
+            <block wx:for="{{item.images}}"  wx:for-index="idx" wx:for-item="i" wx:key="idx"> 
+                <image bindtap="preview" data-src="{{i}}" 
+                  data-urls="{{item.images}}" 
+                  src="{{i}}" ></image>
+            </block>
           </view>
           <view class="line"></view>
-          <view class="flex goods">
-            <view class="flex">
-              <image src="/static/images/guide/image2.png"></image>
-              <text class="goods-title">“竹态”生态卫生纸</text>
+          <block  wx:for="{{item.goods}}"  wx:for-index="q" wx:for-item="w" wx:key="q">
+            <view class="flex goods">
+              <view class="flex">
+                <image src="{{w.thumb}}"></image>
+                <text class="goods-title">{{w.title}}</text>
+              </view>
+              <text class="price">¥{{w.price}}</text>
             </view>
-            <text class="price">¥38.00</text>
-          </view>
+          </block>
       </view>
     </v-input>
   </block>
 
-
+</view>
+<view class="center" wx:if="{{list.length==0&&empty}}"  style="margin-top: 90rpx;">
+    <view class="empty">
+        <image class="light" src="/static/images/icon/nolist.png"></image>
+        <view class="text-cancel">您暂时没有任何评论哦！</view>
+        <navigator class="btn btn-danger-o" openType="switchTab" url="/pages/index/index">去首页逛逛吧</navigator>
+    </view>
+</view>
 
 </view>

@@ -2,10 +2,10 @@
 <view clas="page" wx:if="{{show}}">
     <view class="fui-list-group new-fui-group">
         <view class="fui-list-group-title">
-            <text class="icox icox-dianpu1"></text>
+            <text class="icox icox-dianpu1" wx:if="{{type==0}}"></text>
             <text class="shop">{{shopname}}</text>
         </view>
-        <view class="fui-list" wx:for="{{goods}}">
+        <view class="fui-list" wx:for="{{goods}}" wx:key="index">
             <view class="fui-list-media">
                 <image src="{{item.thumb}}" style="border-radius: 20rpx;"></image>
             </view>
@@ -25,13 +25,13 @@
     <view class="fui-cell-group evaluate new-fui-group">
         <view class="fui-cell must">
             <view class="fui-cell-label">评分</view>
-            <text bindtap="select" class="{{key>=index?selectedSrc:normalSrc}}" data-key="{{index}}" wx:for="{{stars_class}}"></text>
+            <text bindtap="select" class="{{key>=index?selectedSrc:normalSrc}}" data-key="{{index}}" wx:for="{{stars_class}}" wx:key="index"></text>
             <text class="{{stars_class[key]}}" style="font-size: 28rpx;">{{key!=-1?stars_text[key]:'未评价'}}</text>
         </view>
         <view class="fui-cell" wx:if="{{order.iscomment==0}}">
             <view class="fui-cell-label">晒图</view>
             <view class="fui-images fui-images-sm">
-                <image catchtap="upload" class="image image-sm" data-index="{{index}}" data-type="image-preview" src="{{item}}" wx:for="{{imgs}}">
+                <image catchtap="upload" class="image image-sm" data-index="{{index}}" data-type="image-preview" src="{{item}}" wx:for="{{imgs}}" wx:key="index">
                     <text catchtap="upload" class="image-remove" data-index="{{index}}" data-type="image-remove">
                         <text class="icox icox-close"></text>
                     </text>

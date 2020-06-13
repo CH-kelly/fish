@@ -53,10 +53,11 @@ Page({
       title1 = "提交成功！请耐心等待审核"
       butTitle = "回到个人中心";
       url="/pages/member/index/index"
-    }else if(type == 4){
+    }else if(type == 4){  //线路支付成功,查看订单就走到导游订单
       title = '支付成功'
       title1 = "支付成功！请等待商家接单"
-      butTitle = "查看订单"
+      butTitle = "查看订单";
+      url="/pages/gu/order/index"
     }else if(type == 5){
       title = '接单成功'
       title1 = "接单成功，请尽快联系客户安排行程"
@@ -70,6 +71,11 @@ Page({
       title = '接单成功'
       title1 = "接单成功，请尽快联系客户安排行程"
       butTitle = "查看订单"
+    }else if(type == 8){  //商品支付成功
+      title = '支付成功'
+      title1 = "支付成功!"
+      butTitle = "查看订单";
+      url="/pages/order/index"
     }else{
       title = "提交成功"
     }

@@ -19,7 +19,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    getlocation(){
+    getlocation(){  //获取地址
       var that = this;
       wx.getLocation({
         type: 'wgs84',
@@ -33,6 +33,7 @@ Component({
               if(res.statusCode == 200){
                 let address = res.data.result.address_component.city;
                 i.globalData.city = address;
+                i.globalData.address = address;
                 i.globalData.lat = latitude,i.globalData.lng = longitude
                 that.setData({
                   address:address,
@@ -42,7 +43,14 @@ Component({
           })
         }
        })
-    }
+    },
+    confirm(e){
+      console.log(e);
+      let keyword = e.detail.value;
+      wx.navigateTo({
+        url: '/pages/guide/line?keywords='+keyword,
+      })
+    },
   },
   attached:function(){
     let city = i.globalData.city;

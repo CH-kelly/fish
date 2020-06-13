@@ -90,20 +90,24 @@
               <text class="button-text" wx:if="{{item.success == 0}}" >待成团</text>
               <text class="button-text" wx:if="{{item.success == 1}}" style="color:#01D6C0">拼团成功</text>
               <text class="button-text" wx:if="{{item.success == 2}}" style="color:#666">拼团失败</text>
-              
+            </view>
+          </view>
+          <view class="flex" style="justify-content: flex-end;margin-top: 10rpx;">
               <block wx:if="{{item.status==0}}">
                   <view class="btn button">
                       <picker bindchange="cancel" data-orderid="{{item.id}}" range="{{cancel}}" value="{{cancelindex}}">取消订单</picker>
                   </view>
               </block>
-              <!-- <view class="button" wx:if="{{item.status==0}}"
-              bindchange="cancel" data-orderid="{{item.id}}" range="{{cancel}}" value="{{cancelindex}}"
-              >取消订单</view> -->
 
               <block wx:if="{{item.status==2}}">
                 <view bindtap="finish" class="button" data-orderid="{{item.id}}">
                   确认收货 
                 </view>
+              </block>
+              <block wx:if="{{item.status==3 || item.status==4}}">
+                <navigator  class="button"  openType="navigate" url="/pages/order/comment/index?type=2&id={{item.id}}" >
+                        评价
+                </navigator>
               </block>
 
               <block wx:if="{{item.status==3||item.status==-1}}">
@@ -112,18 +116,14 @@
                 </view>
               </block>
 
-              <!-- <block wx:if="{{item.status==0}}">
+              <block wx:if="{{item.status==0}}">
                 <navigator class="button" url="/groups/pay/index?id={{item.id}}&teamid={{item.teamid}}">去付款</navigator>
-              </block> -->
+              </block>
 
                 
               <navigator  url="/groups/order_detail/index?order_id={{item.id}}">
                 <view class="button" >查看订单</view>
               </navigator>
-
-
-
-            </view>
           </view>
       </view>
     </v-input>

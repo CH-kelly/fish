@@ -37,14 +37,16 @@ Page({
             this.showMessage('暂停中');
         }else if(this.data.merchstatus == 4){
             this.showMessage('已到期');
+        }else if(this.data.merchstatus == 1 || this.data.merchstatus == 3){
+            let id = this.data.member.merchid;
+            console.log(id);
+            wx.navigateTo({
+                url: '/pages/gu/admin/index?id='+id,
+            })
         }else{
            this.showMessage('即将到期');
-          setTimeout(() => {
-            wx.navigateTo({
-                url: '/pages/gu/admin/index',
-              })
-          }, 3000);
         }
+        
     },
     gotoMerch(){
         if(this.data.merchstatus == 0){
@@ -53,13 +55,13 @@ Page({
             this.showMessage('暂停中');
         }else if(this.data.merchstatus == 4){
             this.showMessage('已到期');
+        }else if(this.data.merchstatus == 1 || this.data.merchstatus == 3){ 
+            wx.navigateTo({
+                url: '/pages/gu/merch/index',
+            })
         }else{
             this.showMessage('即将到期');
-            setTimeout(() => {
-                wx.navigateTo({
-                    url: '/pages/gu/merch/index',
-                })
-            }, 3000);
+           
         }
     },
     showMessage(title,icon="none"){

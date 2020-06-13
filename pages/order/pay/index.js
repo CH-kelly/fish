@@ -71,17 +71,21 @@ Page({
             }, function() {
                 s.toast(o, t.message);
             }); else {
-                wx.setNavigationBarTitle({
-                    title: "支付成功"
+                // wx.setNavigationBarTitle({
+                //     title: "支付成功"
+                // });
+                // 去支付成功页面
+                wx.redirectTo({
+                    url: "/pages/gu/success/index?type=8"
                 });
-                var a = Array.isArray(t.ordervirtual);
-                o.setData({
-                    success: !0,
-                    successData: t,
-                    order: t.order,
-                    ordervirtual: t.ordervirtual,
-                    ordervirtualtype: a
-                });
+                // var a = Array.isArray(t.ordervirtual);
+                // o.setData({
+                //     success: !0,
+                //     successData: t,
+                //     order: t.order,
+                //     ordervirtual: t.ordervirtual,
+                //     ordervirtualtype: a
+                // });
             }
         }, !0, !0);
     },

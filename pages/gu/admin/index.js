@@ -1,18 +1,27 @@
 // pages/gu//admin/index.js
+var t = getApp(),
+    a = t.requirejs("core");
+t.requirejs("jquery");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    current:1
+    current:1,
+    list: [],
+    
+    merch: {},
+    merchid:0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      merchid: options.id
+    });
   },
   clickNav(e){
     let id = e.currentTarget.dataset.id
@@ -44,9 +53,37 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.get_lists();
+    this.get_info();
   },
-
+  get_lists(){
+    var t = this;
+    a.get("changce/merch/line_order_list", {
+        merchid: t.data.merchid,
+        page:t.data.page,
+        ishandle:t.data.ishandle
+    }, function(a) {
+      if(a.error == 0){
+        console.log(a);
+        t.setData({
+          merch: a.merch
+        })
+      }
+    })
+  },
+  get_info(){
+    var t = this;
+    a.get("changce/merch/get_detail", {
+        id: t.data.merchid,
+        type:1
+    }, function(a) {
+      if(a.error == 0){
+        t.setData({
+          merch: a.merch
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

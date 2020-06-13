@@ -68,21 +68,21 @@
         </view>
         <view class="fui-cell-group fui-cell-click new-fui-cell">
             <view  class="address-item">
-                <navigator class="fui-cell" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=0">
+                <navigator class="fui-cell" hoverClass="none" openType="navigate" url="/pages/gu/order/index">
                     <view class="fui-cell-text">导游订单</view>
                 </navigator>
                 <view class="flex fui-icon-group col-{{iscycelbuy?5:4}} nomargin">
-                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=0">
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=1">
                         <view class="badge" wx:if="{{member.statics.line_1>0}}">{{member.statics.line_1}}</view>
                         <image  class="guide-icon" src="/static/images/icon/guide1.png"></image>
                         <view class="text">待出行</view>
                     </navigator>
-                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=1">
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=2">
                         <view class="badge" wx:if="{{member.statics.line_2>0}}">{{member.statics.line_2}}</view>
                         <image class="guide-icon" src="/static/images/icon/guide2.png"></image>
                         <view class="text">进行中</view>
                     </navigator>
-                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=2">
+                    <navigator class="flex fui-icon-col" hoverClass="none" openType="navigate" url="/pages/gu/order/index?status=3">
                         <view class="badge" wx:if="{{member.statics.line_3>0}}">{{member.statics.line_3}}</view>
                         <image  class="guide-icon" src="/static/images/icon/guide3.png"></image>
                         <view class="text">已完成</view>

@@ -10,6 +10,7 @@ Page({
         options: "",
         show: !1,
         groupList:[],
+        goods_id:0,
     },
     onLoad: function(a) {
         t.getCache("isIpx") ? this.setData({
@@ -38,6 +39,7 @@ Page({
             e.setData({
                 data: t.data,
                 groupList:groupList,
+                goods_id:t.data.goods.id
             }), o.wxParse("wxParseData", "html", t.data.goods.content, e, "0")), 0 == t.data.tuan_first_order.success) {
                 if (t.data.lasttime2 <= 0) return void e.setData({
                     count_down: !1
@@ -69,46 +71,101 @@ Page({
             time: u
         });
     },
-    tuxedobuy: function(e) {
-        t.checkAuth();
-        var o = this, s = o.data.data.goods.id;
-        0 == o.data.data.goods.more_spec ? o.data.data.goods.stock > 0 ? a.get("groups/order/create_order", {
-            id: s,
-            ladder_id: o.data.data.tuan_first_order.ladder_id,
-            type: "groups",
-            heads: 0,
-            teamid: o.data.teamid
+    // tuxedobuy: function(e) {
+    //     t.checkAuth();
+    //     var o = this, s = o.data.data.goods.id;
+    //     0 == o.data.data.goods.more_spec ? o.data.data.goods.stock > 0 ? a.get("groups/order/create_order", {
+    //         id: s,
+    //         ladder_id: o.data.data.tuan_first_order.ladder_id,
+    //         type: "groups",
+    //         heads: 0,
+    //         teamid: o.data.teamid
+    //     }, function(t) {
+    //         1 != t.error ? -1 != t.error ? wx.navigateTo({
+    //             url: "../confirm/index?id=" + s + "&heads=0&type=groups&teamid=" + o.data.teamid + "&ladder_id=" + o.data.data.tuan_first_order.ladder_id,
+    //             success: function() {
+    //                 o.setData({
+    //                     layershow: !1,
+    //                     chosenum: !1,
+    //                     options: !1
+    //                 });
+    //             }
+    //         }) : wx.redirectTo({
+    //             url: "/pages/message/auth/index"
+    //         }) : a.alert(t.message);
+    //     }) : wx.showToast({
+    //         title: "库存不足",
+    //         icon: "none",
+    //         duration: 2e3
+    //     }) : (a.get("groups.goods.get_spec", {
+    //         id: s
+    //     }, function(t) {
+    //         o.setData({
+    //             spec: t.data
+    //         });
+    //     }), o.setData({
+    //         layershow: !0,
+    //         options: !0
+    //     }), o.setData({
+    //         optionarr: [],
+    //         selectSpecsarr: []
+    //     }), o.data.data.goods.stock > 0 ? wx.navigateTo({
+    //         url: "../confirm/index?id=" + goods_id + "&type=groups&teamid=" + o.data.teamid,
+    //         success: function() {
+    //             o.setData({
+    //                 layershow: !1,
+    //                 chosenum: !1,
+    //                 options: !1
+    //             });
+    //         }
+    //     }) : wx.showToast({
+    //         title: "库存不足",
+    //         icon: "none",
+    //         duration: 2e3
+    //     }), o.setData({
+    //         layershow: !0,
+    //         options: !0
+    //     }));
+    // },
+    singlebuy: function(t) {    //选择规格
+        var o = this;
+        let isTeamGroup = t.currentTarget.dataset.is;  //是否拼团  1是  0单独购买
+        let teamid = t.currentTarget.dataset.teamid;
+        let type = t.currentTarget.dataset.type;    //single:单独购买     groups：参团   group:开团
+        console.log(isTeamGroup,teamid,type);
+        a.post("groups/goods/goodsCheck", {
+            id: this.data.goods_id,
+            type: type
         }, function(t) {
-            1 != t.error ? -1 != t.error ? wx.navigateTo({
-                url: "../confirm/index?id=" + s + "&heads=0&type=groups&teamid=" + o.data.teamid + "&ladder_id=" + o.data.data.tuan_first_order.ladder_id,
-                success: function() {
+            if (1 != t.error) if (0 == o.data.data.more_spec) wx.navigateTo({
+                url: "../confirm/index?id=" + o.data.goods_id + "&type="+type+"&isTeamGroup="+isTeamGroup+"&teamid="+teamid
+            }); else {
+                o.setData({
+                    layershow: !0,
+                    options: !0,
+                    isTeamGroup:isTeamGroup
+                }), o.setData({
+                    optionarr: [],
+                    selectSpecsarr: []
+                });
+                var e = o.data.data.id;
+                a.get("groups.goods.get_spec", {
+                    id: e
+                }, function(t) {
                     o.setData({
-                        layershow: !1,
-                        chosenum: !1,
-                        options: !1
+                        spec: t.data
                     });
-                }
-            }) : wx.redirectTo({
-                url: "/pages/message/auth/index"
-            }) : a.alert(t.message);
-        }) : wx.showToast({
-            title: "库存不足",
-            icon: "none",
-            duration: 2e3
-        }) : (a.get("groups.goods.get_spec", {
-            id: s
-        }, function(t) {
-            o.setData({
-                spec: t.data
-            });
-        }), o.setData({
-            layershow: !0,
-            options: !0
-        }), o.setData({
-            optionarr: [],
-            selectSpecsarr: []
-        }), o.data.data.goods.stock > 0 ? wx.navigateTo({
-            url: "../confirm/index?id=" + goods_id + "&type=groups&teamid=" + o.data.teamid,
+                }), o.setData({
+                    layershow: !0,
+                    options: !0
+                });
+            } else a.alert(t.message);
+        });
+    },
+    buy: function(t) {  //规格选择-确定按钮
+        var o = this, e = (a.pdata(t).op, o.data.goods_id), i = o.data.optiondata;
+        o.data.optiondata ? i.stock > 0 ? wx.navigateTo({
+            url: "../confirm/index?id=" + e + "&option_id=" + i.id + " &type="+o.data.type+ "&isTeamGroup=" + o.data.isTeamGroup+ "&teamid=" + o.data.teamid,
             success: function() {
                 o.setData({
                     layershow: !1,
@@ -120,10 +177,11 @@ Page({
             title: "库存不足",
             icon: "none",
             duration: 2e3
-        }), o.setData({
-            layershow: !0,
-            options: !0
-        }));
+        }) : wx.showToast({
+            title: "请选择规格",
+            icon: "none",
+            duration: 2e3
+        });
     },
     close: function() {
         this.setData({
@@ -151,27 +209,7 @@ Page({
             });
         });
     },
-    buy: function(t) {
-        var e = this, o = (a.pdata(t).op, e.data.data.goods.id), s = e.data.optiondata;
-        e.data.optiondata ? s.stock > 0 ? wx.navigateTo({
-            url: "../confirm/index?id=" + o + "&type=groups&option_id=" + s.id + " &teamid=" + e.data.teamid,
-            success: function() {
-                e.setData({
-                    layershow: !1,
-                    chosenum: !1,
-                    options: !1
-                });
-            }
-        }) : wx.showToast({
-            title: "库存不足",
-            icon: "none",
-            duration: 2e3
-        }) : wx.showToast({
-            title: "请选择规格",
-            icon: "none",
-            duration: 2e3
-        });
-    },
+    
     onReady: function() {},
     onShow: function() {},
     onHide: function() {},

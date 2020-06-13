@@ -1369,7 +1369,7 @@ border-radius: 20rpx;
     height: 84rpx;
     transition: all 0.7s;
     background: rgba(0,0,0,0.5);
-    bottom: 280rpx;
+    bottom: 310rpx;
 }
 
 .nav-model button {

@@ -723,3 +723,12 @@ color:rgba(153,153,153,1);
     border-bottom: 1px solid rgba(199,199,199,0.3);
 
 }
+
+.new-commentList{
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Helvetica,sans-serif;
+    font-size: 28rpx;
+    color: #666;
+    line-height: 1.8;     
+}
