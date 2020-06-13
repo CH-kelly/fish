@@ -165,7 +165,7 @@
                 </view>
         </view>
     </view>
-    <view class="fui-list-group">
+    <!-- <view class="fui-list-group">
         <view class="address-item">
             <view class="flex" style="width:100%">
                 <text>支付方式：</text>
@@ -175,7 +175,7 @@
                 </view>
             </view>
         </view>
-    </view>
+    </view> -->
     <include src="/pages/common/diyform.wxml"></include>
     <!-- <view class="fui-cell-group">
         <view class="fui-cell">

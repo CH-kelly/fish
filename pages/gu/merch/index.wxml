@@ -34,14 +34,16 @@ class="scroll-view">
           <view class="center-item">
             <view class="tips" wx:if="{{current==1}}">您有一条新订单，请立即处理！</view>
             <view class="tips" wx:if="{{current==2}}"
-             bindtap="copyPhone" data-mobile="{{item.orderno}}"
+             bindtap="copyPhone" data-mobile="{{item.ordersn}}"
              style="color:#999999">订单号：{{item.ordersn}}</view>
             <view class="line"></view>
-            <view class="flex middle">
-              <image src="{{item.thumb}}"></image>
-              <view class="flex info">
-                <text>{{item.title}}</text>
+            <view class="flex middle"  style="align-items: flex-start;"
+             wx:for="{{item.nogift}}" wx:for-index="key" wx:for-item="val" wx:key="key"  >
+              <image src="{{val.thumb}}"></image>
+              <view class="flex info" style="width: 60%;">
+                <text>{{val.title}}</text>
                 <text class="price">¥{{item.price}}</text>
+                <view class="number">共{{item.goods[0].goods.length}}个商品</view>
               </view>
             </view>
             
@@ -58,7 +60,9 @@ class="scroll-view">
                 <view class="new-text" wx:if="{{item.status==1}}">待发货</view>
                 <view class="new-text" style="color:#01D6C0" wx:if="{{item.status==2}}">待收货</view>
                 <view class="new-text" style="color:#999999" wx:if="{{item.status==3}}">已完成</view>
-                <view class="new-button receiving" bindtap="sendOut" wx:if="{{item.status==1}}">确认发货</view>
+                <view class="new-button receiving" bindtap="sendOut"
+                 data-id="{{item.id}}"
+                 wx:if="{{item.status==1}}">确认发货</view>
               </view>
             </view>
           </view>
@@ -73,16 +77,16 @@ class="scroll-view">
     <view class="send-item flex ">
       <view class="send-text send-item-label">收货人</view>
       <view class="send-text send-item-content">
-        <view>联系人：张三</view>
-        <view>地址：广东省广州市</view>
+        <view>联系人：{{address.realname}}/{{address.mobile}}</view>
+        <view>地址：{{address.province}} {{address.city}} {{address.area}} {{address.address}}</view>
       </view>
     </view>
     <view class="send-item flex ">
       <view class="send-text send-item-label">快递公司</view>
       <view class="send-text send-item-content">
-        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-          <view class="picker">
-            当前选择：{{array[index]}}
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="name" >
+          <view class="send-picker">
+            当前选择：{{array[index]['name']}}
           </view>
         </picker>
       </view>
@@ -92,8 +96,15 @@ class="scroll-view">
       <view class="send-text send-item-content">
         <input class="weui-input"  placeholder="请输入快递单号" 
         bindinput="inputOrderSn"
-        placeholder-class="send-text" class="send-text"/>
+        placeholder-class="" class="send-text"/>
       </view>
+    </view>
+    <view class="send-item flex ">
+      <view class="send-text" style="fons-size:20rpx;color:#f00">默认按订单发货</view>
+    </view>
+    <view class="send-item flex ">
+      <view class="send-button" bindtap="cancel" >取消</view>
+      <view class="send-button confirm" bindtap="confirm" >确认</view>
     </view>
   </view>
 </view>

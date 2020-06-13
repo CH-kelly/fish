@@ -13,12 +13,71 @@ Page({
     page:1,
     merch: {},
     merchid:0,
-    send_out:1,
+    send_out:0,
+    array:[],
+    index:'',
+    ordersn:'',
+    company:'',
+    orderid:'',
   },
   onLoad: function (options) {
     this.setData({
       merchid: options.id
     });
+  },
+  bindPickerChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    let index = e.detail.value
+    let company = this.data.array[index]['name']
+    this.setData({
+      index:index ,
+      company:company
+    })
+  },
+  inputOrderSn(e){
+    this.setData({
+      ordersn: e.detail.value
+    })
+  },
+  cancel(){
+    this.setData({
+      send_out:0,
+    })
+  },
+  confirm(){
+    var that = this,ordersn = this.data.ordersn,company = this.data.company,orderid=this.data.orderid;
+    if(!orderid){
+      this.showToastMsg('请选择订单');
+      return ;
+    }
+    if(!company){
+      this.showToastMsg('请选择快递公司');
+      return ;
+    }
+    if(!ordersn){
+      this.showToastMsg('请输入快递单号');
+      return ;
+    }
+    a.post("changce/merch/goods_order_confirm", {
+      orderid: orderid,
+      expresssn:ordersn,
+      expresscom:company,
+      sendtype:0,
+    }, function(a) {
+      console.log(a); 
+      that.setData({
+          send_out:0,
+          page:1,
+      })  
+      this.get_lists();
+    })
+  },
+  showToastMsg(title){
+    wx.showToast({
+      title: title,
+      icon: 'none',
+      duration: 2000
+    })
   },
   copyPhone(e){
     let mobile = e.currentTarget.dataset.mobile
@@ -35,9 +94,22 @@ Page({
     this.get_lists();
   },
   // 去发货
-  sendOut(){
-    this.setData({
-      send_out:1
+  sendOut(t){
+    var that = this;
+    let id = t.currentTarget.dataset.id;
+    console.log(id);
+    a.get("changce/merch/goods_order_send", {
+      orderid: id
+    }, function(a) {
+      console.log(a);
+      if(a.error == 0){
+        that.setData({
+          address:a.address,
+          array:a.express_list,
+          send_out:1,
+          orderid:id
+        })
+      }
     })
   },
   /**
@@ -50,7 +122,7 @@ Page({
   get_lists(){
     var t = this;
     let list = t.data.list;
-    a.get("changce/merch/line_order_list", {
+    a.get("changce/merch/goods_order_list", {
         merchid: t.data.merchid,
         page:t.data.page,
         status:t.data.current

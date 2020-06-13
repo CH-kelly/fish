@@ -132,7 +132,7 @@
             </view>
         </v-input>
 
-        <v-input>
+        <!-- <v-input>
             <view class="flex" style="width:100%">
                 <text>支付方式：</text>
                 <view class="flex pay">
@@ -140,7 +140,7 @@
                 <text>微信支付</text>
                 </view>
             </view>
-        </v-input>
+        </v-input> -->
     </view>
 </scroll-view>  
 
