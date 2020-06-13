@@ -56,8 +56,9 @@ Page({
         }else if(this.data.merchstatus == 4){
             this.showMessage('已到期');
         }else if(this.data.merchstatus == 1 || this.data.merchstatus == 3){ 
+            let id = this.data.member.merchid;
             wx.navigateTo({
-                url: '/pages/gu/merch/index',
+                url: '/pages/gu/merch/index?id='+id,
             })
         }else{
             this.showMessage('即将到期');

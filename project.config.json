@@ -149,10 +149,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 13,
 					"name": "导游端-管理",
 					"pathName": "pages/gu/admin/index",
-					"query": "",
+					"query": "id=10",
 					"scene": null
 				},
 				{

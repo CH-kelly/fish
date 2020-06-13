@@ -54,6 +54,9 @@
 .online{
   color: #01D6C0;
 }
+.online1{
+  color: #999;
+}
 .offline{
   margin-top: 10rpx;
   width:120rpx;
@@ -178,4 +181,9 @@
   font-family:PingFang SC;
   font-weight:bold;
   color:rgba(231,41,72,1);
+}
+
+
+.scroll-view{
+  height: calc(100vh - 228rpx);
 }

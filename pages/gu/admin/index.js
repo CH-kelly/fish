@@ -10,7 +10,7 @@ Page({
   data: {
     current:1,
     list: [],
-    
+    page:0,
     merch: {},
     merchid:0,
   },
@@ -41,7 +41,14 @@ Page({
       url: '/pages/gu/success/index?type=6',
     })
   },
+  // 下线
+  offline(){
 
+  },
+  // 上线
+  online(){
+
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -66,12 +73,53 @@ Page({
       if(a.error == 0){
         console.log(a);
         t.setData({
-          merch: a.merch
+          list: a.list
         })
       }
     })
   },
   get_info(){
+    var t = this;
+    a.get("changce/merch/get_detail", {
+        id: t.data.merchid,
+        type:1
+    }, function(a) {
+      if(a.error == 0){
+        t.setData({
+          merch: a.merch
+        })
+      }
+    })
+  },
+  // 拒绝此单
+  refuse(e){
+    var t = this;
+    let id = e.currentTarget.dataset.id;
+    a.get("changce/merch/line_order_reject", {
+        merchid: t.data.merchid,
+        id:id
+    }, function(a) {
+      if(a.error == 0){
+        t.get_lists();
+      }
+    })
+  },
+    // 立即接单
+  receiving(){
+    var t = this;
+    a.get("changce/merch/get_detail", {
+        id: t.data.merchid,
+        type:1
+    }, function(a) {
+      if(a.error == 0){
+        t.setData({
+          merch: a.merch
+        })
+      }
+    })
+  },
+      // 确认服务完成
+  confirm(){
     var t = this;
     a.get("changce/merch/get_detail", {
         id: t.data.merchid,
