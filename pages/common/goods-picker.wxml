@@ -11,7 +11,7 @@
                     <image class="thumb" src="{{goods.thumb}}" style="width:100%;height:100%;"></image>
                 </view>
                 <view class="new-title" style="  position: absolute;top: 40rpx;font-size:36rpx;font-weight:bold;">
-                    “竹态”生态卫生纸
+                    {{goods.title}}
                 </view>
                 <view class="info info-price text-danger">
                     <span style="vertical-align: middle;">¥

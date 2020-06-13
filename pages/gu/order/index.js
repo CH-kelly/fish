@@ -9,7 +9,8 @@ Page({
         code: !1,
         cancel: e.cancelArray,
         cancelindex: 0,
-        can_sync_goodscircle: !1
+        can_sync_goodscircle: !1,
+        rejectimg:'',
     },
     onLoad: function(a) {
         var e = this;
@@ -37,6 +38,7 @@ Page({
                 show: !0,
                 total: t.total,
                 empty: !0,
+                rejectimg:t.rejectimg,
                 can_sync_goodscircle: t.can_sync_goodscircle
             }), t.list.length > 0 && e.setData({
                 page: e.data.page + 1,

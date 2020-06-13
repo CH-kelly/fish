@@ -3,56 +3,99 @@
 
     <view class="flex header">
       <view class="flex header-left">
-        <image src="/static/images/guide/avatar1.png"></image>
+        <image src="{{merch.logo}}"></image>
         <view class="info">
-          <text>渣渣星卫生纸旗舰店</text>
+          <text>{{merch.merchname}}</text>
         </view>
       </view>
     </view>
     <view class="line"></view>
     <view class="flex navbar">
-      <view class="{{current==1?'active':''}}" data-id="1" bindtap="clickNav" style="margin-right: 240rpx;">待接单</view>
-      <view class="{{current==2?'active':''}}" data-id="2" bindtap="clickNav"  >已接单</view>
+      <view class="{{current==1?'active':''}}" data-id="1" bindtap="clickNav" style="margin-right: 240rpx;">待发货</view>
+      <view class="{{current==2?'active':''}}" data-id="2" bindtap="clickNav"  >已发货</view>
     </view>
   </view>
+
+<scroll-view scroll-y 
+
+    refresher-enabled="true" 
+    refresher-triggered="{{triggered}}"
+    refresher-default-style="black" 
+    bindrefresherrefresh="bindrefresherrefresh"
+    bindrefresherabort="bindrefresherabort"
+    bindscrolltolower="loadMore"
+
+class="scroll-view">
 
   <view class="new-center">
+ 
     <view class="center-lists">
-      
-    <view class="center-item">
-      <!-- <view class="tips">您有一条新订单，请立即处理！</view> -->
-      <view class="tips" style="color:#999999">订单号：5465123165461</view>
-      <view class="line"></view>
-      <view class="flex middle">
-        <image src="/static/images/guide/image2.png"></image>
-        <view class="flex info">
-          <text>都江堰三日游</text>
-          <text class="price">¥388.00</text>
-        </view>
-      </view>
-      
-      <view class="line"></view>
-      <view class="flex buttom" style="margin-top:20rpx">
-        <view class="flex buttom-left">
-          <image src="/static/images/guide/avatar1.png"></image>
-          <view class="flex userinfo">
-            <text>渣渣星</text>
-            <text>121111111111</text>
+      <block wx:for="{{list}}" wx:key="index"> 
+          <view class="center-item">
+            <view class="tips" wx:if="{{current==1}}">您有一条新订单，请立即处理！</view>
+            <view class="tips" wx:if="{{current==2}}"
+             bindtap="copyPhone" data-mobile="{{item.orderno}}"
+             style="color:#999999">订单号：{{item.ordersn}}</view>
+            <view class="line"></view>
+            <view class="flex middle">
+              <image src="{{item.thumb}}"></image>
+              <view class="flex info">
+                <text>{{item.title}}</text>
+                <text class="price">¥{{item.price}}</text>
+              </view>
+            </view>
+            
+            <view class="line"></view>
+            <view class="flex buttom" style="margin-top:20rpx">
+              <view class="flex buttom-left">
+                <image src="/static/images/guide/avatar1.png"></image>
+                <view class="flex userinfo">
+                  <text>{{item.merchname}}</text>
+                  <text bindtap="copyPhone" data-mobile="{{item.merchmobile}}"> {{item.merchmobile}}</text>
+                </view>
+              </view>
+              <view class="flex buttom-right">
+                <view class="new-text" wx:if="{{item.status==1}}">待发货</view>
+                <view class="new-text" style="color:#01D6C0" wx:if="{{item.status==2}}">待收货</view>
+                <view class="new-text" style="color:#999999" wx:if="{{item.status==3}}">已完成</view>
+                <view class="new-button receiving" bindtap="sendOut" wx:if="{{item.status==1}}">确认发货</view>
+              </view>
+            </view>
           </view>
-        </view>
-        <view class="flex buttom-right">
-          <!-- <view class="new-text" >待发货</view> -->
-          <view class="new-text" style="color:#01D6C0" >待收货</view>
-          <!-- <view class="new-text" style="color:#999999" >已完成</view> -->
-          <!-- <view class="new-button refuse">拒绝此单</view> -->
-          <view class="new-button receiving" bindtap="receiv">立即接单</view>
-          <!-- <view class="new-button receiving" bindtap="serviceComplete">确认服务完成</view> -->
-        </view>
-      </view>
-    </view>
+      </block>
     </view>
   </view>
 
+</scroll-view>
 
+<view  wx:if="{{send_out==1}}" class="send-out-goods  flex " style="justify-content: center;">
+  <view class="center-item " style="width: 80%;">
+    <view class="send-item flex ">
+      <view class="send-text send-item-label">收货人</view>
+      <view class="send-text send-item-content">
+        <view>联系人：张三</view>
+        <view>地址：广东省广州市</view>
+      </view>
+    </view>
+    <view class="send-item flex ">
+      <view class="send-text send-item-label">快递公司</view>
+      <view class="send-text send-item-content">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <view class="picker">
+            当前选择：{{array[index]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="send-item flex ">
+      <view class="send-text send-item-label">快递单号</view>
+      <view class="send-text send-item-content">
+        <input class="weui-input"  placeholder="请输入快递单号" 
+        bindinput="inputOrderSn"
+        placeholder-class="send-text" class="send-text"/>
+      </view>
+    </view>
+  </view>
+</view>
 
 </view>

@@ -28,7 +28,9 @@
             <view class="goods-Commission" wx:if="{{childitem.cansee>0&&childitem.seecommission>0}}">{{childitem.seetitle}}￥{{childitem.seecommission}}</view>
         </navigator>
         <view class="detail">
-            <navigator class="name" style="color:{{diyitem.style.titlecolor}}" url="{{childitem.bargain>0?'/bargain/detail/detail?id='+childitem.bargain:'/pages/goods/detail/index?id='+childitem.gid}}" wx:if="{{diyitem.params.showtitle=='1'}}">
+            <navigator class="name" 
+            style="color:{{diyitem.style.titlecolor}};height: auto;" 
+            url="{{childitem.bargain>0?'/bargain/detail/detail?id='+childitem.bargain:'/pages/goods/detail/index?id='+childitem.gid}}" wx:if="{{diyitem.params.showtitle=='1'}}">
                 <image class="bargain_label" src="/static/images/label.png" wx:if="{{childitem.bargain>0}}"></image>
                 <text class="cycle-tip" wx:if="{{childitem.ctype==9}}">周期购</text>
                 <text>{{childitem.title}} </text>

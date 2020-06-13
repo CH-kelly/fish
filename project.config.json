@@ -156,10 +156,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 14,
 					"name": "商户端-管理",
 					"pathName": "pages/gu/merch/index",
-					"query": "",
+					"query": "id=10",
 					"scene": null
 				},
 				{

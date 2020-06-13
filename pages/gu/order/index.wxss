@@ -7,10 +7,18 @@
   /* background-color: #ffffff; */
 }
 .address-item {
+  position: relative;
   /* padding-bottom: 20rpx; */
   padding: 20rpx;
   background-color: #fff;
   border-radius: 20rpx;
+}
+.lists-no{
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 150rpx;
+  height: 150rpx;
 }
 
 

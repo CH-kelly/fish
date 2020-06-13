@@ -14,7 +14,7 @@ Page({
 
   /**
    * 生命周期函数--监听页面加载
-   * type: 1点评成功  2收货成功   3提交成功  4支付成功   5接单成功  6确认服务成功
+   * type: 1点评成功  2收货成功   3提交成功  4支付成功   5接单成功  6确认服务成功   7正在开发  
    */
   onLoad: function (options) {
     let type = options.type || 0;
@@ -76,6 +76,10 @@ Page({
       title1 = "支付成功!"
       butTitle = "查看订单";
       url="/pages/order/index"
+    }else if(type == 9){  //正在开发
+      title = '正在开发....'
+      title1 = "正在开发...."
+      butTitle = "";
     }else{
       title = "提交成功"
     }

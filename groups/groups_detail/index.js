@@ -3,6 +3,7 @@ var t = getApp(), a = t.requirejs("core"), e = (t.requirejs("jquery"), t.require
 
 Page({
     data: {
+        spec:[],
         showtab: "groups",
         count_down: !0,
         time: "",
@@ -11,6 +12,8 @@ Page({
         show: !1,
         groupList:[],
         goods_id:0,
+        goods:[],
+        total:1
     },
     onLoad: function(a) {
         t.getCache("isIpx") ? this.setData({
@@ -22,6 +25,10 @@ Page({
         }), this.setData({
             teamid: a.teamid
         }), this.get_details(a.teamid);
+        
+        
+    },
+    onShow(){
     },
     get_details: function(t) {
         var e = this;
@@ -39,7 +46,8 @@ Page({
             e.setData({
                 data: t.data,
                 groupList:groupList,
-                goods_id:t.data.goods.id
+                goods_id:t.data.goods.id,
+                goods:t.data.goods
             }), o.wxParse("wxParseData", "html", t.data.goods.content, e, "0")), 0 == t.data.tuan_first_order.success) {
                 if (t.data.lasttime2 <= 0) return void e.setData({
                     count_down: !1
@@ -148,12 +156,13 @@ Page({
                     optionarr: [],
                     selectSpecsarr: []
                 });
-                var e = o.data.data.id;
+                var e = o.data.goods_id;
                 a.get("groups.goods.get_spec", {
                     id: e
                 }, function(t) {
                     o.setData({
-                        spec: t.data
+                        spec: t.data,
+                        cycledate: !0
                     });
                 }), o.setData({
                     layershow: !0,

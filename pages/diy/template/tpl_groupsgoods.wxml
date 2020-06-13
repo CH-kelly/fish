@@ -28,7 +28,9 @@
             <image class="salez" src="{{diyitem.params.saleout==0?'/static/images/saleout-2.png':diyitem.params.saleout}}" wx:if="{{diyitem.params.saleout!=-1&&childitem.total==0&&childitem.cansee<=0||diyitem.params.saleout!=-1&&childitem.total==0&&childitem.cansee>0&&childitem.seecommission<=0}}"></image>
         </navigator>
         <view class="detail">
-            <navigator class="name" style="color:{{diyitem.style.titlecolor}}" url="{{'/groups/goods/index?id='+childitem.gid}}" wx:if="{{diyitem.params.showtitle=='1'}}">
+            <navigator class="name" 
+            style="color:{{diyitem.style.titlecolor}};height: auto;" 
+            url="{{'/groups/goods/index?id='+childitem.gid}}" wx:if="{{diyitem.params.showtitle=='1'}}">
                 <text>{{childitem.title}}</text>
             </navigator>
             <!-- <view class="productprice">

@@ -6323,3 +6323,8 @@ rich-text img {
 .fz-48 {
     font-size: 48rpx;
 }
+
+/* 距离左边按钮间距 */
+.new-margin-right{
+  margin-right:10rpx  
+}

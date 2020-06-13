@@ -25,11 +25,12 @@
     <view class="new-content">
       <view class="detailinfo">
         <view class="wxParse">
-          <template data="{{wxParseData:wxParseData.nodes}}" is="wxParse" /></view>
-      </view>
+            <rich-text nodes="{{article.article_content}}"></rich-text>
+          <!-- <template data="{{wxParseData:wxParseData.nodes}}" is="wxParse" /></view> -->
+          </view>
+        </view>
     </view>
 
-    
     </scroll-view>
   </view>
 
