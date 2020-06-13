@@ -126,6 +126,7 @@ Page({
     finish: function(t) {
         a.data(t).type;
         var s = a.data(t).orderid;
+        var that = this;
         that.setData({
             page:0
         })

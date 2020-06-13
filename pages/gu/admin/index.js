@@ -10,9 +10,9 @@ Page({
   data: {
     current:1,
     list: [],
-    page:0,
+    page:1,
     merch: {},
-    merchid:0,
+    merchid:0
   },
 
   /**
@@ -23,11 +23,19 @@ Page({
       merchid: options.id
     });
   },
+  copyPhone(e){
+    let mobile = e.currentTarget.dataset.mobile
+    console.log(mobile)
+    t.copyContent(mobile)
+  },
   clickNav(e){
     let id = e.currentTarget.dataset.id
     this.setData({
-      current:id
+      current:id,
+      page:1,
+      list:[],
     })
+    this.get_lists();
   },
   // 立即接单
   receiv(){
@@ -41,13 +49,17 @@ Page({
       url: '/pages/gu/success/index?type=6',
     })
   },
-  // 下线
+  // 下线/上线
   offline(){
-
-  },
-  // 上线
-  online(){
-
+      // cahngce/merch/change_on_line
+      var t = this;
+      a.get("changce/merch/change_on_line", {
+          id: t.data.merchid,
+      }, function(a) {
+        if(a.error == 0){
+          t.get_info();
+        }
+      })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -65,19 +77,46 @@ Page({
   },
   get_lists(){
     var t = this;
+    let list = t.data.list;
     a.get("changce/merch/line_order_list", {
         merchid: t.data.merchid,
         page:t.data.page,
-        ishandle:t.data.ishandle
+        status:t.data.current
     }, function(a) {
       if(a.error == 0){
         console.log(a);
+        if(t.data.page == 1){
+          list = a.list
+        }else{
+          list.push(...a.list)
+        }
         t.setData({
-          list: a.list
+          list: list,
+          triggered:false,
         })
       }
     })
   },
+  // 下拉刷新
+  bindrefresherrefresh(){
+    console.log('下拉');
+    var that = this;
+    that.setData({
+        page:1
+    })
+    that.get_lists()
+  },
+/**
+ * 页面上拉触底事件的处理函数
+ */
+loadMore: function () {
+    let page = this.data.page + 1;
+    let that = this;
+    that.setData({
+        page:page
+    })
+    that.get_lists()
+},
   get_info(){
     var t = this;
     a.get("changce/merch/get_detail", {
@@ -95,40 +134,37 @@ Page({
   refuse(e){
     var t = this;
     let id = e.currentTarget.dataset.id;
-    a.get("changce/merch/line_order_reject", {
+    let type = e.currentTarget.dataset.type;  // 1拒绝接单   2立即接单  3确认服务完成
+    let url = '';
+    if(type == 1){
+      url = "line_order_reject";
+    }else if(type == 2){
+      url = "line_order_taking";
+    }else if(type == 3){
+      url = "line_order_confirm";
+    }
+    a.get("changce/merch/"+url, {
         merchid: t.data.merchid,
-        id:id
+        orderid:id
     }, function(a) {
       if(a.error == 0){
-        t.get_lists();
-      }
-    })
-  },
-    // 立即接单
-  receiving(){
-    var t = this;
-    a.get("changce/merch/get_detail", {
-        id: t.data.merchid,
-        type:1
-    }, function(a) {
-      if(a.error == 0){
-        t.setData({
-          merch: a.merch
+        wx.showToast({
+          title: '修改完成',
         })
-      }
-    })
-  },
-      // 确认服务完成
-  confirm(){
-    var t = this;
-    a.get("changce/merch/get_detail", {
-        id: t.data.merchid,
-        type:1
-    }, function(a) {
-      if(a.error == 0){
         t.setData({
-          merch: a.merch
+          page:1,
         })
+        if(type == 2){
+          wx.navigateTo({
+            url: '/pages/gu/success/index?type=5',
+          })
+        }else if(type == 3){
+          wx.navigateTo({
+            url: '/pages/gu/success/index?type=6',
+          })
+        }else{
+          t.get_lists();
+        }
       }
     })
   },

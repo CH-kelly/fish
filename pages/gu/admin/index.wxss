@@ -69,6 +69,11 @@
   
   color:rgba(244,106,38,1) !important;
 }
+.online-offline{
+  
+  border:1px solid #01D6C0;   
+  color:#01D6C0 !important;  
+}
 .line{
   width: 100%;
   height: 1px;
@@ -116,6 +121,7 @@
   padding: 20rpx 30rpx;
   background: #ffffff;
   border-radius: 20rpx;
+  margin-bottom: 30rpx;
 }
 .middle>image{
   width:200rpx;
