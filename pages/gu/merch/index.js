@@ -69,7 +69,7 @@ Page({
           send_out:0,
           page:1,
       })  
-      this.get_lists();
+      that.get_lists();
     })
   },
   showToastMsg(title){
