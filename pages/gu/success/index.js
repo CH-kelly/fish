@@ -80,6 +80,7 @@ Page({
       title = '正在开发....'
       title1 = "正在开发...."
       butTitle = "";
+      isShowButton=0;
     }else{
       title = "提交成功"
     }

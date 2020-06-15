@@ -6,7 +6,7 @@
 
       <!-- <view bindtap="clickButTitle" wx:if="{{isShowButton == 0}}" class="but-title but-text">{{butTitle}}</view> -->
 
-    <navigator url="{{url}}" hover-class="navigator-hover">
+    <navigator wx:if="{{url}}" url="{{url}}" hover-class="navigator-hover">
       <view wx:if="{{isShowButton == 0}}" class="but-title but-text">{{butTitle}}</view>
     </navigator>
     
